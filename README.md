@@ -1,4 +1,4 @@
-# Money Map
+# Budget Academy
 
 A budgeting website that helps people learn, practice, and master managing their money.
 
