@@ -2,7 +2,7 @@
 
 A budgeting website that helps people learn, practice, and master managing their money.
 
-Made by Shaurav Kasinaboyina, Jaskaran Kalsi, and Tejansh Batra for the TSA Software Development event.
+Made by Shaurav Kasinaboyina, Jaskaran Kalsi, and Vardhan Devata for the TSA Software Development event.
 
 ## How to run it
 
