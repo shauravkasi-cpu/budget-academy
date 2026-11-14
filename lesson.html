@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Budget Academy - Lesson</title>
+  <link rel="icon" href="logo.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- big top bar with the 2 main sections -->
+  <nav class="top-bar">
+
+    <!-- name and log out in the top right corner -->
+    <div class="profile">
+      <span id="profile-name"></span>
+      <button class="small-button demo-button" onclick="logOut()">Log out</button>
+    </div>
+
+    <div class="brand">
+      <img src="logo.png" alt="">
+      <span>Budget Academy</span>
+    </div>
+
+    <div class="main-links">
+      <a href="overview.html">My Money</a>
+      <a href="lessons.html" class="active">Learn Mode</a>
+    </div>
+  </nav>
+
+  <!-- smaller bar with the pages inside "Learn Mode" -->
+  <nav class="sub-bar">
+    <a href="lessons.html" class="active">Lessons</a>
+    <a href="practice.html">Practice Month</a>
+    <a href="spending-test.html">Spending Test</a>
+    <a href="past-tests.html">Past Tests</a>
+  </nav>
+
+  <main class="page">
+
+    <!-- back to the Learn Mode page -->
+    <p><a href="lessons.html">&larr; Back to all lessons</a></p>
+
+    <!-- the lesson -->
+    <div class="card">
+      <p class="card-label" id="lesson-number"></p>
+      <p class="huge-text" id="lesson-title"></p>
+      <p class="lesson-description" id="lesson-description"></p>
+    </div>
+
+    <!-- the lesson itself goes here later -->
+    <div class="card">
+      <p class="card-label">Coming soon</p>
+      <p class="tip-text">The full lesson and a short quiz will go here.</p>
+    </div>
+
+    <!-- go to the lesson before or after this one -->
+    <div class="two-columns">
+      <button class="demo-button" id="previous-button" onclick="previousLesson()">&larr; Previous lesson</button>
+      <button id="next-button" onclick="nextLesson()">Next lesson &rarr;</button>
+    </div>
+
+  </main>
+
+  <script src="common.js"></script>
+  <script src="lessons-data.js"></script>
+  <script src="lesson.js"></script>
+</body>
+</html>

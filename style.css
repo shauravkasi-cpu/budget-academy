@@ -1,0 +1,383 @@
+/* ---------- Font ---------- */
+/* the font file is saved in our project, so it works without internet */
+@font-face {
+  font-family: "Nunito";
+  src: url("fonts/nunito.woff2");
+  font-weight: 400 800;
+}
+
+/* ---------- Colors ---------- */
+/* dark mode is our main theme */
+:root {
+  --background: #1E1E1E;
+  --card: #2A2A2A;
+  --text: #F2F2F2;
+  --text-grey: #A0A0A0;
+  --border: #3A3A3A;
+  --green: #22C55E;
+  --dark-green: #16A34A;
+  --yellow: #F59E0B;
+}
+
+/* ---------- Whole page ---------- */
+body {
+  margin: 0;
+  background-color: var(--background);
+  color: var(--text);
+  font-family: "Nunito", sans-serif;
+  /* every digit is the same width, so money lines up */
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Log In page ---------- */
+.login-page {
+  max-width: 360px;
+  margin: 80px auto;
+  padding: 0 16px;
+  text-align: center;
+}
+
+.logo {
+  width: 100px;
+}
+
+h1 {
+  margin: 8px 0 4px 0;
+  font-size: 32px;
+}
+
+.slogan {
+  margin: 0 0 32px 0;
+  color: var(--text-grey);
+  font-size: 18px;
+}
+
+/* the box around the form */
+.login-box {
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px;
+  text-align: left;
+}
+
+label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 700;
+}
+
+input {
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 16px;
+  padding: 12px;
+  background-color: var(--background);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 16px;
+}
+
+/* green outline when you click into a box */
+input:focus {
+  outline: none;
+  border-color: var(--green);
+}
+
+/* green button with a darker bottom edge so it looks pressable */
+button {
+  width: 100%;
+  padding: 12px;
+  background-color: var(--green);
+  color: var(--background);
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 0 var(--dark-green);
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+/* when you press the button it moves down a little */
+button:active {
+  box-shadow: none;
+  transform: translateY(4px);
+}
+
+/* the small "or" between the two buttons */
+.or-text {
+  margin: 16px 0;
+  color: var(--text-grey);
+  text-align: center;
+}
+
+.signup-text {
+  margin-top: 24px;
+  color: var(--text-grey);
+}
+
+a {
+  color: var(--green);
+  font-weight: 700;
+}
+
+
+/* ---------- Big top bar ---------- */
+/* everything in the top bar is centered */
+.top-bar {
+  position: relative;
+  padding: 28px 32px 0 32px;
+  text-align: center;
+  background-color: var(--card);
+  border-bottom: 1px solid var(--border);
+}
+
+/* logo and name */
+.brand {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  font-size: 26px;
+  font-weight: 800;
+}
+
+.brand img {
+  width: 48px;
+}
+
+/* the 2 main sections: My Money and Learn Mode */
+.main-links {
+  margin-top: 20px;
+}
+
+.main-links a {
+  display: inline-block;
+  margin: 0 40px;
+  padding-bottom: 16px;
+  color: var(--text-grey);
+  font-size: 40px;
+  font-weight: 800;
+  text-decoration: none;
+  border-bottom: 5px solid transparent;
+}
+
+/* the section you're in is green with a green line under it */
+.main-links a.active {
+  color: var(--green);
+  border-bottom: 5px solid var(--green);
+}
+
+/* name and log out, stuck to the top right corner */
+.profile {
+  position: absolute;
+  top: 28px;
+  right: 32px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 700;
+}
+
+
+/* ---------- Smaller bar under the top bar ---------- */
+.sub-bar {
+  padding: 20px 32px;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+}
+
+.sub-bar a {
+  margin: 0 20px;
+  padding-bottom: 6px;
+  color: var(--text-grey);
+  font-size: 20px;
+  text-decoration: none;
+}
+
+/* the page you're on is green and underlined */
+.sub-bar a.active {
+  color: var(--green);
+  border-bottom: 3px solid var(--green);
+}
+
+
+/* ---------- Main page area ---------- */
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 32px;
+}
+
+.page h1 {
+  font-size: 36px;
+}
+
+.demo-banner {
+  margin-bottom: 24px;
+  padding: 16px 20px;
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--green);
+  border-radius: 8px;
+  background-color: var(--card);
+  font-size: 18px;
+}
+
+/* 2 cards side by side */
+.two-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin-bottom: 32px;
+}
+
+/* the grid already adds space between cards, so cards inside it don't need their own */
+.two-columns .card {
+  margin-bottom: 0;
+}
+
+/* a box with a border (used everywhere) */
+.card {
+  margin-bottom: 32px;
+  padding: 36px;
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+}
+
+/* small grey title at the top of a card */
+.card-label {
+  margin: 0 0 8px 0;
+  color: var(--text-grey);
+  font-size: 18px;
+  font-weight: 700;
+}
+
+/* very big numbers (balance and bills due) */
+.huge-text {
+  margin: 0;
+  font-size: 64px;
+  font-weight: 800;
+}
+
+/* big text (skill level, next lesson) */
+.big-text {
+  margin: 0 0 16px 0;
+  font-size: 32px;
+  font-weight: 800;
+}
+
+.small-text {
+  margin: 12px 0 0 0;
+  color: var(--text-grey);
+  font-size: 18px;
+}
+
+/* the next lesson part, with a line above it */
+.next-lesson {
+  margin-top: 32px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
+}
+
+.tip-text {
+  margin: 0;
+  font-size: 22px;
+}
+
+
+/* ---------- Learn Mode page ---------- */
+.lesson-description {
+  margin: 16px 0 24px 0;
+  color: var(--text-grey);
+  font-size: 20px;
+}
+
+/* the big Resume button */
+.resume-button {
+  width: auto;
+  margin-top: 24px;
+  padding: 14px 48px;
+  font-size: 20px;
+}
+
+/* the lesson cards that show up under "See all courses" */
+.all-lessons {
+  margin-top: 32px;
+}
+
+/* the [hidden] part makes sure the cards really hide (the grid would show them otherwise) */
+.all-lessons[hidden] {
+  display: none;
+}
+
+/* you can click a lesson card, so the mouse turns into a hand */
+.lesson-card {
+  cursor: pointer;
+}
+
+/* green border when your mouse is over a card */
+.lesson-card:hover {
+  border-color: var(--green);
+}
+
+/* the "Completed" / "You're here" / "Not started" text */
+.lesson-status {
+  margin: 0;
+  color: var(--text-grey);
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.lesson-done .lesson-status {
+  color: var(--green);
+}
+
+/* the lesson you're on has a green border all the time */
+.lesson-current {
+  border: 2px solid var(--green);
+}
+
+.lesson-current .lesson-status {
+  color: var(--green);
+}
+
+
+/* ---------- Progress bars ---------- */
+/* the grey background of the bar */
+.bar {
+  height: 16px;
+  background-color: var(--background);
+  border-radius: 8px;
+}
+
+/* the green part (JavaScript sets how wide it is) */
+.bar-fill {
+  height: 16px;
+  background-color: var(--green);
+  border-radius: 8px;
+}
+
+
+/* ---------- Small buttons ---------- */
+/* same as the big button, just smaller and not full width */
+.small-button {
+  width: auto;
+  padding: 10px 20px;
+  font-size: 16px;
+  box-shadow: 0 3px 0 var(--dark-green);
+}
+
+
+/* ---------- Grey buttons ---------- */
+/* used for less important buttons (demo, log out) so green ones stand out */
+/* this is at the bottom so it wins over the green button styles above */
+.demo-button {
+  background-color: var(--card);
+  color: var(--text);
+  border: 2px solid var(--border);
+  box-shadow: 0 4px 0 var(--border);
+}

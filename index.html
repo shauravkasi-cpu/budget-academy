@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Budget Academy</title>
+  <link rel="icon" href="logo.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Log In page -->
+  <main class="login-page">
+
+    <!-- logo, name, and slogan -->
+    <img class="logo" src="logo.png" alt="Budget Academy logo">
+    <h1>Budget Academy</h1>
+    <p class="slogan">Budgeting is a skill.</p>
+
+    <!-- log in form -->
+    <form class="login-box" id="login-form">
+      <label for="username">Username</label>
+      <input type="text" id="username" required>
+
+      <label for="password">Password</label>
+      <input type="password" id="password" required>
+
+      <button type="submit">Log In</button>
+
+      <p class="or-text">or</p>
+
+      <!-- goes to the demo version -->
+      <button type="button" class="demo-button" onclick="window.location.href = 'demo.html'">Continue without account</button>
+    </form>
+
+    <p class="signup-text">Don't have an account? <a href="#">Sign up</a></p>
+
+  </main>
+
+  <script src="login.js"></script>
+</body>
+</html>

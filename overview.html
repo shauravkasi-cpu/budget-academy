@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Budget Academy - Overview</title>
+  <link rel="icon" href="logo.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- big top bar with the 2 main sections -->
+  <nav class="top-bar">
+
+    <!-- name and log out in the top right corner -->
+    <div class="profile">
+      <span id="profile-name"></span>
+      <button class="small-button demo-button" onclick="logOut()">Log out</button>
+    </div>
+
+    <div class="brand">
+      <img src="logo.png" alt="">
+      <span>Budget Academy</span>
+    </div>
+
+    <div class="main-links">
+      <a href="overview.html" class="active">My Money</a>
+      <a href="lessons.html">Learn Mode</a>
+    </div>
+  </nav>
+
+  <!-- smaller bar with the pages inside "My Money" -->
+  <nav class="sub-bar">
+    <a href="overview.html" class="active">Overview</a>
+    <a href="#">Cards</a>
+    <a href="#">Bills</a>
+    <a href="#">Goals</a>
+    <a href="#">Taxes &amp; Mortgage</a>
+  </nav>
+
+  <main class="page">
+
+    <!-- only shows in the demo -->
+    <div class="demo-banner" id="demo-banner" hidden>
+      You're trying the demo. <a href="index.html">Sign up</a> to save your progress.
+    </div>
+
+    <h1 id="welcome"></h1>
+
+    <!-- 1. balance and bills due, side by side -->
+    <div class="two-columns">
+
+      <div class="card">
+        <p class="card-label">Total balance</p>
+        <p class="huge-text" id="balance"></p>
+        <p class="small-text" id="balance-text"></p>
+      </div>
+
+      <div class="card">
+        <p class="card-label">Bills due in the next 7 days</p>
+        <p class="huge-text" id="bills-due"></p>
+        <p class="small-text" id="bills-due-text"></p>
+      </div>
+
+    </div>
+
+    <!-- 2. skill level, with the next lesson under it -->
+    <div class="card">
+      <p class="card-label">Skill level</p>
+      <p class="big-text" id="level-name"></p>
+      <div class="bar"><div class="bar-fill" id="xp-bar"></div></div>
+      <p class="small-text" id="xp-text"></p>
+
+      <div class="next-lesson">
+        <p class="card-label">Your next lesson</p>
+        <p class="big-text" id="next-lesson"></p>
+        <button class="small-button" onclick="openLesson(lessonsDone)">Resume</button>
+      </div>
+    </div>
+
+    <!-- 3. tip of the day -->
+    <div class="card">
+      <p class="card-label">Tip of the day</p>
+      <p class="tip-text" id="tip"></p>
+    </div>
+
+  </main>
+
+  <script src="common.js"></script>
+  <script src="money.js"></script>
+  <script src="demo-data.js"></script>
+  <script src="lessons-data.js"></script>
+  <script src="overview.js"></script>
+</body>
+</html>
