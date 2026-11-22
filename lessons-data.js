@@ -1277,11 +1277,673 @@ const lessons = [
 
   // ==================== UNIT 3: CREDIT AND DEBT ====================
 
-  { unit: 3, title: "Debit vs. Credit Cards", description: "How each card works and when to use which one.", badge: "Card Smart" },
-  { unit: 3, title: "Understanding Interest", description: "How interest makes debt grow, and why the minimum payment is a trap.", badge: "Interest Expert" },
-  { unit: 3, title: "Credit Scores", description: "What your credit score means, and what raises or hurts it.", badge: "Score Keeper" },
-  { unit: 3, title: "Paying Off Debt", description: "The snowball and avalanche methods for getting out of debt.", badge: "Debt Crusher" },
-  { unit: 3, title: "Loans: Student, Car, and Personal", description: "What you really pay over time when you borrow money.", badge: "Loan Wise" },
+  // ---------- Lesson 10 ----------
+  {
+    unit: 3,
+    title: "Debit vs. Credit Cards",
+    description: "How each card works and when to use which one.",
+    badge: "Card Smart",
+
+    steps: [
+      {
+        type: "story",
+        heading: "Jordan's mail",
+        text: "I got a letter that says \"You're pre-approved for a credit card!\" I already have a debit card. What's the difference? Should I sign up?"
+      },
+      {
+        type: "text",
+        heading: "A debit card spends YOUR money",
+        text: "A debit card is connected to your checking account. When you use it, the money comes out of your account right away. You can only spend what you have.",
+        points: [
+          "Money comes straight out of checking",
+          "No bill to pay later",
+          "No interest, because you aren't borrowing anything"
+        ]
+      },
+      {
+        type: "text",
+        heading: "A credit card spends BORROWED money",
+        text: "A credit card lets you borrow money from a bank, up to a limit. At the end of the month you get a bill. Pay the whole bill on time and you pay no interest. If you don't, the bank charges interest on whatever is left.",
+        points: [
+          "Credit limit: the most you can borrow, like $500",
+          "Statement: your monthly bill",
+          "APR: the interest rate on what you don't pay off, often 20% to 30% a year"
+        ]
+      },
+      {
+        type: "sort",
+        heading: "Debit or credit?",
+        text: "Which card does each one describe?",
+        buckets: ["Debit", "Credit"],
+        items: [
+          { name: "Money leaves your checking account right away", answer: 0 },
+          { name: "You get a bill at the end of the month", answer: 1 },
+          { name: "You can only spend what you have", answer: 0 },
+          { name: "It can help you build a credit score", answer: 1 },
+          { name: "You're borrowing money", answer: 1 },
+          { name: "You never pay interest", answer: 0 }
+        ]
+      },
+      {
+        type: "question",
+        question: "When does a credit card charge you interest?",
+        choices: [
+          "Every time you use it",
+          "When you don't pay the full bill by the due date",
+          "Only on weekends",
+          "Never"
+        ],
+        answer: 1,
+        explain: "Pay the whole statement by the due date and you pay $0 in interest."
+      },
+      {
+        type: "text",
+        heading: "The good side of credit cards",
+        text: "Used the right way, credit cards can help you:",
+        points: [
+          "Build a credit score, which matters later for renting an apartment and getting loans",
+          "Get stronger protection if someone steals your card number",
+          "Earn cash back or rewards on some cards"
+        ]
+      },
+      {
+        type: "text",
+        heading: "The danger",
+        text: "Credit cards make it easy to spend money you don't have. The bill comes later, and if you only pay part of it, interest piles up fast. The rule: only charge what you could pay for with cash today."
+      },
+      {
+        type: "question",
+        question: "What's the safest way to use a credit card?",
+        choices: [
+          "Spend up to the limit every month",
+          "Only buy what you can pay off in full when the bill comes",
+          "Pay the bill whenever you feel like it",
+          "Use it, but never look at the bill"
+        ],
+        answer: 1,
+        explain: "If you pay in full every month, a credit card never costs you interest."
+      },
+      {
+        type: "choice",
+        heading: "The pre-approved offer",
+        text: "Jordan has a steady job, a budget, and an emergency fund. Should Jordan get a credit card?",
+        choices: [
+          {
+            text: "Get it and use it for everything, then worry later",
+            result: "Without a plan, Jordan could end up with a bill they can't pay. Credit cards need rules.",
+            good: false
+          },
+          {
+            text: "Get one with no yearly fee, use it for one small bill, and pay it in full every month",
+            result: "Jordan builds credit safely and never pays interest. That's how to use a card like a pro.",
+            good: true
+          },
+          {
+            text: "Get five cards so there's more money to spend",
+            result: "A credit card isn't extra money, it's borrowed money. More cards means more chances to get into debt.",
+            good: false
+          }
+        ]
+      },
+      {
+        type: "question",
+        question: "Jordan has $40 in checking and wants a $60 jacket. What should Jordan do?",
+        choices: [
+          "Put it on a credit card, it's basically free",
+          "Wait until Jordan has the money",
+          "Use the debit card and hope it works",
+          "Borrow from the rent money"
+        ],
+        answer: 1,
+        explain: "A credit card isn't extra money. If you can't afford it with cash, wait."
+      },
+      {
+        type: "story",
+        heading: "Jordan's first credit card",
+        text: "I got a card with no yearly fee. I only use it for my $40 phone bill, and autopay pays it in full every month. I've never paid a cent of interest, and my credit score is growing."
+      }
+    ]
+  },
+
+  // ---------- Lesson 11 ----------
+  {
+    unit: 3,
+    title: "Understanding Interest",
+    description: "How interest makes debt grow, and why the minimum payment is a trap.",
+    badge: "Interest Expert",
+
+    steps: [
+      {
+        type: "story",
+        heading: "Just the minimum",
+        text: "My friend has a $1,000 credit card bill and only pays the minimum, about $30 a month. They said, \"It's fine, it's only $30.\" Is it really fine?"
+      },
+      {
+        type: "text",
+        heading: "What is interest?",
+        text: "Interest is the cost of borrowing money. When you borrow, you pay back what you borrowed plus extra. When you save, the bank pays YOU interest. Interest can work for you or against you.",
+        points: [
+          "Saving: interest makes your money grow",
+          "Borrowing: interest makes your debt grow"
+        ]
+      },
+      {
+        type: "text",
+        heading: "What does APR mean?",
+        text: "APR stands for Annual Percentage Rate. It's the yearly cost of borrowing. A 24% APR means about 2% of what you owe is added every month.",
+        points: [
+          "Savings accounts pay you about 0% to 5% a year",
+          "Car loans often cost about 5% to 10% a year",
+          "Credit cards often cost 20% to 30% a year"
+        ]
+      },
+      {
+        type: "question",
+        question: "A credit card has a 24% APR. About how much interest gets added each month?",
+        choices: [
+          "24%",
+          "12%",
+          "2%",
+          "0.24%"
+        ],
+        answer: 2,
+        explain: "24% a year divided by 12 months is about 2% a month."
+      },
+      {
+        type: "text",
+        heading: "The minimum payment trap",
+        text: "Credit cards let you pay a small minimum each month. It sounds easy, but a big part of that payment goes to interest instead of what you owe. That's why paying only the minimum can take years."
+      },
+      {
+        type: "calculator",
+        kind: "credit",
+        values: ["1000", "24", "30"],
+        heading: "The friend's credit card",
+        text: "A $1,000 balance at 24% APR, paying $30 a month. Press Calculate to see how long it takes. Then change the payment to $100 and compare."
+      },
+      {
+        type: "question",
+        question: "Paying $30 a month takes 56 months and costs $664.43 in interest. Paying $100 a month takes only 12 months. Why is paying more so much better?",
+        choices: [
+          "The bank gives a prize for big payments",
+          "More of each payment goes to the debt, so less interest builds up",
+          "Interest stops after one year",
+          "It isn't better"
+        ],
+        answer: 1,
+        explain: "Bigger payments shrink the balance faster, and interest is charged on a smaller amount each month."
+      },
+      {
+        type: "text",
+        heading: "Interest can work FOR you too",
+        text: "The same math helps you when you save or invest. You earn interest, and then you earn interest on that interest. This is called compound interest, and you'll see how powerful it is in Unit 5."
+      },
+      {
+        type: "sort",
+        heading: "For you or against you?",
+        text: "Is interest helping or hurting in each case?",
+        buckets: ["For you", "Against you"],
+        items: [
+          { name: "Interest from a savings account", answer: 0 },
+          { name: "A credit card balance you don't pay off", answer: 1 },
+          { name: "Investing for 30 years", answer: 0 },
+          { name: "A payday loan", answer: 1 },
+          { name: "A high-yield savings account", answer: 0 },
+          { name: "Paying only the minimum", answer: 1 }
+        ]
+      },
+      {
+        type: "choice",
+        heading: "An extra $100",
+        text: "Jordan's friend has $100 extra this month and still owes on the 24% credit card. What should they do with it?",
+        choices: [
+          {
+            text: "Spend it, the minimum is already paid",
+            result: "The debt keeps growing at 24%. That $100 could have saved a lot of interest.",
+            good: false
+          },
+          {
+            text: "Put all $100 extra toward the credit card",
+            result: "Every extra dollar shrinks the balance, so next month's interest is smaller. Great move!",
+            good: true
+          },
+          {
+            text: "Put it in a savings account that earns 4%",
+            result: "Earning 4% while paying 24% is a losing deal. Paying off a 24% debt is like earning 24%.",
+            good: false
+          }
+        ]
+      },
+      {
+        type: "question",
+        question: "On a $1,000 credit card balance, which costs MORE in interest over time?",
+        choices: [
+          "Paying $200 a month",
+          "Paying $30 a month"
+        ],
+        answer: 1,
+        explain: "Smaller payments make the debt last longer, so you pay interest for more months."
+      },
+      {
+        type: "story",
+        heading: "Jordan helps a friend",
+        text: "I showed my friend the calculator, and they were shocked! Now they pay $100 a month instead of $30. They'll be debt-free in about a year instead of almost five."
+      }
+    ]
+  },
+
+  // ---------- Lesson 12 ----------
+  {
+    unit: 3,
+    title: "Credit Scores",
+    description: "What your credit score means, and what raises or hurts it.",
+    badge: "Score Keeper",
+
+    steps: [
+      {
+        type: "story",
+        heading: "The apartment application",
+        text: "I want to rent my own apartment next year. The landlord said they'll check my credit score. I don't even know what that is! Is it like a grade?"
+      },
+      {
+        type: "text",
+        heading: "What is a credit score?",
+        text: "A credit score is a number, usually from 300 to 850, that shows how well you handle borrowed money. Lenders, landlords, and even some phone and insurance companies look at it.",
+        points: [
+          "670 or higher: good",
+          "740 or higher: very good",
+          "Below 580: it can be hard to get approved"
+        ]
+      },
+      {
+        type: "question",
+        question: "What range do most credit scores use?",
+        choices: [
+          "0 to 100",
+          "300 to 850",
+          "1 to 10",
+          "A to F"
+        ],
+        answer: 1,
+        explain: "Most credit scores go from 300 to 850."
+      },
+      {
+        type: "text",
+        heading: "What makes up your score",
+        text: "Your score is built from five things:",
+        points: [
+          "Paying on time (about 35%): the biggest part!",
+          "How much you owe (about 30%): use only a little of your credit limit",
+          "How long you've had credit (about 15%)",
+          "New credit (about 10%): opening lots of cards at once hurts",
+          "Types of credit (about 10%)"
+        ]
+      },
+      {
+        type: "question",
+        question: "What's the BIGGEST part of your credit score?",
+        choices: [
+          "How much money you make",
+          "Paying your bills on time",
+          "How many cards you have",
+          "Where you live"
+        ],
+        answer: 1,
+        explain: "Paying on time is about 35% of your score. How much you earn isn't part of it at all."
+      },
+      {
+        type: "text",
+        heading: "Use less of your limit",
+        text: "Credit utilization means how much of your credit limit you're using. Try to keep it under 30%, and lower is even better. If your limit is $1,000, try to owe less than $300 when the bill comes."
+      },
+      {
+        type: "question",
+        question: "Jordan has a $500 credit limit. To stay under 30%, Jordan should owe less than...",
+        choices: [
+          "$50",
+          "$150",
+          "$300",
+          "$500"
+        ],
+        answer: 1,
+        explain: "30% of $500 is $150."
+      },
+      {
+        type: "sort",
+        heading: "Helps or hurts?",
+        text: "What does each one do to your credit score?",
+        buckets: ["Helps", "Hurts"],
+        items: [
+          { name: "Paying every bill on time", answer: 0 },
+          { name: "Missing a payment", answer: 1 },
+          { name: "Keeping your balance low", answer: 0 },
+          { name: "Maxing out your card", answer: 1 },
+          { name: "Keeping your oldest card open", answer: 0 },
+          { name: "Opening 5 new cards in one month", answer: 1 }
+        ]
+      },
+      {
+        type: "text",
+        heading: "Check your credit for free",
+        text: "You can see your credit reports for free at AnnualCreditReport.com, the official site. Look for mistakes or accounts you don't recognize. If something is wrong, you can ask to have it fixed."
+      },
+      {
+        type: "choice",
+        heading: "Almost late",
+        text: "Jordan forgot about the credit card bill, and it's due tomorrow. Jordan has the money. What should Jordan do?",
+        choices: [
+          {
+            text: "Pay it now, then set up autopay so it never happens again",
+            result: "Paid on time, and autopay keeps it that way. Jordan's score stays healthy.",
+            good: true
+          },
+          {
+            text: "Pay it next month, it's no big deal",
+            result: "Late payments can mean fees, and they can stay on your credit report for years.",
+            good: false
+          },
+          {
+            text: "Close the card so there's no bill",
+            result: "The bill still has to be paid, and closing a card can lower your score.",
+            good: false
+          }
+        ]
+      },
+      {
+        type: "question",
+        question: "Who might look at your credit score?",
+        choices: [
+          "Only banks",
+          "Landlords, lenders, and some phone and insurance companies",
+          "Nobody ever looks at it",
+          "Only your friends"
+        ],
+        answer: 1,
+        explain: "Lots of companies check your credit before they agree to work with you."
+      },
+      {
+        type: "story",
+        heading: "Jordan's score",
+        text: "After a year of paying on time and keeping my balance low, my score is over 700! The landlord approved my apartment application."
+      }
+    ]
+  },
+
+  // ---------- Lesson 13 ----------
+  {
+    unit: 3,
+    title: "Paying Off Debt",
+    description: "The snowball and avalanche methods for getting out of debt.",
+    badge: "Debt Crusher",
+
+    steps: [
+      {
+        type: "story",
+        heading: "Too many debts",
+        text: "My cousin has three debts: a $300 store card, a $2,000 credit card, and a $1,200 personal loan. They don't know where to start. Which one should they pay first?"
+      },
+      {
+        type: "text",
+        heading: "Step 1: Stop adding new debt",
+        text: "You can't climb out of a hole while you're still digging. Before anything else, stop using credit cards for things you can't pay off. Stick to your budget and pay with cash or debit."
+      },
+      {
+        type: "text",
+        heading: "Step 2: List every debt",
+        text: "Write down what you owe, the interest rate, and the minimum payment for each one. Here's the cousin's list:",
+        points: [
+          "Store card: $300 at 25% APR, minimum $25",
+          "Credit card: $2,000 at 22% APR, minimum $60",
+          "Personal loan: $1,200 at 10% APR, minimum $50"
+        ]
+      },
+      {
+        type: "text",
+        heading: "The snowball method",
+        text: "Pay the minimum on everything, then put every extra dollar toward the SMALLEST debt. When it's paid off, add its payment to the next smallest. Quick wins keep you motivated.",
+        points: [
+          "Order: $300 store card, then the $1,200 loan, then the $2,000 credit card"
+        ]
+      },
+      {
+        type: "text",
+        heading: "The avalanche method",
+        text: "Pay the minimum on everything, then put every extra dollar toward the debt with the HIGHEST interest rate. This saves the most money.",
+        points: [
+          "Order: the 25% store card, then the 22% credit card, then the 10% loan"
+        ]
+      },
+      {
+        type: "question",
+        question: "Which method pays off the smallest debt first?",
+        choices: [
+          "Avalanche",
+          "Snowball",
+          "Both of them",
+          "Neither of them"
+        ],
+        answer: 1,
+        explain: "The snowball starts small, like a snowball rolling downhill and getting bigger."
+      },
+      {
+        type: "question",
+        question: "Which method usually saves the MOST money on interest?",
+        choices: [
+          "Snowball",
+          "Avalanche",
+          "They always save the same",
+          "Paying only the minimums"
+        ],
+        answer: 1,
+        explain: "The avalanche goes after the highest interest rate first, so less interest builds up."
+      },
+      {
+        type: "sort",
+        heading: "Snowball or avalanche?",
+        text: "Which method does each one describe?",
+        buckets: ["Snowball", "Avalanche"],
+        items: [
+          { name: "Pay the smallest balance first", answer: 0 },
+          { name: "Pay the highest interest rate first", answer: 1 },
+          { name: "Gives you quick wins", answer: 0 },
+          { name: "Saves the most money", answer: 1 },
+          { name: "Great if you need motivation", answer: 0 },
+          { name: "Great if you want the cheapest plan", answer: 1 }
+        ]
+      },
+      {
+        type: "calculator",
+        kind: "credit",
+        values: ["2000", "22", "60"],
+        heading: "Paying more makes a big difference",
+        text: "Here's the cousin's $2,000 credit card at 22% APR, paying the $60 minimum. Press Calculate, then try $120 a month and see how much interest you save."
+      },
+      {
+        type: "choice",
+        heading: "A surprise bonus",
+        text: "Jordan's cousin gets a $300 bonus at work. What's the best thing to do with it?",
+        choices: [
+          {
+            text: "Pay off the $300 store card completely",
+            result: "One debt is gone! Now that $25 minimum can go toward the next debt. That's the snowball in action.",
+            good: true
+          },
+          {
+            text: "Buy a new TV to celebrate",
+            result: "The debts keep growing while the TV gets old. Celebrate after the debt is gone!",
+            good: false
+          },
+          {
+            text: "Open a new credit card for more room",
+            result: "More credit means more chances for debt. The goal is to owe less, not borrow more.",
+            good: false
+          }
+        ]
+      },
+      {
+        type: "text",
+        heading: "Watch out for \"easy fixes\"",
+        text: "Be careful of companies that promise to make your debt disappear fast. Many of them charge big fees. Free or low-cost help is available from nonprofit credit counselors, like the ones that belong to the NFCC."
+      },
+      {
+        type: "question",
+        question: "What should you do FIRST when you want to get out of debt?",
+        choices: [
+          "Open a new credit card",
+          "Stop adding new debt",
+          "Pay only the minimums forever",
+          "Ignore the bills"
+        ],
+        answer: 1,
+        explain: "Stopping new debt keeps the hole from getting deeper while you climb out."
+      },
+      {
+        type: "story",
+        heading: "The debt-free plan",
+        text: "My cousin used the snowball method. The store card was gone in a month, the loan in a year, and now they're crushing the credit card. Watching the debts disappear one by one kept them going!"
+      }
+    ]
+  },
+
+  // ---------- Lesson 14 ----------
+  {
+    unit: 3,
+    title: "Loans: Student, Car, and Personal",
+    description: "What you really pay over time when you borrow money.",
+    badge: "Loan Wise",
+
+    steps: [
+      {
+        type: "story",
+        heading: "Jordan needs a car",
+        text: "I got a better job across town, and I need a car. The dealer says I can get a $15,000 car for \"only $256 a month!\" That sounds cheap. Is it?"
+      },
+      {
+        type: "text",
+        heading: "How a loan works",
+        text: "Every loan has the same parts:",
+        points: [
+          "Principal: the amount you borrow",
+          "Interest rate (APR): the yearly cost of borrowing",
+          "Term: how long you have to pay it back",
+          "Monthly payment: what you pay every month until it's paid off"
+        ]
+      },
+      {
+        type: "text",
+        heading: "Longer loans cost more",
+        text: "A longer loan has a smaller monthly payment, but you pay interest for more months. Here's a $15,000 car loan at 7% APR:",
+        points: [
+          "4 years: about $360 a month, about $2,236 in interest",
+          "6 years: about $256 a month, about $3,408 in interest",
+          "The smaller monthly payment costs over $1,100 more in the end!"
+        ]
+      },
+      {
+        type: "calculator",
+        kind: "credit",
+        values: ["15000", "7", "256"],
+        heading: "Try the car loan",
+        text: "This calculator works for any loan, not just credit cards. Here's the 6-year car loan: $15,000 at 7%, paying $256 a month. Press Calculate, then try $360 a month."
+      },
+      {
+        type: "question",
+        question: "Which car loan costs LESS in total?",
+        choices: [
+          "A 4-year loan with a higher monthly payment",
+          "A 6-year loan with a lower monthly payment"
+        ],
+        answer: 0,
+        explain: "Paying it off faster means fewer months of interest."
+      },
+      {
+        type: "text",
+        heading: "Student loans",
+        text: "Student loans help pay for college. Federal student loans from the government usually have lower, fixed rates and more ways to get help if paying gets hard. Private loans from banks can cost more. Always fill out the FAFSA first, and use free money like grants and scholarships before you borrow."
+      },
+      {
+        type: "sort",
+        heading: "Free money or must pay back?",
+        text: "Sort each way to pay for college or a car.",
+        buckets: ["Free money", "Pay it back"],
+        items: [
+          { name: "Scholarship", answer: 0 },
+          { name: "Federal student loan", answer: 1 },
+          { name: "Pell Grant", answer: 0 },
+          { name: "Private student loan", answer: 1 },
+          { name: "Pay from a work-study job", answer: 0 },
+          { name: "Car loan", answer: 1 }
+        ]
+      },
+      {
+        type: "text",
+        heading: "Personal loans and payday loans",
+        text: "A personal loan is borrowed money you can use for almost anything, and the rate depends on your credit score. Payday loans are small, short loans that can cost over 300% APR. They trap a lot of people in debt, so stay away from them."
+      },
+      {
+        type: "question",
+        question: "Why are payday loans so dangerous?",
+        choices: [
+          "Their interest is very high, often over 300% APR",
+          "They are free",
+          "They raise your credit score a lot",
+          "They take a long time to get"
+        ],
+        answer: 0,
+        explain: "With rates that high, a small loan can quickly turn into a big debt."
+      },
+      {
+        type: "choice",
+        heading: "At the car dealer",
+        text: "The dealer shows Jordan a $25,000 car for $350 a month over 7 years. Jordan's budget can handle a $15,000 car. What should Jordan do?",
+        choices: [
+          {
+            text: "Get the $25,000 car, the monthly payment seems fine",
+            result: "Over 7 years, Jordan pays thousands in interest for a car that loses value every year. A small monthly payment can hide the real cost.",
+            good: false
+          },
+          {
+            text: "Stick to a $15,000 car and the shortest loan Jordan can afford",
+            result: "Jordan pays less interest, owns the car sooner, and keeps the budget safe. Smart!",
+            good: true
+          },
+          {
+            text: "Skip the loan and use the whole emergency fund",
+            result: "The emergency fund is for surprises. Using all of it leaves Jordan with no safety net.",
+            good: false
+          }
+        ]
+      },
+      {
+        type: "text",
+        heading: "Before you sign anything",
+        text: "Follow these rules before you take any loan:",
+        points: [
+          "Compare rates from a few places, like your bank or credit union",
+          "Look at the TOTAL cost, not just the monthly payment",
+          "A bigger down payment means you borrow less",
+          "Never sign something you don't understand"
+        ]
+      },
+      {
+        type: "question",
+        question: "When you compare loans, what's the most important thing to look at?",
+        choices: [
+          "Only the monthly payment",
+          "The total cost, including interest",
+          "The color of the car",
+          "How friendly the salesperson is"
+        ],
+        answer: 1,
+        explain: "The total cost shows what you really pay, and a low monthly payment can hide a lot of interest."
+      },
+      {
+        type: "story",
+        heading: "Jordan's car",
+        text: "I bought a $14,000 used car with a 4-year loan from my credit union, at a lower rate than the dealer offered. My payment is a little higher, but I'll save over $1,000 and own the car two years sooner."
+      }
+    ]
+  },
 
 
   // ==================== UNIT 4: BILLS, TAXES, AND GROWING UP ====================

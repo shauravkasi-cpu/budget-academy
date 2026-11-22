@@ -1,7 +1,6 @@
 // overview.js
 // Runs on the home page (overview.html).
-// The demo and a real account use the SAME code.
-// The only difference: the demo starts with sample data, a new account starts empty.
+// The demo and a real account use the SAME code, and both start empty.
 
 
 // userName, mode, lessonsDone, and xp come from common.js
@@ -9,15 +8,10 @@
 
 // ---------- 1. Pick the data ----------
 
-// a new account starts with nothing
+// everyone starts with no cards and no bills
+// (these lists will fill up once the Cards and Bills pages are built)
 let cards = [];
 let bills = [];
-
-// the demo uses the sample data from demo-data.js
-if (mode === "demo") {
-  cards = demoCards;
-  bills = demoBills;
-}
 
 // tips for "Tip of the day"
 let tips = [

@@ -10,11 +10,10 @@ function logIn(event) {
   // get the username they typed
   let username = document.getElementById("username").value;
 
-  // if the demo was used before, clear the demo's lesson progress and XP
-  if (localStorage.getItem("mode") === "demo") {
-    localStorage.removeItem("lessonsDone");
-    localStorage.removeItem("xp");
-  }
+  // start fresh: Lesson 1 and 0 XP
+  // (once real accounts are built, each account will keep its own progress)
+  localStorage.setItem("lessonsDone", 0);
+  localStorage.setItem("xp", 0);
 
   // remember who is using the app
   // (for now any username works, real accounts come later with Sign up)
