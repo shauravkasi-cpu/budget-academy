@@ -76,18 +76,15 @@ function pickRandom(pool, howMany) {
 }
 
 
-// can you take this exam yet?
+// can you take this exam yet? (the rules are in common.js)
 function isUnlocked() {
-  // unit exam: finish all the unit's lessons, and pass the unit before it
+  if (examType === "lesson") {
+    return isQuizUnlocked(examNumber);
+  }
   if (examType === "unit") {
-    return lessonsDone >= lessonsThroughUnit(examNumber) && unitsPassed >= examNumber - 1;
+    return isUnitExamUnlocked(examNumber);
   }
-  // final exam: pass every unit exam
-  if (examType === "final") {
-    return unitsPassed === units.length;
-  }
-  // lesson quizzes are always open
-  return true;
+  return isFinalUnlocked();
 }
 
 
@@ -126,6 +123,9 @@ function showIntro() {
 
   if (isUnlocked()) {
     html = html + '<button class="resume-button" onclick="startExam()">Start</button>';
+  } else if (examType === "lesson") {
+    html = html + '<p class="feedback feedback-wrong">Please complete Lesson ' + examNumber +
+      ' first. Go through all of its steps, then come back for the quiz.</p>';
   } else if (examType === "unit") {
     html = html + '<p class="feedback feedback-wrong">Finish all the lessons in Unit ' + examNumber +
       ' (and pass the exams before it) to unlock this exam.</p>';

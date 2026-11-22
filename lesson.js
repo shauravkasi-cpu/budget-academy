@@ -423,7 +423,10 @@ function showFinish() {
   document.getElementById("step-count").textContent = "Done!";
   document.getElementById("step-nav").hidden = true;
 
-  // if you already passed this lesson's quiz, say so
+  // remember that you went through the whole lesson, so its quiz unlocks
+  localStorage.setItem("read-lesson-" + (lessonNumber + 1), "yes");
+
+  // if you already took this lesson's quiz, show your best score
   let quizText = "Pass the 5-question quiz (4 right) to complete the lesson and earn the \"" + lesson.badge + "\" badge.";
   let best = bestScore("lesson", lessonNumber + 1);
   if (best >= 0) {

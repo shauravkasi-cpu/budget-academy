@@ -63,6 +63,31 @@ function bestScore(examType, number) {
 }
 
 
+// ---------- Which exams are unlocked ----------
+// (these also use "lessons" and "units" from lessons-data.js)
+
+// a lesson quiz unlocks after you go through all of that lesson's steps
+// (lesson.js saves "read-lesson-3" = "yes" when you reach the end of Lesson 3)
+// lessonNumber starts at 1 here (1 = Lesson 1)
+function isQuizUnlocked(lessonNumber) {
+  if (lessonNumber <= lessonsDone) {
+    return true;   // you already passed this quiz
+  }
+  return localStorage.getItem("read-lesson-" + lessonNumber) === "yes";
+}
+
+// a unit exam unlocks when you've finished all the unit's lessons
+// AND passed the unit exam before it
+function isUnitExamUnlocked(unitNumber) {
+  return lessonsDone >= lessonsThroughUnit(unitNumber) && unitsPassed >= unitNumber - 1;
+}
+
+// the final exam unlocks when you've passed every unit exam
+function isFinalUnlocked() {
+  return unitsPassed === units.length;
+}
+
+
 // ---------- Units and skill levels ----------
 // (these use "lessons" and "units" from lessons-data.js,
 //  so only call them on pages that load lessons-data.js)

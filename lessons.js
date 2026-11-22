@@ -93,36 +93,24 @@ function showExams() {
 }
 
 
-// the exam buttons call these (openExam is in common.js)
-function openUnitExam(unitNumber) {
-  openExam("unit", unitNumber);
-}
-
-function openFinalExam() {
-  openExam("final", 0);
-}
-
-
-// one exam row: the name, if it's passed / ready / locked, and a button
+// one exam row in the Exams card: the name, if it's passed / ready / locked, and a button
+// (isUnitExamUnlocked and isFinalUnlocked are in common.js)
 function examRowHTML(examType, number, title, about) {
   let passed = false;
   let ready = false;
   let lockedText = "";
+  let onclick = "";
 
   if (examType === "unit") {
     passed = unitsPassed >= number;
-    ready = lessonsDone >= lessonsThroughUnit(number) && unitsPassed >= number - 1;
+    ready = isUnitExamUnlocked(number);
     lockedText = "Locked: finish the Unit " + number + " lessons first";
+    onclick = "clickUnitExam(" + number + ")";
   } else {
     passed = finalPassed;
-    ready = unitsPassed === units.length;
+    ready = isFinalUnlocked();
     lockedText = "Locked: pass all 5 unit exams first";
-  }
-
-  // what the button does: openUnitExam(3) or openFinalExam()
-  let onclick = "openUnitExam(" + number + ")";
-  if (examType === "final") {
-    onclick = "openFinalExam()";
+    onclick = "clickFinalExam()";
   }
 
   let status = lockedText;
@@ -147,6 +135,8 @@ function examRowHTML(examType, number, title, about) {
 
 
 // ---------- 4. All the lessons, grouped by unit ----------
+// Under each lesson there's a quiz bar, after each unit there's a unit exam bar,
+// and after the last unit there's the final exam bar.
 
 // makes a heading for each unit, then a card for each lesson in it
 function showAllLessons() {
@@ -170,43 +160,134 @@ function showAllLessons() {
       }
     }
 
+    // the bar for this unit's exam, right after its lessons
+    let unitExamBar = examBarHTML(
+      "Unit " + unitNumber + " Exam", "15 questions",
+      unitsPassed >= unitNumber, isUnitExamUnlocked(unitNumber),
+      "clickUnitExam(" + unitNumber + ")", "unit", unitNumber, true);
+
     list.innerHTML = list.innerHTML +
       '<div class="unit-header">' +
         '<p class="unit-title">Unit ' + unitNumber + ': ' + units[u].title + '</p>' +
         '<p class="unit-progress">' + doneInUnit + ' of ' + lessonsInUnit + ' done</p>' +
       '</div>' +
-      '<div class="two-columns">' + cards + '</div>';
+      '<div class="two-columns">' + cards + '</div>' +
+      unitExamBar;
   }
+
+  // the final exam bar, after the last unit
+  list.innerHTML = list.innerHTML +
+    '<div class="unit-header"><p class="unit-title">Final Exam</p></div>' +
+    examBarHTML("Final Exam", "40 questions from all 5 units",
+      finalPassed, isFinalUnlocked(), "clickFinalExam()", "final", 0, true);
 }
 
 
-// one lesson card. Click it to open the lesson.
+// one lesson card (click it to open the lesson), with its quiz bar under it
 function lessonCardHTML(i) {
   let lesson = lessons[i];
+  let lessonNumber = i + 1;   // lessons[0] is Lesson 1
 
   // each lesson is either finished, the one you're on, or not started
   let status = "Not started";
   let cardClass = "card lesson-card";
 
   if (i < lessonsDone) {
-    status = "Completed  ·  Quiz best: " + bestScore("lesson", i + 1) + "%";
+    status = "Completed";
     cardClass = "card lesson-card lesson-done";
   } else if (i === lessonsDone) {
     status = "You're here";
     cardClass = "card lesson-card lesson-current";
   }
 
-  // lessons that aren't written yet
-  if (lesson.steps === undefined) {
-    status = "Coming soon";
-  }
-
-  return '<div class="' + cardClass + '" onclick="openLesson(' + i + ')">' +
-      '<p class="card-label">Lesson ' + (i + 1) + '</p>' +
+  let card = '<div class="' + cardClass + '" onclick="openLesson(' + i + ')">' +
+      '<p class="card-label">Lesson ' + lessonNumber + '</p>' +
       '<p class="big-text">' + lesson.title + '</p>' +
       '<p class="lesson-description">' + lesson.description + '</p>' +
       '<p class="lesson-status">' + status + '</p>' +
     '</div>';
+
+  let quizBar = examBarHTML(
+    "Lesson " + lessonNumber + " Quiz", "5 questions",
+    i < lessonsDone, isQuizUnlocked(lessonNumber),
+    "clickQuiz(" + lessonNumber + ")", "lesson", lessonNumber, false);
+
+  // the card and its quiz bar stay together in one box of the grid
+  return '<div>' + card + quizBar + '</div>';
+}
+
+
+// a bar you can click to take an exam
+//   passed / unlocked: true or false
+//   onclick: what happens when you click it, like "clickQuiz(3)"
+//   big: true for unit exams and the final exam (they're bigger bars)
+function examBarHTML(title, about, passed, unlocked, onclick, examType, number, big) {
+  let status = "Locked";
+  let barClass = "exam-bar exam-bar-locked";
+
+  if (passed) {
+    status = "Passed · Best: " + bestScore(examType, number) + "%";
+    barClass = "exam-bar exam-bar-passed";
+  } else if (unlocked) {
+    status = "Ready to take";
+    barClass = "exam-bar";
+  }
+
+  if (big) {
+    barClass = barClass + " exam-bar-big";
+  }
+
+  return '<div class="' + barClass + '" onclick="' + onclick + '">' +
+      '<span class="exam-bar-name">' + title + '</span>' +
+      '<span class="exam-bar-status">' + about + '  ·  ' + status + '</span>' +
+    '</div>';
+}
+
+
+// ---------- 5. Clicking an exam ----------
+// If the exam is unlocked, open it. If it's locked, show a popup that says why.
+
+function clickQuiz(lessonNumber) {
+  if (isQuizUnlocked(lessonNumber)) {
+    openExam("lesson", lessonNumber);
+  } else {
+    showPopup("Lesson " + lessonNumber + " Quiz is locked",
+      "Please complete Lesson " + lessonNumber + " first. Go through all of its steps, then you can take the quiz.");
+  }
+}
+
+function clickUnitExam(unitNumber) {
+  if (isUnitExamUnlocked(unitNumber)) {
+    openExam("unit", unitNumber);
+  } else if (lessonsDone < lessonsThroughUnit(unitNumber)) {
+    showPopup("Unit " + unitNumber + " Exam is locked",
+      "Please complete all the lessons in Unit " + unitNumber + " first. (A lesson is complete when you pass its quiz.)");
+  } else {
+    showPopup("Unit " + unitNumber + " Exam is locked",
+      "Please pass the Unit " + (unitNumber - 1) + " exam first.");
+  }
+}
+
+function clickFinalExam() {
+  if (isFinalUnlocked()) {
+    openExam("final", 0);
+  } else {
+    showPopup("The Final Exam is locked",
+      "Please pass all 5 unit exams first. Then you can take the final exam and become a Money Master!");
+  }
+}
+
+
+// ---------- 6. The popup ----------
+
+function showPopup(title, text) {
+  document.getElementById("popup-title").textContent = title;
+  document.getElementById("popup-text").textContent = text;
+  document.getElementById("popup").hidden = false;
+}
+
+function closePopup() {
+  document.getElementById("popup").hidden = true;
 }
 
 
@@ -225,7 +306,7 @@ function toggleAllLessons() {
 }
 
 
-// ---------- 5. Fill in the page ----------
+// ---------- 7. Fill in the page ----------
 
 showCurrentLesson();
 showBadges();

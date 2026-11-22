@@ -80,6 +80,16 @@
     </div>
   </main>
 
+  <!-- the popup that shows when you click a locked exam (hidden until then) -->
+  <div class="popup-backdrop" id="popup" hidden>
+    <div class="popup">
+      <button class="popup-close" onclick="closePopup()">&times;</button>
+      <p class="popup-title" id="popup-title"></p>
+      <p class="card-text" id="popup-text"></p>
+      <button class="pill-button green-pill" onclick="closePopup()">Got it</button>
+    </div>
+  </div>
+
   <script src="common.js"></script>
   <script src="lessons-data.js"></script>
   <script src="lessons.js"></script>
