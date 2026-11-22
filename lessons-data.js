@@ -1948,11 +1948,732 @@ const lessons = [
 
   // ==================== UNIT 4: BILLS, TAXES, AND GROWING UP ====================
 
-  { unit: 4, title: "Bills and Due Dates", description: "Stay organized, use autopay, and never pay a late fee.", badge: "On Time" },
-  { unit: 4, title: "Your Paycheck and Taxes", description: "Why your paycheck is smaller than you expected.", badge: "Tax Aware" },
-  { unit: 4, title: "Renting Your First Place", description: "Rent rules of thumb, deposits, and roommates.", badge: "Home Ready" },
-  { unit: 4, title: "Insurance Basics", description: "Health, car, and renters insurance in plain words.", badge: "Covered" },
-  { unit: 4, title: "Avoiding Scams", description: "Spot fake texts and get-rich-quick tricks, and protect your info.", badge: "Scam Spotter" },
+  // ---------- Lesson 15 ----------
+  {
+    unit: 4,
+    title: "Bills and Due Dates",
+    description: "Stay organized, use autopay, and never pay a late fee.",
+    badge: "On Time",
+
+    steps: [
+      {
+        type: "story",
+        heading: "Bills everywhere",
+        text: "With my new apartment and car, I have bills everywhere! Rent, electric, internet, phone, a car payment, car insurance. Last month I forgot the internet bill and got a $15 late fee. How do people keep track of all this?"
+      },
+      {
+        type: "text",
+        heading: "What is a bill?",
+        text: "A bill is money you owe for something you already used or agreed to pay for. Every bill has a due date, which is the last day you can pay without a penalty.",
+        points: [
+          "Due date: the last day to pay on time",
+          "Late fee: extra money you have to pay for being late",
+          "Very late bills can also hurt your credit score"
+        ]
+      },
+      {
+        type: "text",
+        heading: "Fixed bills and variable bills",
+        text: "Some bills are easy to plan for, and some change every month:",
+        points: [
+          "Fixed bills cost the same every month, like rent and a car payment",
+          "Variable bills change, like electric and water",
+          "For variable bills, budget a little extra so you're never surprised"
+        ]
+      },
+      {
+        type: "text",
+        heading: "Make a bill calendar",
+        text: "Write down every bill, how much it costs, and when it's due. Here's Jordan's:",
+        points: [
+          "1st: Rent, $600",
+          "5th: Car payment, $340",
+          "10th: Internet, $50",
+          "15th: Electric, about $60",
+          "20th: Phone, $40",
+          "25th: Car insurance, $120"
+        ]
+      },
+      {
+        type: "question",
+        question: "What is a due date?",
+        choices: [
+          "The day the bill is sent to you",
+          "The last day to pay without a penalty",
+          "The day you get paid",
+          "Any day you feel like paying"
+        ],
+        answer: 1,
+        explain: "Pay on or before the due date to avoid late fees."
+      },
+      {
+        type: "sort",
+        heading: "Fixed or variable bill?",
+        text: "Does each bill stay the same, or change every month?",
+        buckets: ["Fixed", "Variable"],
+        items: [
+          { name: "Rent", answer: 0 },
+          { name: "Electric bill", answer: 1 },
+          { name: "Car payment", answer: 0 },
+          { name: "Water bill", answer: 1 },
+          { name: "Streaming subscription", answer: 0 },
+          { name: "Heating in the winter", answer: 1 }
+        ]
+      },
+      {
+        type: "text",
+        heading: "Use autopay",
+        text: "Autopay pays a bill for you on the due date, all by itself. It's one of the easiest ways to never be late again. Just make sure the money is in your account first, or you could get an overdraft fee."
+      },
+      {
+        type: "choice",
+        heading: "Payday timing",
+        text: "Jordan gets paid on the 15th and the 30th. Rent is $600 and due on the 1st. What's the best plan?",
+        choices: [
+          {
+            text: "Spend the paycheck on the 15th and hope rent works out",
+            result: "When the 1st comes, the money is gone. Bills need a plan, not hope.",
+            good: false
+          },
+          {
+            text: "Set aside $300 from each paycheck for rent",
+            result: "When the 1st comes, the $600 is ready. Splitting big bills across paychecks makes them easy.",
+            good: true
+          },
+          {
+            text: "Pay rent whenever there's money left over",
+            result: "Rent is due on the 1st, no matter what. Paying late means late fees and an angry landlord.",
+            good: false
+          }
+        ]
+      },
+      {
+        type: "question",
+        question: "What can happen if you pay a bill late?",
+        choices: [
+          "Nothing ever happens",
+          "You might pay a late fee, and your credit score could drop",
+          "The bill gets cheaper",
+          "You get a reward"
+        ],
+        answer: 1,
+        explain: "Late payments cost money, and very late ones can hurt your credit."
+      },
+      {
+        type: "text",
+        heading: "Check your subscriptions",
+        text: "Subscriptions are sneaky bills: streaming, music, apps, and gyms. Each one is small, but they add up. Every few months, look at your bank statement and cancel anything you don't really use."
+      },
+      {
+        type: "question",
+        question: "Jordan pays for 3 streaming services at $15 each but only watches one. How much could Jordan save each month by canceling the other two?",
+        choices: [
+          "$15",
+          "$30",
+          "$45",
+          "$60"
+        ],
+        answer: 1,
+        explain: "2 services x $15 = $30 a month, or $360 a year!"
+      },
+      {
+        type: "story",
+        heading: "Jordan's bill system",
+        text: "I made a bill calendar and set up autopay for every bill that's the same each month. I haven't paid a late fee since, and I canceled two subscriptions I forgot I even had!"
+      }
+    ]
+  },
+
+  // ---------- Lesson 16 ----------
+  {
+    unit: 4,
+    title: "Your Paycheck and Taxes",
+    description: "Why your paycheck is smaller than you expected.",
+    badge: "Tax Aware",
+
+    steps: [
+      {
+        type: "story",
+        heading: "Where did my money go?",
+        text: "My new job pays $2,000 a month. But my first paycheck was way less than I expected! Did my boss make a mistake?"
+      },
+      {
+        type: "text",
+        heading: "Gross pay and net pay",
+        text: "Gross pay is what you earn before anything is taken out. Net pay, also called take-home pay, is what actually lands in your bank account. The difference is mostly taxes.",
+        points: [
+          "Gross pay: $2,000 (what Jordan earns)",
+          "Net pay: what Jordan actually gets after taxes"
+        ]
+      },
+      {
+        type: "question",
+        question: "What is net pay?",
+        choices: [
+          "Your pay before taxes",
+          "The money you actually take home after taxes",
+          "A yearly bonus",
+          "Money you pay your boss"
+        ],
+        answer: 1,
+        explain: "Net pay, or take-home pay, is what's left after taxes and other deductions."
+      },
+      {
+        type: "text",
+        heading: "What gets taken out",
+        text: "These are the most common taxes on a paycheck:",
+        points: [
+          "Federal income tax: goes to the U.S. government",
+          "Social Security (6.2%): pays for retirement and disability benefits",
+          "Medicare (1.45%): health insurance for people 65 and older",
+          "State income tax: depends on your state, and some states don't have one"
+        ]
+      },
+      {
+        type: "calculator",
+        kind: "paycheck",
+        values: ["2000"],
+        heading: "Jordan's paycheck",
+        text: "Press Calculate to see a rough guess of Jordan's take-home pay from $2,000. Real taxes depend on where you live and how much you earn, so this is only an estimate."
+      },
+      {
+        type: "question",
+        question: "In the calculator, about how much of Jordan's $2,000 goes to taxes?",
+        choices: [
+          "$0",
+          "About $433",
+          "About $1,000",
+          "All of it"
+        ],
+        answer: 1,
+        explain: "About $433 goes to taxes, so Jordan takes home about $1,567."
+      },
+      {
+        type: "text",
+        heading: "Reading your pay stub",
+        text: "Every paycheck comes with a pay stub that shows where your money went:",
+        points: [
+          "Gross pay: the total you earned",
+          "Taxes: each tax and how much was taken",
+          "Deductions: other things taken out, like health insurance or retirement savings",
+          "Net pay: what you actually get"
+        ]
+      },
+      {
+        type: "sort",
+        heading: "Taken out of your pay?",
+        text: "Is each one taken out of your paycheck?",
+        buckets: ["Taken out", "Not taken out"],
+        items: [
+          { name: "Federal income tax", answer: 0 },
+          { name: "Social Security", answer: 0 },
+          { name: "Your rent", answer: 1 },
+          { name: "Medicare", answer: 0 },
+          { name: "Your phone bill", answer: 1 },
+          { name: "Your grocery bill", answer: 1 }
+        ]
+      },
+      {
+        type: "text",
+        heading: "Filing your taxes",
+        text: "Every year, usually by April 15, you file a tax return. It checks whether the right amount of tax was taken from your pay. Your job sends you a form called a W-2 that shows what you earned and what was taken out.",
+        points: [
+          "Too much was taken out? You get a refund.",
+          "Too little was taken out? You owe the difference.",
+          "Many people with simple taxes can file for free online."
+        ]
+      },
+      {
+        type: "question",
+        question: "Which form does your job send you so you can file your taxes?",
+        choices: [
+          "A W-2",
+          "A FAFSA",
+          "A lease",
+          "A pay stub from last year"
+        ],
+        answer: 0,
+        explain: "The W-2 shows how much you earned and how much tax was taken out during the year."
+      },
+      {
+        type: "choice",
+        heading: "The tax refund",
+        text: "Jordan files taxes and gets a $400 refund. What's the smartest thing to do with it?",
+        choices: [
+          {
+            text: "Spend it all on a shopping trip",
+            result: "Fun for a day, but the money is gone. A refund is a great chance to get ahead.",
+            good: false
+          },
+          {
+            text: "Add some to the emergency fund and put the rest toward a goal",
+            result: "Jordan's safety net and savings both grow. A refund is your own money coming back, so use it wisely!",
+            good: true
+          },
+          {
+            text: "Never cash the refund",
+            result: "That's Jordan's money! Leaving it sitting there helps no one.",
+            good: false
+          }
+        ]
+      },
+      {
+        type: "text",
+        heading: "Budget with your take-home pay",
+        text: "Always build your budget from your net pay, not your gross pay. Net pay is the money you can actually spend. Jordan now budgets with about $1,567, not $2,000."
+      },
+      {
+        type: "story",
+        heading: "No mistake after all",
+        text: "My boss didn't make a mistake! About $433 went to taxes that pay for things like roads, schools, and Social Security. Now I budget with my real take-home pay, and my plans finally work."
+      }
+    ]
+  },
+
+  // ---------- Lesson 17 ----------
+  {
+    unit: 4,
+    title: "Renting Your First Place",
+    description: "Rent rules of thumb, deposits, and roommates.",
+    badge: "Home Ready",
+
+    steps: [
+      {
+        type: "story",
+        heading: "Moving out",
+        text: "I'm ready to move into my own place! I found an apartment I love for $900 a month. My take-home pay is about $1,567. Can I afford it?"
+      },
+      {
+        type: "text",
+        heading: "The 30% rule",
+        text: "A common rule is to spend no more than 30% of your gross pay (before taxes) on rent. Many landlords also want your income to be at least 3 times the rent.",
+        points: [
+          "Jordan's gross pay: $2,000 a month",
+          "30% of $2,000 = $600",
+          "So Jordan should look for rent around $600 or less"
+        ]
+      },
+      {
+        type: "question",
+        question: "Jordan earns $2,000 a month before taxes. Using the 30% rule, what's the most Jordan should spend on rent?",
+        choices: [
+          "$300",
+          "$600",
+          "$900",
+          "$1,500"
+        ],
+        answer: 1,
+        explain: "30% of $2,000 is $600."
+      },
+      {
+        type: "text",
+        heading: "Why $900 is too much",
+        text: "Rent of $900 would take over half of Jordan's $1,567 take-home pay. That leaves too little for food, the car, other bills, and savings. Falling behind on rent can lead to late fees, or even being evicted."
+      },
+      {
+        type: "calculator",
+        kind: "budget",
+        values: ["1567"],
+        heading: "Jordan's take-home budget",
+        text: "Here's the 50/30/20 rule for Jordan's $1,567 take-home pay. All of Jordan's needs, including rent, should fit in the first box. A $600 apartment fits. A $900 apartment wouldn't even fit."
+      },
+      {
+        type: "text",
+        heading: "Move-in costs",
+        text: "Moving in costs more than one month of rent. Plan for all of this:",
+        points: [
+          "First month's rent: $600",
+          "Security deposit, often one month's rent: $600 (you get it back if you don't damage the place)",
+          "Application fee: about $40",
+          "Total before you move in: about $1,240"
+        ]
+      },
+      {
+        type: "question",
+        question: "What is a security deposit?",
+        choices: [
+          "A fee you never get back",
+          "Money the landlord holds and gives back if you don't damage the place",
+          "Your first month's rent",
+          "A tip for the landlord"
+        ],
+        answer: 1,
+        explain: "Take photos when you move in, so you can show the damage wasn't yours when you move out."
+      },
+      {
+        type: "text",
+        heading: "The lease",
+        text: "A lease is a contract between you and the landlord. Read the whole thing before you sign it. Look for:",
+        points: [
+          "How long it lasts, often 12 months",
+          "How much rent is, and when it's due",
+          "Late fees, and rules about pets, guests, and noise",
+          "Who pays for repairs and which utilities"
+        ]
+      },
+      {
+        type: "sort",
+        heading: "Saves money or costs more?",
+        text: "Which choices make renting cheaper?",
+        buckets: ["Saves money", "Costs more"],
+        items: [
+          { name: "Getting a roommate", answer: 0 },
+          { name: "Living alone right downtown", answer: 1 },
+          { name: "Living a little farther from the city", answer: 0 },
+          { name: "Paying rent late", answer: 1 },
+          { name: "A place with utilities included", answer: 0 },
+          { name: "Breaking your lease early", answer: 1 }
+        ]
+      },
+      {
+        type: "choice",
+        heading: "The roommate question",
+        text: "Jordan's friend wants to split a $1,100 two-bedroom apartment. What should Jordan do before saying yes?",
+        choices: [
+          {
+            text: "Say yes right away, friends never fight about money",
+            result: "Even good friends can argue over money. A plan protects the friendship.",
+            good: false
+          },
+          {
+            text: "Agree on how to split rent, bills, and chores, and both sign the lease",
+            result: "Jordan pays $550, and both know the rules. Clear agreements keep friendships and money safe.",
+            good: true
+          },
+          {
+            text: "Let the friend sign the lease alone and pay them in cash",
+            result: "If Jordan isn't on the lease, Jordan has no protection if something goes wrong.",
+            good: false
+          }
+        ]
+      },
+      {
+        type: "question",
+        question: "What should you do before you sign a lease?",
+        choices: [
+          "Sign fast before someone else takes the place",
+          "Read the whole lease and ask questions",
+          "Only read the first page",
+          "Let the landlord fill it out for you"
+        ],
+        answer: 1,
+        explain: "A lease is a contract, so make sure you understand everything in it."
+      },
+      {
+        type: "text",
+        heading: "Don't forget renters insurance",
+        text: "The landlord's insurance covers the building, not your stuff. Renters insurance covers your things if they're stolen or damaged, and it often costs only about $15 to $20 a month. You'll learn more about it in the next lesson."
+      },
+      {
+        type: "story",
+        heading: "Jordan's new home",
+        text: "I found a two-bedroom with a friend for $1,100, so my share is $550. I saved the move-in money first, read the whole lease, and got renters insurance. It actually feels like home!"
+      }
+    ]
+  },
+
+  // ---------- Lesson 18 ----------
+  {
+    unit: 4,
+    title: "Insurance Basics",
+    description: "Health, car, and renters insurance in plain words.",
+    badge: "Covered",
+
+    steps: [
+      {
+        type: "story",
+        heading: "Why pay for insurance?",
+        text: "Everyone keeps telling me I need insurance for my health, my car, and my apartment. But it costs money every month. Why should I pay for something I might never use?"
+      },
+      {
+        type: "text",
+        heading: "What is insurance?",
+        text: "Insurance protects you from huge costs you couldn't pay on your own. You pay a small amount regularly, and if something big happens, the insurance company helps pay for it.",
+        points: [
+          "Premium: what you pay every month (or year) to have insurance",
+          "Deductible: what you pay first, before insurance starts paying",
+          "Coverage: the things the insurance pays for"
+        ]
+      },
+      {
+        type: "question",
+        question: "What is a premium?",
+        choices: [
+          "Money the insurance company pays you",
+          "The amount you pay regularly to have insurance",
+          "A type of car",
+          "A fee for paying late"
+        ],
+        answer: 1,
+        explain: "Your premium is the regular price of your insurance."
+      },
+      {
+        type: "text",
+        heading: "How a deductible works",
+        text: "Say Jordan's car insurance has a $500 deductible, and an accident causes $2,000 in damage:",
+        points: [
+          "Jordan pays the first $500",
+          "Insurance pays the other $1,500",
+          "A higher deductible usually means a lower premium, but you pay more when something happens"
+        ]
+      },
+      {
+        type: "question",
+        question: "Jordan has a $1,000 deductible and a $3,000 repair bill. How much does insurance pay?",
+        choices: [
+          "$0",
+          "$1,000",
+          "$2,000",
+          "$3,000"
+        ],
+        answer: 2,
+        explain: "Jordan pays the first $1,000, and insurance pays the other $2,000."
+      },
+      {
+        type: "text",
+        heading: "Health insurance",
+        text: "Health insurance helps pay for doctor visits, medicine, and hospital stays. Without it, one trip to the emergency room can cost thousands of dollars.",
+        points: [
+          "You can usually stay on a parent's health plan until you turn 26",
+          "Many jobs offer health insurance",
+          "You can also shop for a plan at HealthCare.gov"
+        ]
+      },
+      {
+        type: "text",
+        heading: "Car and renters insurance",
+        text: "Two more kinds you'll probably need:",
+        points: [
+          "Car insurance is required in almost every state. It pays for damage you cause to other people, and it can cover your own car too.",
+          "Renters insurance covers your things if they're stolen or damaged. It often costs about $15 to $20 a month."
+        ]
+      },
+      {
+        type: "sort",
+        heading: "Which insurance covers it?",
+        text: "Match each one to the right kind of insurance.",
+        buckets: ["Health", "Car", "Renters"],
+        items: [
+          { name: "A doctor visit", answer: 0 },
+          { name: "A fender bender", answer: 1 },
+          { name: "A laptop stolen from your apartment", answer: 2 },
+          { name: "Medicine", answer: 0 },
+          { name: "Damage you cause to another car", answer: 1 },
+          { name: "A fire that ruins your clothes and furniture", answer: 2 }
+        ]
+      },
+      {
+        type: "choice",
+        heading: "Picking a deductible",
+        text: "Jordan can choose car insurance with a $250 deductible for $140 a month, or a $1,000 deductible for $110 a month. Jordan has $1,500 in an emergency fund. What should Jordan do?",
+        choices: [
+          {
+            text: "Pick the $1,000 deductible for $110 a month",
+            result: "Jordan saves $30 a month, and the emergency fund can cover the $1,000 if something happens. Smart choice!",
+            good: true
+          },
+          {
+            text: "Skip car insurance to save money",
+            result: "Driving without insurance is illegal in almost every state, and one accident could cost thousands.",
+            good: false
+          },
+          {
+            text: "Buy the cheapest plan without reading what it covers",
+            result: "A cheap plan that barely covers anything can leave Jordan paying for most of an accident.",
+            good: false
+          }
+        ]
+      },
+      {
+        type: "question",
+        question: "Why does renters insurance matter?",
+        choices: [
+          "The landlord's insurance doesn't cover your things",
+          "It pays your rent every month",
+          "It's the same thing as car insurance",
+          "It's only for people who own houses"
+        ],
+        answer: 0,
+        explain: "The landlord's insurance covers the building. Your stuff is up to you."
+      },
+      {
+        type: "text",
+        heading: "Insurance belongs in your budget",
+        text: "Insurance is a need, not a want. Put your premiums in your budget like any other bill, and keep your emergency fund big enough to pay your deductibles."
+      },
+      {
+        type: "question",
+        question: "What's the BEST reason to have insurance?",
+        choices: [
+          "To make money",
+          "To protect you from huge costs you couldn't pay yourself",
+          "Because it's free",
+          "To get discounts at stores"
+        ],
+        answer: 1,
+        explain: "Insurance turns a huge surprise cost into a small, planned one."
+      },
+      {
+        type: "story",
+        heading: "Jordan is covered",
+        text: "I stayed on my parent's health plan, picked car insurance with a $1,000 deductible, and got renters insurance for $16 a month. Last month a tree branch fell on my car and did $2,500 of damage. I paid my $1,000 deductible, and insurance covered the rest. Totally worth it."
+      }
+    ]
+  },
+
+  // ---------- Lesson 19 ----------
+  {
+    unit: 4,
+    title: "Avoiding Scams",
+    description: "Spot fake texts and get-rich-quick tricks, and protect your info.",
+    badge: "Scam Spotter",
+
+    steps: [
+      {
+        type: "story",
+        heading: "Too good to be true?",
+        text: "I just got a text: \"Congrats! You won a $1,000 gift card! Click here and enter your bank info to claim it.\" I never entered any contest. Should I click?"
+      },
+      {
+        type: "text",
+        heading: "What is a scam?",
+        text: "A scam is a trick to steal your money or your personal information. Scammers pretend to be someone you trust, like a bank, a company, or even the government. They usually try to rush you so you don't stop and think."
+      },
+      {
+        type: "text",
+        heading: "Red flags",
+        text: "Watch out when someone:",
+        points: [
+          "Contacts you out of nowhere",
+          "Says it's urgent: \"Act now or your account will be closed!\"",
+          "Wants to be paid with gift cards, a wire transfer, crypto, or a payment app",
+          "Asks for passwords, login codes, or your Social Security number",
+          "Offers a deal that sounds too good to be true"
+        ]
+      },
+      {
+        type: "question",
+        question: "Jordan never entered a contest, but gets a \"You won!\" text asking for bank info. What is it?",
+        choices: [
+          "A real prize",
+          "Almost certainly a scam",
+          "A message from Jordan's bank",
+          "A free gift with no catch"
+        ],
+        answer: 1,
+        explain: "You can't win a contest you never entered, and asking for bank info is a huge red flag."
+      },
+      {
+        type: "sort",
+        heading: "Scam or safe?",
+        text: "Sort each message.",
+        buckets: ["Scam", "Safe"],
+        items: [
+          { name: "\"Pay this fine with gift cards or you'll be arrested\"", answer: 0 },
+          { name: "Your bank's app showing your balance", answer: 1 },
+          { name: "\"Make $5,000 a week from home, just pay a $200 starter fee\"", answer: 0 },
+          { name: "An electric bill you were expecting, from your real company", answer: 1 },
+          { name: "\"We'll double your money in one week, guaranteed!\"", answer: 0 },
+          { name: "A login code you just asked for", answer: 1 }
+        ]
+      },
+      {
+        type: "text",
+        heading: "Common scams",
+        text: "These are some of the scams people fall for most often:",
+        points: [
+          "Phishing: fake texts or emails that look real and want you to click a link",
+          "Fake jobs: \"jobs\" that make you pay to start, or send you a check to deposit and send back",
+          "Get rich quick: promises of huge, guaranteed profits, often with crypto",
+          "Government impostors: the real IRS won't call and demand gift cards"
+        ]
+      },
+      {
+        type: "question",
+        question: "Which of these is a sign of a FAKE government call?",
+        choices: [
+          "They send you a letter in the mail",
+          "They demand payment with gift cards right now",
+          "They give you time to ask questions",
+          "They tell you to check their official website"
+        ],
+        answer: 1,
+        explain: "No real government office will ever ask you to pay with gift cards."
+      },
+      {
+        type: "choice",
+        heading: "The \"job offer\"",
+        text: "Jordan gets an email offering $40 an hour for an easy online job. They'll mail Jordan a $2,000 check. Jordan just has to deposit it and send $1,500 back with a payment app. What should Jordan do?",
+        choices: [
+          {
+            text: "Do it, it's easy money!",
+            result: "The check bounces a few days later, and Jordan loses the $1,500 they sent. This is a common fake check scam.",
+            good: false
+          },
+          {
+            text: "Delete it and don't reply",
+            result: "Smart! Real jobs never send you money and ask you to send some of it back.",
+            good: true
+          },
+          {
+            text: "Reply and ask for more details first",
+            result: "Replying tells the scammers your email is real, so they'll keep trying. It's safer to just delete it.",
+            good: false
+          }
+        ]
+      },
+      {
+        type: "text",
+        heading: "Protect your info",
+        text: "A few habits make it much harder for scammers to get to you:",
+        points: [
+          "Use a different strong password for each account",
+          "Turn on two-factor authentication, which sends a code to your phone when you log in",
+          "Never share a login code with anyone, even if they say they're from your bank",
+          "Check your bank account often for charges you didn't make"
+        ]
+      },
+      {
+        type: "question",
+        question: "Someone calls saying they're from your bank and asks for the code they just texted you. What should you do?",
+        choices: [
+          "Read them the code",
+          "Hang up and call the number on the back of your card",
+          "Give them half of the code",
+          "Text the code to a friend first"
+        ],
+        answer: 1,
+        explain: "Real banks don't call and ask for your codes. Call your bank yourself, using a number you trust."
+      },
+      {
+        type: "text",
+        heading: "If you get scammed",
+        text: "It happens to smart people too, so don't be embarrassed. Act fast:",
+        points: [
+          "Call your bank right away to stop payments and protect your account",
+          "Change your passwords",
+          "Report it at ReportFraud.ftc.gov"
+        ]
+      },
+      {
+        type: "question",
+        question: "What's the FIRST thing to do if you think you got scammed?",
+        choices: [
+          "Wait and see what happens",
+          "Call your bank right away",
+          "Send the scammer more money to fix it",
+          "Post about it online"
+        ],
+        answer: 1,
+        explain: "The faster your bank knows, the better the chance of stopping the money."
+      },
+      {
+        type: "story",
+        heading: "Jordan spots the scam",
+        text: "I deleted that \"You won!\" text and blocked the number. A week later, my friend almost fell for the same one, and I showed them the red flags. Now I'm the scam expert in my group!"
+      }
+    ]
+  },
 
 
   // ==================== UNIT 5: INVESTING AND BUILDING WEALTH ====================
