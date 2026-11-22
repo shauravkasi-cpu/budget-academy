@@ -2678,10 +2678,843 @@ const lessons = [
 
   // ==================== UNIT 5: INVESTING AND BUILDING WEALTH ====================
 
-  { unit: 5, title: "Saving vs. Investing", description: "Why money sitting in savings slowly loses value.", badge: "Growth Mindset" },
-  { unit: 5, title: "The Magic of Compound Interest", description: "See why starting early makes a huge difference.", badge: "Early Starter" },
-  { unit: 5, title: "Stocks, Bonds, and Funds", description: "What you actually own when you invest.", badge: "Market Basics" },
-  { unit: 5, title: "Index Funds and Diversification", description: "Why spreading your money out lowers your risk.", badge: "Diversified" },
-  { unit: 5, title: "Retirement Accounts: 401(k) and Roth IRA", description: "Employer matches, tax benefits, and free money.", badge: "Retirement Ready" },
-  { unit: 5, title: "Risk and Your Investing Plan", description: "Investing for the long term, and the right order to do things.", badge: "Money Planner" }
+  // ---------- Lesson 20 ----------
+  {
+    unit: 5,
+    title: "Saving vs. Investing",
+    description: "Why money sitting in savings slowly loses value.",
+    badge: "Growth Mindset",
+
+    steps: [
+      {
+        type: "story",
+        heading: "Slow growth",
+        text: "I have an emergency fund, no credit card debt, and I save every month. But my savings account barely grows! My coworker keeps talking about \"investing.\" What's the difference?"
+      },
+      {
+        type: "text",
+        heading: "Before we start",
+        text: "This unit teaches the basics that most money experts agree on. It's for learning, not personal financial advice. Everyone's situation is different, so before you invest real money, do your research and talk to a trusted adult or a licensed professional."
+      },
+      {
+        type: "text",
+        heading: "Saving vs. investing",
+        text: "Both are important, but they do different jobs:",
+        points: [
+          "Saving: keeping money safe for things you'll need soon, like an emergency fund. Low risk, low growth.",
+          "Investing: buying things like stocks and funds that can grow over many years. More risk, but more growth over time."
+        ]
+      },
+      {
+        type: "text",
+        heading: "Inflation",
+        text: "Inflation means prices slowly go up over time. If your money grows slower than prices, it buys less each year, even though the number in your account stays the same.",
+        points: [
+          "Inflation is often around 2% to 3% a year",
+          "At 3% inflation, prices double in about 24 years",
+          "Money in a low-interest account can fall behind"
+        ]
+      },
+      {
+        type: "question",
+        question: "What is inflation?",
+        choices: [
+          "When prices slowly go up over time",
+          "When your bank adds money to your account",
+          "A kind of investment",
+          "When stores have a big sale"
+        ],
+        answer: 0,
+        explain: "Inflation is why things cost more today than they did years ago."
+      },
+      {
+        type: "sort",
+        heading: "Save it or invest it?",
+        text: "Where should Jordan keep the money for each one?",
+        buckets: ["Save", "Invest"],
+        items: [
+          { name: "Emergency fund", answer: 0 },
+          { name: "Retirement in 40 years", answer: 1 },
+          { name: "A trip next summer", answer: 0 },
+          { name: "Money you won't need for 20 years", answer: 1 },
+          { name: "Next month's rent", answer: 0 },
+          { name: "Building wealth for the future", answer: 1 }
+        ]
+      },
+      {
+        type: "text",
+        heading: "A simple rule",
+        text: "If you'll need the money within about 5 years, save it. If you won't need it for 5 years or more, investing might make sense. Investments can go down for a while, so you need time to wait for them to come back up."
+      },
+      {
+        type: "question",
+        question: "Jordan wants money for a new car in 1 year. Where should that money go?",
+        choices: [
+          "A savings account",
+          "Stocks",
+          "A brand new crypto coin",
+          "Under the bed"
+        ],
+        answer: 0,
+        explain: "Money you need soon should stay safe, because investments can drop right when you need them."
+      },
+      {
+        type: "calculator",
+        kind: "compound",
+        values: ["100", "30", "4"],
+        heading: "Saving vs. investing",
+        text: "Here's $100 a month for 30 years at 4%, about what a good savings account might pay. Press Calculate. Then change the growth to 7%, which is closer to what the stock market has averaged over long periods (but it's never guaranteed)."
+      },
+      {
+        type: "question",
+        question: "With $100 a month for 30 years, about how much MORE does 7% grow to than 4%?",
+        choices: [
+          "About $500",
+          "About $5,000",
+          "About $53,000",
+          "They're the same"
+        ],
+        answer: 2,
+        explain: "$122,708.80 at 7% vs. $69,636.29 at 4%. A few percent makes a huge difference over 30 years."
+      },
+      {
+        type: "choice",
+        heading: "The coworker's tip",
+        text: "A coworker says, \"Put all your savings into this new crypto coin. It's going to 10x next week!\" What should Jordan do?",
+        choices: [
+          {
+            text: "Put everything in, even the emergency fund",
+            result: "If the coin crashes, Jordan loses the emergency fund too. Nobody can promise an investment will go up.",
+            good: false
+          },
+          {
+            text: "Keep the emergency fund safe and learn about long-term investing first",
+            result: "Smart. Promises of fast, huge gains are a red flag. Real investing is slow and steady.",
+            good: true
+          },
+          {
+            text: "Borrow on a credit card to buy even more",
+            result: "Borrowing at 24% to gamble on a coin is one of the riskiest money moves there is.",
+            good: false
+          }
+        ]
+      },
+      {
+        type: "story",
+        heading: "Jordan's plan",
+        text: "My emergency fund stays in savings, because I need it ready. But money I won't touch for years? That's what I want to learn to invest. Let's keep going!"
+      }
+    ]
+  },
+
+  // ---------- Lesson 21 ----------
+  {
+    unit: 5,
+    title: "The Magic of Compound Interest",
+    description: "See why starting early makes a huge difference.",
+    badge: "Early Starter",
+
+    steps: [
+      {
+        type: "story",
+        heading: "Too early to start?",
+        text: "I'm young and I don't make that much. Shouldn't I wait until I'm older and have more money before I start investing?"
+      },
+      {
+        type: "text",
+        heading: "What is compound interest?",
+        text: "Compound interest means your money grows, and then that growth grows too. Over time it snowballs. The longer it has to roll, the bigger the snowball gets."
+      },
+      {
+        type: "text",
+        heading: "A simple example",
+        text: "Say you invest $1,000, and it grows 7% every year:",
+        points: [
+          "Year 1: $1,000 grows to $1,070",
+          "Year 2: $1,070 grows to about $1,145",
+          "Year 3: it grows to about $1,225",
+          "Each year grows a little more than the last, because the growth is growing too"
+        ]
+      },
+      {
+        type: "question",
+        question: "What makes compound interest so powerful?",
+        choices: [
+          "You only earn on the money you put in",
+          "Your growth earns growth too, so it snowballs over time",
+          "The bank doubles your money every year",
+          "It only works for rich people"
+        ],
+        answer: 1,
+        explain: "Growth on top of growth is what makes it snowball."
+      },
+      {
+        type: "text",
+        heading: "The Rule of 72",
+        text: "Here's a quick way to see how fast money doubles: divide 72 by the yearly growth rate.",
+        points: [
+          "At 7% growth: 72 / 7 = about 10 years to double",
+          "At 4%: 72 / 4 = 18 years",
+          "At 1%: 72 years!"
+        ]
+      },
+      {
+        type: "question",
+        question: "Using the Rule of 72, about how long does money take to double at 9% growth?",
+        choices: [
+          "4 years",
+          "8 years",
+          "20 years",
+          "72 years"
+        ],
+        answer: 1,
+        explain: "72 / 9 = 8 years."
+      },
+      {
+        type: "text",
+        heading: "Time is your superpower",
+        text: "Two people each invest $100 a month at 7% until they turn 65:",
+        points: [
+          "Starts at 18: puts in $56,400, ends with about $441,000",
+          "Starts at 28: puts in $44,400, ends with about $211,000",
+          "Starting just 10 years earlier more than DOUBLES the result!"
+        ]
+      },
+      {
+        type: "calculator",
+        kind: "compound",
+        values: ["100", "47", "7"],
+        heading: "Start at 18",
+        text: "This is $100 a month from age 18 to 65 (47 years) at 7%. Press Calculate. Then change the years to 37 to see what happens if you start at 28 instead."
+      },
+      {
+        type: "question",
+        question: "Why does starting 10 years earlier make SUCH a big difference?",
+        choices: [
+          "You put in way more money",
+          "The money has 10 extra years to snowball",
+          "Younger people get higher interest rates",
+          "It doesn't really make a difference"
+        ],
+        answer: 1,
+        explain: "The early starter only puts in $12,000 more, but ends up with about $230,000 more."
+      },
+      {
+        type: "sort",
+        heading: "Helps it grow or slows it down?",
+        text: "What does each one do to compound growth?",
+        buckets: ["Helps", "Slows it"],
+        items: [
+          { name: "Starting early", answer: 0 },
+          { name: "Waiting 10 years to start", answer: 1 },
+          { name: "Adding money every month", answer: 0 },
+          { name: "Taking money out often", answer: 1 },
+          { name: "Leaving it alone for decades", answer: 0 },
+          { name: "Paying high fees", answer: 1 }
+        ]
+      },
+      {
+        type: "choice",
+        heading: "Jordan's first $50",
+        text: "Jordan has an extra $50 a month. A friend says that's too small to matter. What should Jordan do?",
+        choices: [
+          {
+            text: "Wait until Jordan can invest $500 a month",
+            result: "Waiting costs years of growth. Small amounts started early often beat big amounts started late.",
+            good: false
+          },
+          {
+            text: "Start investing the $50 now, and add more later",
+            result: "Perfect. Starting small and early lets compound interest do the heavy lifting.",
+            good: true
+          },
+          {
+            text: "Spend it, $50 is too small to grow",
+            result: "$50 a month at 7% for 40 years grows to over $130,000. Small amounts matter!",
+            good: false
+          }
+        ]
+      },
+      {
+        type: "story",
+        heading: "Jordan starts early",
+        text: "I used to think investing was only for rich people. Now I know that time matters more than money. I'm starting small, and I'm letting compound interest do its thing."
+      }
+    ]
+  },
+
+  // ---------- Lesson 22 ----------
+  {
+    unit: 5,
+    title: "Stocks, Bonds, and Funds",
+    description: "What you actually own when you invest.",
+    badge: "Market Basics",
+
+    steps: [
+      {
+        type: "story",
+        heading: "What am I buying?",
+        text: "Everyone says \"invest in the stock market.\" But what does that even mean? What am I actually buying?"
+      },
+      {
+        type: "text",
+        heading: "Stocks: owning a piece of a company",
+        text: "A stock, also called a share, is a tiny piece of ownership in a company. If the company grows and earns more, your share can be worth more. If the company struggles, your share can lose value.",
+        points: [
+          "Can grow a lot over many years",
+          "Can also drop a lot, especially in the short term",
+          "Some companies share their profits with owners. These payments are called dividends."
+        ]
+      },
+      {
+        type: "text",
+        heading: "Bonds: lending money",
+        text: "A bond is a loan you give to a company or the government. They pay you interest, then pay the loan back later. Bonds are usually safer than stocks, but they usually grow more slowly.",
+        points: [
+          "Lower risk than stocks",
+          "Usually lower growth than stocks over long periods",
+          "U.S. government bonds are considered very safe"
+        ]
+      },
+      {
+        type: "sort",
+        heading: "Stock or bond?",
+        text: "Which one does each sentence describe?",
+        buckets: ["Stock", "Bond"],
+        items: [
+          { name: "You own a piece of a company", answer: 0 },
+          { name: "You lend money and get paid interest", answer: 1 },
+          { name: "Usually grows more over many years", answer: 0 },
+          { name: "Usually safer and steadier", answer: 1 },
+          { name: "Its price can swing a lot from day to day", answer: 0 },
+          { name: "The government sells these to borrow money", answer: 1 }
+        ]
+      },
+      {
+        type: "question",
+        question: "What do you own when you buy a stock?",
+        choices: [
+          "A loan to the company",
+          "A tiny piece of the company",
+          "A promise that you'll make money",
+          "A job at the company"
+        ],
+        answer: 1,
+        explain: "A stock makes you a part-owner of the company, even if it's a very tiny part."
+      },
+      {
+        type: "text",
+        heading: "Funds: a basket of investments",
+        text: "A fund pools money from lots of people to buy many investments at once. Buying one share of a fund can mean owning tiny pieces of hundreds of companies.",
+        points: [
+          "Mutual funds and ETFs (exchange-traded funds) are two common kinds",
+          "One fund can hold hundreds or even thousands of stocks or bonds",
+          "Funds charge a small yearly fee called an expense ratio"
+        ]
+      },
+      {
+        type: "question",
+        question: "Why might a beginner choose a fund instead of a single stock?",
+        choices: [
+          "Funds are guaranteed to go up",
+          "A fund spreads money across many companies, so one bad company hurts less",
+          "Funds have no risk at all",
+          "Buying single stocks is against the law"
+        ],
+        answer: 1,
+        explain: "Owning lots of companies means one bad one can't sink you."
+      },
+      {
+        type: "text",
+        heading: "Watch the fees",
+        text: "A fund's expense ratio is a small percent of your money that you pay every year. It sounds tiny, but it adds up over decades.",
+        points: [
+          "A 0.05% fee costs $5 a year for every $10,000",
+          "A 1% fee costs $100 a year for every $10,000",
+          "Over 30 or more years, high fees can eat tens of thousands of dollars"
+        ]
+      },
+      {
+        type: "question",
+        question: "Which yearly fund fee is better for you?",
+        choices: [
+          "1%",
+          "0.05%"
+        ],
+        answer: 1,
+        explain: "Lower fees mean more of your money stays invested and keeps growing."
+      },
+      {
+        type: "choice",
+        heading: "The trending stock",
+        text: "Jordan's friend says, \"Just buy whatever stock is trending on social media.\" What should Jordan do?",
+        choices: [
+          {
+            text: "Buy the trending stock with all of Jordan's savings",
+            result: "Trends come and go. Putting everything into one hyped stock is gambling, not investing.",
+            good: false
+          },
+          {
+            text: "Learn about low-cost funds that own many companies",
+            result: "Smart. Spreading your money out is one of the most important rules of investing, and it's the next lesson!",
+            good: true
+          },
+          {
+            text: "Never invest at all, because it's confusing",
+            result: "It's fine to start slowly, but never investing means missing out on years of growth.",
+            good: false
+          }
+        ]
+      },
+      {
+        type: "text",
+        heading: "How people buy investments",
+        text: "People usually buy stocks, bonds, and funds through a brokerage account or a retirement account, like a 401(k) or an IRA. Many brokerages let you start with very little money. Teens can invest using a custodial account that a parent helps manage."
+      },
+      {
+        type: "question",
+        question: "Which one is usually SAFER, but grows more slowly?",
+        choices: [
+          "Stocks",
+          "Bonds"
+        ],
+        answer: 1,
+        explain: "Bonds are usually steadier, while stocks usually grow more over long periods."
+      },
+      {
+        type: "story",
+        heading: "Jordan gets it",
+        text: "So stocks are pieces of companies, bonds are loans, and funds are baskets of both. I don't have to pick the winners. I can just own a little bit of a lot!"
+      }
+    ]
+  },
+
+  // ---------- Lesson 23 ----------
+  {
+    unit: 5,
+    title: "Index Funds and Diversification",
+    description: "Why spreading your money out lowers your risk.",
+    badge: "Diversified",
+
+    steps: [
+      {
+        type: "story",
+        heading: "All eggs, one basket",
+        text: "My cousin put all his money into one company's stock, and it dropped 60% in a month. He's freaking out. How do I keep that from happening to me?"
+      },
+      {
+        type: "text",
+        heading: "Don't put all your eggs in one basket",
+        text: "Diversification means spreading your money across many different investments. If one company does badly, the others can balance it out.",
+        points: [
+          "All your money in 1 stock: if that company fails, you could lose most of it",
+          "Your money spread across 500 stocks: one company failing barely matters"
+        ]
+      },
+      {
+        type: "question",
+        question: "What does diversification mean?",
+        choices: [
+          "Putting all your money into your favorite company",
+          "Spreading your money across many different investments",
+          "Only investing in bonds",
+          "Checking your account every day"
+        ],
+        answer: 1,
+        explain: "Spreading your money out means no single investment can sink you."
+      },
+      {
+        type: "text",
+        heading: "What is an index fund?",
+        text: "An index fund buys every company on a list called an index. For example, an S&P 500 index fund owns pieces of about 500 of the biggest U.S. companies. Instead of trying to pick winners, you own the whole list.",
+        points: [
+          "Diversified right away",
+          "Very low fees, because no one is paid to pick stocks",
+          "Many experts suggest them for beginners and long-term investors"
+        ]
+      },
+      {
+        type: "question",
+        question: "What does an S&P 500 index fund own?",
+        choices: [
+          "One big company",
+          "Pieces of about 500 large U.S. companies",
+          "Only government bonds",
+          "Gold"
+        ],
+        answer: 1,
+        explain: "It follows the S&P 500 list, so it owns a little of each company on it."
+      },
+      {
+        type: "text",
+        heading: "Why index funds work for so many people",
+        text: "Picking the winning stocks is really hard, even for professionals. Over long periods, most funds run by stock pickers do worse than a simple index fund, partly because their fees are higher."
+      },
+      {
+        type: "sort",
+        heading: "Diversified or risky?",
+        text: "Sort each way to invest.",
+        buckets: ["Diversified", "Risky"],
+        items: [
+          { name: "An S&P 500 index fund", answer: 0 },
+          { name: "All your money in one company", answer: 1 },
+          { name: "A total stock market fund", answer: 0 },
+          { name: "Everything in one trending crypto coin", answer: 1 },
+          { name: "A mix of stock funds and bond funds", answer: 0 },
+          { name: "Only the stocks your friend recommends", answer: 1 }
+        ]
+      },
+      {
+        type: "calculator",
+        kind: "compound",
+        values: ["200", "40", "7"],
+        heading: "Slow and steady",
+        text: "Index fund investing is boring on purpose. Here's $200 a month for 40 years at 7%. Press Calculate and see what slow and steady can do."
+      },
+      {
+        type: "question",
+        question: "In the calculator, about how much of the total came from growth, not from money put in?",
+        choices: [
+          "About $96,000",
+          "About $432,000",
+          "About $5,000",
+          "$0"
+        ],
+        answer: 1,
+        explain: "Jordan would put in $96,000, and growth would add about $432,000 more."
+      },
+      {
+        type: "choice",
+        heading: "The market drops",
+        text: "Jordan's index fund drops 15% one year. Jordan's cousin says to sell everything before it gets worse. What should Jordan do?",
+        choices: [
+          {
+            text: "Sell everything right now",
+            result: "Selling locks in the loss. The market has always had ups and downs, and over long periods it has recovered from its drops.",
+            good: false
+          },
+          {
+            text: "Keep investing like normal and stay in for the long term",
+            result: "Jordan keeps buying, even at lower prices. Staying patient is one of the most powerful things an investor can do.",
+            good: true
+          },
+          {
+            text: "Move it all into one hot stock to win it back fast",
+            result: "Trying to win it back fast usually means taking even more risk.",
+            good: false
+          }
+        ]
+      },
+      {
+        type: "question",
+        question: "Why do index funds usually have low fees?",
+        choices: [
+          "They follow a list instead of paying people to pick stocks",
+          "It's against the law to charge fees on them",
+          "The government pays their fees",
+          "They don't hold any investments"
+        ],
+        answer: 0,
+        explain: "Following a list is simple, so it costs very little to run the fund."
+      },
+      {
+        type: "story",
+        heading: "Jordan's simple plan",
+        text: "No more trying to find the next big stock. I'm putting my money in a low-cost index fund that owns hundreds of companies. Boring? Maybe. But boring is how a lot of people build wealth."
+      }
+    ]
+  },
+
+  // ---------- Lesson 24 ----------
+  {
+    unit: 5,
+    title: "Retirement Accounts: 401(k) and Roth IRA",
+    description: "Employer matches, tax benefits, and free money.",
+    badge: "Retirement Ready",
+
+    steps: [
+      {
+        type: "story",
+        heading: "Free money?",
+        text: "Someone at my job said the company \"matches 401(k) contributions up to 4%.\" Everyone acted like it was a big deal. What does that mean?"
+      },
+      {
+        type: "text",
+        heading: "Why retirement accounts?",
+        text: "Retirement accounts are special investment accounts with tax benefits. The government gives you these tax breaks to encourage you to save for when you stop working. The money inside is usually invested in things like index funds.",
+        points: [
+          "They help your money grow with less taxes",
+          "There are usually penalties if you take money out early, before about age 59",
+          "They're meant for the long term"
+        ]
+      },
+      {
+        type: "text",
+        heading: "The 401(k)",
+        text: "A 401(k) is a retirement account you get through your job. The money comes straight out of your paycheck before you can spend it. That's paying yourself first!",
+        points: [
+          "Many employers offer a match: free money added when you save",
+          "Example: \"100% match up to 4%\" means if you put in 4% of your pay, your employer adds 4% more"
+        ]
+      },
+      {
+        type: "text",
+        heading: "Jordan's match",
+        text: "Here's how the match works for Jordan:",
+        points: [
+          "Jordan earns $2,000 a month",
+          "Jordan puts in 4% of $2,000 = $80 a month",
+          "The company adds another $80, for free",
+          "That's $160 a month going into Jordan's retirement"
+        ]
+      },
+      {
+        type: "question",
+        question: "Jordan's company matches 100% up to 4%. If Jordan puts in 4% ($80), how much does the company add?",
+        choices: [
+          "$0",
+          "$40",
+          "$80",
+          "$160"
+        ],
+        answer: 2,
+        explain: "A 100% match means the company adds the same $80 Jordan puts in."
+      },
+      {
+        type: "calculator",
+        kind: "compound",
+        values: ["160", "37", "7"],
+        heading: "Jordan's 401(k)",
+        text: "$160 a month (Jordan's $80 plus the $80 match) for 37 years at 7%. Press Calculate. Then change it to $80 to see what Jordan would have WITHOUT the match."
+      },
+      {
+        type: "question",
+        question: "About how much does the free match add to Jordan's total over 37 years?",
+        choices: [
+          "About $80",
+          "About $1,000",
+          "About $169,000",
+          "Nothing at all"
+        ],
+        answer: 2,
+        explain: "$337,403.61 with the match vs. $168,701.55 without it. Free money grows too!"
+      },
+      {
+        type: "text",
+        heading: "The Roth IRA",
+        text: "An IRA is a retirement account you open yourself, not through a job. In a Roth IRA, you put in money you've already paid taxes on. It grows, and when you take it out in retirement, you usually pay no taxes on it at all.",
+        points: [
+          "You need income from a job to put money in",
+          "A teen with a job can have one with a parent's help (a custodial Roth IRA)",
+          "There's a limit on how much you can put in each year"
+        ]
+      },
+      {
+        type: "sort",
+        heading: "401(k) or Roth IRA?",
+        text: "Which account does each one describe?",
+        buckets: ["401(k)", "Roth IRA"],
+        items: [
+          { name: "You get it through your job", answer: 0 },
+          { name: "You open it yourself", answer: 1 },
+          { name: "Your employer might match your money", answer: 0 },
+          { name: "A teen with a summer job can open one with a parent", answer: 1 },
+          { name: "Money comes straight out of your paycheck", answer: 0 },
+          { name: "Usually no taxes when you take money out in retirement", answer: 1 }
+        ]
+      },
+      {
+        type: "choice",
+        heading: "Take the match?",
+        text: "Jordan's budget is tight. Jordan could put 0%, 2%, or 4% into the 401(k), and the company matches up to 4%. What should Jordan do?",
+        choices: [
+          {
+            text: "Put in 0% and keep all the money now",
+            result: "Jordan turns down $80 a month of free money. That's like saying no to a raise!",
+            good: false
+          },
+          {
+            text: "Put in 4% for the full match, and cut back on wants a little to make room",
+            result: "Jordan gets every dollar of free money. Getting the full match is one of the best money moves there is.",
+            good: true
+          },
+          {
+            text: "Put in 2% to keep more cash",
+            result: "Jordan only gets half of the free money. If at all possible, get the full match.",
+            good: false
+          }
+        ]
+      },
+      {
+        type: "question",
+        question: "Why do people call an employer match \"free money\"?",
+        choices: [
+          "The government prints it for you",
+          "Your employer adds money to your account just because you saved",
+          "You never have to work for it",
+          "It's a loan you pay back later"
+        ],
+        answer: 1,
+        explain: "The match is extra money from your employer, on top of your pay."
+      },
+      {
+        type: "story",
+        heading: "Jordan's retirement",
+        text: "I signed up for my 401(k) at 4% and got the full match. I barely notice the $80 missing from my paycheck, but my account grows by $160 every month. Future me is going to be very happy."
+      }
+    ]
+  },
+
+  // ---------- Lesson 25 ----------
+  {
+    unit: 5,
+    title: "Risk and Your Investing Plan",
+    description: "Investing for the long term, and the right order to do things.",
+    badge: "Money Planner",
+
+    steps: [
+      {
+        type: "story",
+        heading: "Putting it all together",
+        text: "I've learned so much! But it's a lot. In what ORDER should I do all of this? And how do I keep from panicking when the market drops?"
+      },
+      {
+        type: "text",
+        heading: "Risk and reward",
+        text: "Investments with more risk can grow more, but they can also drop more. Investments with less risk are steadier, but they grow less. There's no growth without some risk.",
+        points: [
+          "Lower risk, lower growth: savings accounts, bonds",
+          "Higher risk, higher growth over time: stocks and stock funds",
+          "Very high risk: single hyped stocks, crypto, get-rich-quick schemes"
+        ]
+      },
+      {
+        type: "sort",
+        heading: "Lower risk or higher risk?",
+        text: "Sort each place to put money.",
+        buckets: ["Lower risk", "Higher risk"],
+        items: [
+          { name: "High-yield savings account", answer: 0 },
+          { name: "One trending stock", answer: 1 },
+          { name: "U.S. government bonds", answer: 0 },
+          { name: "A brand new crypto coin", answer: 1 },
+          { name: "A bank savings account", answer: 0 },
+          { name: "Borrowing money to invest", answer: 1 }
+        ]
+      },
+      {
+        type: "text",
+        heading: "Your time horizon",
+        text: "Your time horizon is how long until you need the money. The longer it is, the more time you have to ride out the ups and downs.",
+        points: [
+          "Need it in less than 5 years? Keep it safe in savings.",
+          "Need it in 10 or more years? Investing in stock funds may make sense.",
+          "As you get closer to needing it, many people slowly move to safer investments."
+        ]
+      },
+      {
+        type: "question",
+        question: "Who can usually take on more investing risk?",
+        choices: [
+          "Someone who needs the money next month",
+          "Someone who won't need the money for 40 years"
+        ],
+        answer: 1,
+        explain: "More time means more time to recover from drops."
+      },
+      {
+        type: "text",
+        heading: "Markets go up AND down",
+        text: "The stock market has had plenty of big drops. In 2020, it fell about 34% in about a month, then climbed back to where it was within about 6 months. People who sold in a panic locked in their losses. People who stayed in recovered.",
+        points: [
+          "Drops are normal, even though they're scary",
+          "You don't need to check your account every day",
+          "Keep investing on schedule, even when the market is down"
+        ]
+      },
+      {
+        type: "question",
+        question: "The market drops 20%. What do long-term investors usually do?",
+        choices: [
+          "Sell everything right away",
+          "Stay calm and keep investing on schedule",
+          "Borrow money to bet on one stock",
+          "Close the account forever"
+        ],
+        answer: 1,
+        explain: "Patient investors keep going, because they don't need the money for years."
+      },
+      {
+        type: "text",
+        heading: "The money order",
+        text: "Here's an order a lot of money experts suggest. Each step builds on the one before it:",
+        points: [
+          "1. Make a budget and spend less than you earn",
+          "2. Save a starter emergency fund",
+          "3. Get your full employer 401(k) match",
+          "4. Pay off high-interest debt, like credit cards",
+          "5. Grow your emergency fund to 3 to 6 months",
+          "6. Invest more for retirement, like a Roth IRA with low-cost index funds",
+          "7. Save and invest for your other goals"
+        ]
+      },
+      {
+        type: "question",
+        question: "In the money order, what comes right after saving a starter emergency fund?",
+        choices: [
+          "Buying a new car",
+          "Getting your full employer match",
+          "Investing in crypto",
+          "Buying a house"
+        ],
+        answer: 1,
+        explain: "The match is free money, so it comes early in the order."
+      },
+      {
+        type: "choice",
+        heading: "Jordan's big plan",
+        text: "Jordan has a $1,500 emergency fund, no credit card debt, the full 401(k) match, and $150 extra each month. What's a smart plan?",
+        choices: [
+          {
+            text: "Put the whole $150 into one trending stock",
+            result: "One stock is a gamble. Jordan's plan should be spread out and long term.",
+            good: false
+          },
+          {
+            text: "Grow the emergency fund to 3 months, then invest in a Roth IRA with a low-cost index fund",
+            result: "That follows the money order perfectly. Jordan is safe today and building wealth for the future.",
+            good: true
+          },
+          {
+            text: "Spend it, Jordan already saves enough",
+            result: "Jordan is doing great, but extra money invested early grows the most. Future Jordan says thanks!",
+            good: false
+          }
+        ]
+      },
+      {
+        type: "text",
+        heading: "Good to know",
+        text: "Everything in this course is for learning, not personal financial advice. Everyone's situation is different. Before making big money decisions, do your research and talk to a trusted adult or a licensed financial professional."
+      },
+      {
+        type: "question",
+        question: "Which plan is the SMARTEST for a long-term investor?",
+        choices: [
+          "Buy and sell every day to beat the market",
+          "Invest regularly in low-cost, diversified funds and be patient",
+          "Put everything into whatever is popular online",
+          "Keep all your money in cash forever"
+        ],
+        answer: 1,
+        explain: "Steady, low-cost, diversified investing is the plan many experts agree on."
+      },
+      {
+        type: "story",
+        heading: "Jordan's journey",
+        text: "A year ago, my paycheck disappeared before the month was even over. Now I have a budget, an emergency fund, good credit, insurance, and money growing for my future. Budgeting really is a skill, and I learned it. You can too!"
+      }
+    ]
+  }
+
 ];
