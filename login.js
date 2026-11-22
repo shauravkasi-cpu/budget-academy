@@ -10,9 +10,10 @@ function logIn(event) {
   // get the username they typed
   let username = document.getElementById("username").value;
 
-  // if the demo was used before, clear the demo's lesson progress
+  // if the demo was used before, clear the demo's lesson progress and XP
   if (localStorage.getItem("mode") === "demo") {
     localStorage.removeItem("lessonsDone");
+    localStorage.removeItem("xp");
   }
 
   // remember who is using the app

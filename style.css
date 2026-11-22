@@ -81,6 +81,12 @@
 
 
 /* ---------- Whole page ---------- */
+/* anything with "hidden" on it is really hidden,
+   even if another rule below gives it a display style */
+[hidden] {
+  display: none !important;
+}
+
 body {
   margin: 0;
   background-color: var(--panel);
@@ -685,11 +691,6 @@ input:focus {
   margin-top: 24px;
 }
 
-/* makes sure the cards really hide (the grid would show them otherwise) */
-.all-lessons[hidden] {
-  display: none;
-}
-
 /* you can click a lesson card, so the mouse turns into a hand */
 .lesson-card {
   cursor: pointer;
@@ -719,17 +720,290 @@ input:focus {
 }
 
 
+/* ---------- Lesson steps (one screen at a time) ---------- */
+.lesson-name {
+  margin: 0 0 16px 0;
+  font-size: 30px;
+  font-weight: 800;
+}
+
+/* the big box that holds the step you're on */
+.stage {
+  min-height: 380px;
+  margin-top: 24px;
+  padding: 40px;
+}
+
+/* each new step fades in and slides up a tiny bit */
+.step-box {
+  animation: fade-in 0.3s;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* the small label at the top, like "QUICK CHECK" */
+.step-tag {
+  display: inline-block;
+  margin: 0 0 14px 0;
+  padding: 4px 12px;
+  background-color: var(--tint);
+  color: var(--green);
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.step-heading {
+  margin: 0 0 16px 0;
+  font-size: 28px;
+  font-weight: 800;
+}
+
+/* one point in a list, with a green line on the left */
+.point {
+  margin: 12px 0 0 0;
+  padding: 14px 18px;
+  background-color: var(--card-inside);
+  border-left: 4px solid var(--green);
+  border-radius: 10px;
+  font-size: 18px;
+}
+
+/* Jordan's circle and speech bubble, side by side */
+.story {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.jordan {
+  flex-shrink: 0;        /* the circle never gets squished */
+  width: 64px;
+  height: 64px;
+  line-height: 64px;
+  border-radius: 50%;
+  background-color: var(--yellow);
+  color: #1A1A1A;
+  font-size: 28px;
+  font-weight: 800;
+  text-align: center;
+}
+
+/* the speech bubble (the top left corner is pointy, so it looks like Jordan is talking) */
+.speech {
+  flex: 1;
+  padding: 18px 22px;
+  background-color: var(--card-inside);
+  border: 1px solid var(--border);
+  border-radius: 4px 18px 18px 18px;
+}
+
+.speech-name {
+  margin: 0 0 6px 0;
+  color: var(--green);
+  font-weight: 800;
+}
+
+/* sort activity: one row per item */
+.sort-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.sort-name {
+  flex: 1;
+  font-size: 19px;
+  font-weight: 700;
+}
+
+.sort-button {
+  width: auto;
+  padding: 8px 22px;
+  background-color: var(--card-inside);
+  color: var(--text);
+  border: 2px solid var(--border);
+  border-radius: 999px;
+  box-shadow: none;
+}
+
+.sort-button:hover {
+  border-color: var(--green);
+}
+
+.sort-button:disabled {
+  cursor: default;
+}
+
+/* the check or X at the end of a sort row */
+.sort-result {
+  width: 24px;
+  font-size: 22px;
+  font-weight: 800;
+  text-align: center;
+}
+
+/* calculator: the boxes you type in, side by side */
+.calc-inputs {
+  display: flex;
+  flex-wrap: wrap;        /* if there isn't room, boxes go to the next line */
+  gap: 16px;
+  margin: 20px 0 16px 0;
+}
+
+.calc-input {
+  width: 220px;
+}
+
+.calc-input input {
+  margin: 0;
+  font-size: 18px;
+}
+
+/* the 3 answer boxes side by side */
+.calc-results {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.calc-box {
+  padding: 20px;
+  background-color: var(--card-inside);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+}
+
+/* Learn Mode: a heading for each unit */
+.unit-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin: 40px 0 16px 0;
+}
+
+.unit-title {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.unit-progress {
+  margin: 0;
+  color: var(--text-grey);
+  font-weight: 700;
+}
+
+/* badges you've earned */
+.badge-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.badge {
+  padding: 8px 16px;
+  background-color: var(--tint);
+  color: var(--green);
+  border-radius: 999px;
+  font-weight: 800;
+}
+
+/* unit badges are gold */
+.badge-unit {
+  background-color: var(--yellow-tint);
+  color: var(--yellow);
+}
+
+/* Back on the left, Next on the right */
+.step-nav {
+  display: flex;
+  align-items: center;
+}
+
+/* "Answer to keep going" fills the space in the middle */
+.step-hint {
+  flex: 1;
+  margin-right: 16px;
+  color: var(--text-grey);
+  text-align: right;
+}
+
+/* the Next button is faded out until you answer */
+.green-pill:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* the "Lesson complete!" screen */
+.finish {
+  padding: 20px 0;
+  text-align: center;
+}
+
+.finish-check {
+  width: 88px;
+  height: 88px;
+  line-height: 88px;
+  margin: 0 auto 20px auto;
+  border-radius: 50%;
+  background-color: var(--green);
+  color: var(--button-text);
+  font-size: 44px;
+  font-weight: 800;
+}
+
+.reward-row {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin: 8px 0 28px 0;
+}
+
+.reward {
+  min-width: 180px;
+  padding: 20px;
+  background-color: var(--tint);
+  border-radius: 16px;
+}
+
+.finish-buttons {
+  justify-content: center;
+}
+
+/* the unit badge on the "Lesson complete!" screen is gold
+   (this comes after .reward so the gold color wins) */
+.unit-reward {
+  background-color: var(--yellow-tint);
+}
+
+.unit-reward .split-number {
+  color: var(--yellow);
+}
+
+
 /* ---------- One lesson page ---------- */
 /* the lesson's main text */
 .lesson-text {
   margin: 0;
   font-size: 19px;
   line-height: 1.6;
-}
-
-.quiz-title {
-  margin: 48px 0 24px 0;
-  font-size: 32px;
 }
 
 /* an answer button in the quiz (grey, text on the left) */
@@ -788,17 +1062,12 @@ input:focus {
   color: var(--red);
 }
 
-/* the score card at the end has a green border */
-.quiz-result {
-  border: 2px solid var(--green);
-}
-
 
 /* ---------- Progress bars ---------- */
 /* the grey background of the bar */
 .bar {
   height: 12px;
-  background-color: var(--card-inside);
+  background-color: var(--border);
   border-radius: 6px;
 }
 
@@ -807,4 +1076,5 @@ input:focus {
   height: 12px;
   background-color: var(--green);
   border-radius: 6px;
+  transition: width 0.3s;   /* the bar slides when it changes */
 }

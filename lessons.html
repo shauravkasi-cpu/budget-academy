@@ -29,6 +29,7 @@
     <a class="menu-link" href="practice.html">Practice Month</a>
     <a class="menu-link" href="spending-test.html">Spending Test</a>
     <a class="menu-link" href="past-tests.html">Past Tests</a>
+    <a class="menu-link" href="calculators.html">Calculators</a>
 
     <!-- bottom of the menu -->
     <div class="sidebar-bottom">
@@ -46,7 +47,7 @@
 
       <!-- 1. the lesson you're on, with a Resume button -->
       <div class="card">
-        <p class="card-label">You're on</p>
+        <p class="card-label" id="current-unit"></p>
         <p class="huge-text" id="current-lesson"></p>
         <p class="lesson-description" id="current-description"></p>
 
@@ -56,12 +57,18 @@
         <button class="resume-button" id="resume-button" onclick="resumeLesson()">Resume</button>
       </div>
 
-      <!-- 2. button that shows or hides all the lessons -->
+      <!-- 2. the badges you've earned (lessons.js adds them) -->
+      <div class="card">
+        <p class="card-title">Your badges</p>
+        <div class="badge-list" id="badge-list"></div>
+      </div>
+
+      <!-- 3. button that shows or hides all the lessons -->
       <button class="pill-button" id="all-button" onclick="toggleAllLessons()">See all courses</button>
 
-      <!-- 3. a card for every lesson, hidden until you click the button -->
-      <!-- lessons.js adds the cards here -->
-      <div class="two-columns all-lessons" id="all-lessons" hidden></div>
+      <!-- 4. every lesson grouped by unit, hidden until you click the button -->
+      <!-- lessons.js adds them here -->
+      <div class="all-lessons" id="all-lessons" hidden></div>
 
     </div>
   </main>

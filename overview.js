@@ -4,7 +4,7 @@
 // The only difference: the demo starts with sample data, a new account starts empty.
 
 
-// userName, mode, and lessonsDone come from common.js
+// userName, mode, lessonsDone, and xp come from common.js
 
 
 // ---------- 1. Pick the data ----------
@@ -12,13 +12,11 @@
 // a new account starts with nothing
 let cards = [];
 let bills = [];
-let xp = 0;
 
 // the demo uses the sample data from demo-data.js
 if (mode === "demo") {
   cards = demoCards;
   bills = demoBills;
-  xp = demoXP;
 }
 
 // tips for "Tip of the day"
@@ -104,16 +102,20 @@ function showNextLesson() {
   }
 
   // if the lesson isn't written yet, just show its description
-  if (next.sections === undefined) {
+  if (next.steps === undefined) {
     points.innerHTML = '<p class="check-item">' + next.description + '</p>';
     return;
   }
 
-  // show the first 3 section headings with check marks
+  // show the headings of the first 3 "text" steps with check marks
   points.innerHTML = "";
-  for (let i = 0; i < next.sections.length && i < 3; i++) {
-    points.innerHTML = points.innerHTML +
-      '<p class="check-item"><span class="check">&#10003;</span>' + next.sections[i].heading + '</p>';
+  let shown = 0;
+  for (let i = 0; i < next.steps.length; i++) {
+    if (next.steps[i].type === "text" && shown < 3) {
+      points.innerHTML = points.innerHTML +
+        '<p class="check-item"><span class="check">&#10003;</span>' + next.steps[i].heading + '</p>';
+      shown = shown + 1;
+    }
   }
 }
 
@@ -188,30 +190,33 @@ function showMoney() {
 }
 
 
-// skill level and XP bar
-// Beginner: 0-99 XP, Budget Builder: 100-299 XP, Money Master: 300+ XP
+// skill level, and how far you are through your current unit
+// (getSkillLevel and lessonsThroughUnit are in common.js)
 function showSkillLevel() {
-  let level = "Beginner";
-  let nextLevelXP = 100;
-
-  if (xp >= 300) {
-    level = "Money Master";
-    nextLevelXP = 300;
-  } else if (xp >= 100) {
-    level = "Budget Builder";
-    nextLevelXP = 300;
-  }
-
-  // how full the bar is, as a percent
-  let percent = (xp / nextLevelXP) * 100;
-  if (percent > 100) {
-    percent = 100;
-  }
-
+  let level = getSkillLevel();
   document.getElementById("level-name").textContent = level;
   document.getElementById("level-name-big").textContent = level;
+
+  // if every lesson is done
+  if (lessonsDone === lessons.length) {
+    document.getElementById("xp-bar").style.width = "100%";
+    document.getElementById("xp-text").textContent = "You finished every unit! " + xp + " XP";
+    return;
+  }
+
+  // the unit you're working on now
+  let unitNumber = lessons[lessonsDone].unit;
+  let unit = units[unitNumber - 1];
+
+  // how many lessons are in this unit, and how many you've done in it
+  let lessonsInUnit = lessonsThroughUnit(unitNumber) - lessonsThroughUnit(unitNumber - 1);
+  let doneInUnit = lessonsDone - lessonsThroughUnit(unitNumber - 1);
+
+  let percent = (doneInUnit / lessonsInUnit) * 100;
   document.getElementById("xp-bar").style.width = percent + "%";
-  document.getElementById("xp-text").textContent = xp + " / " + nextLevelXP + " XP";
+  document.getElementById("xp-text").textContent =
+    doneInUnit + " of " + lessonsInUnit + " lessons done in Unit " + unitNumber + ": " + unit.title +
+    ". Finish it to become a " + unit.level + "!";
 }
 
 

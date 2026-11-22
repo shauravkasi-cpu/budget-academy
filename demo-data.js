@@ -21,6 +21,3 @@ const demoBills = [
 const demoGoals = [
   { name: "Car", saved: 93000, target: 150000 }
 ];
-
-// skill points earned so far
-const demoXP = 60;

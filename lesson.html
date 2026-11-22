@@ -29,6 +29,7 @@
     <a class="menu-link" href="practice.html">Practice Month</a>
     <a class="menu-link" href="spending-test.html">Spending Test</a>
     <a class="menu-link" href="past-tests.html">Past Tests</a>
+    <a class="menu-link" href="calculators.html">Calculators</a>
 
     <!-- bottom of the menu -->
     <div class="sidebar-bottom">
@@ -44,49 +45,29 @@
   <main class="page">
     <div class="content">
 
-      <!-- back to the Learn Mode page -->
-      <p><a href="lessons.html">&larr; Back to all lessons</a></p>
+      <!-- top of the lesson: name and progress bar -->
+      <p><a href="lessons.html">&larr; All lessons</a></p>
+      <p class="card-label" id="lesson-number"></p>
+      <p class="lesson-name" id="lesson-title"></p>
+      <div class="bar"><div class="bar-fill" id="step-bar"></div></div>
+      <p class="small-text" id="step-count"></p>
 
-      <!-- the lesson -->
-      <div class="card">
-        <p class="card-label" id="lesson-number"></p>
-        <p class="huge-text" id="lesson-title"></p>
-        <p class="lesson-description" id="lesson-description"></p>
-      </div>
+      <!-- the step you're on (lesson.js puts it here) -->
+      <div class="card stage" id="stage"></div>
 
-      <!-- shows only if this lesson isn't written yet -->
-      <div class="card" id="coming-soon" hidden>
-        <p class="card-label">Coming soon</p>
-        <p class="tip-text">The full lesson and a short quiz will go here.</p>
-      </div>
-
-      <!-- the lesson's sections get added here by lesson.js -->
-      <div id="lesson-sections"></div>
-
-      <!-- the quiz questions get added here by lesson.js -->
-      <div id="quiz-area" hidden>
-        <h2 class="quiz-title">Quiz</h2>
-        <div id="quiz-questions"></div>
-      </div>
-
-      <!-- shows after you answer every question -->
-      <div class="card quiz-result" id="quiz-result" hidden>
-        <p class="card-label">Your score</p>
-        <p class="huge-text" id="quiz-score"></p>
-        <p class="lesson-description" id="quiz-message"></p>
-        <button class="resume-button" onclick="finishLesson()">Finish lesson</button>
-      </div>
-
-      <!-- go to the lesson before or after this one -->
-      <div class="two-columns">
-        <button class="demo-button" id="previous-button" onclick="previousLesson()">&larr; Previous lesson</button>
-        <button id="next-button" onclick="nextLesson()">Next lesson &rarr;</button>
+      <!-- Back and Next buttons -->
+      <div class="step-nav" id="step-nav">
+        <button class="pill-button" id="back-button" onclick="previousStep()">&larr; Back</button>
+        <span class="step-hint" id="step-hint"></span>
+        <button class="pill-button green-pill" id="next-button" onclick="nextStep()">Next &rarr;</button>
       </div>
 
     </div>
   </main>
 
   <script src="common.js"></script>
+  <script src="money.js"></script>
+  <script src="calculators.js"></script>
   <script src="lessons-data.js"></script>
   <script src="lesson.js"></script>
 </body>

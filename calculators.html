@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Budget Academy - Calculators</title>
+  <link rel="icon" href="logo.png">
+  <link rel="stylesheet" href="style.css">
+  <script src="theme.js"></script>
+</head>
+<body class="app">
+
+  <!-- menu on the left -->
+  <nav class="sidebar">
+    <div class="brand">
+      <img src="logo.png" alt="">
+      <span>Budget Academy</span>
+    </div>
+
+    <!-- the 2 main sections -->
+    <div class="section-switch">
+      <a href="overview.html">My Money</a>
+      <a href="lessons.html" class="active">Learn Mode</a>
+    </div>
+
+    <!-- the pages inside "Learn Mode" -->
+    <p class="menu-label">Learn Mode</p>
+    <a class="menu-link" href="lessons.html">Lessons</a>
+    <a class="menu-link" href="practice.html">Practice Month</a>
+    <a class="menu-link" href="spending-test.html">Spending Test</a>
+    <a class="menu-link" href="past-tests.html">Past Tests</a>
+    <a class="menu-link active" href="calculators.html">Calculators</a>
+
+    <!-- bottom of the menu -->
+    <div class="sidebar-bottom">
+      <button class="menu-link" id="theme-button" onclick="toggleTheme()">Light mode</button>
+      <div class="user-row">
+        <span class="avatar" id="avatar"></span>
+        <span class="user-name" id="profile-name"></span>
+        <button class="logout-button" onclick="logOut()">Log out</button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="page">
+    <div class="content">
+
+      <h1>Money Calculators</h1>
+      <p class="lesson-description">Try out the same calculators from the lessons with your own numbers.</p>
+
+      <!-- calculators-page.js adds a card for each calculator here -->
+      <div id="calculator-list"></div>
+
+    </div>
+  </main>
+
+  <script src="common.js"></script>
+  <script src="money.js"></script>
+  <script src="calculators.js"></script>
+  <script src="calculators-page.js"></script>
+</body>
+</html>
