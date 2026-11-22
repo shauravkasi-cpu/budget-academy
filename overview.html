@@ -6,84 +6,155 @@
   <title>Budget Academy - Overview</title>
   <link rel="icon" href="logo.png">
   <link rel="stylesheet" href="style.css">
+  <script src="theme.js"></script>
 </head>
-<body>
+<body class="app">
 
-  <!-- big top bar with the 2 main sections -->
-  <nav class="top-bar">
-
-    <!-- name and log out in the top right corner -->
-    <div class="profile">
-      <span id="profile-name"></span>
-      <button class="small-button demo-button" onclick="logOut()">Log out</button>
-    </div>
-
+  <!-- menu on the left -->
+  <nav class="sidebar">
     <div class="brand">
       <img src="logo.png" alt="">
       <span>Budget Academy</span>
     </div>
 
-    <div class="main-links">
+    <!-- the 2 main sections -->
+    <div class="section-switch">
       <a href="overview.html" class="active">My Money</a>
       <a href="lessons.html">Learn Mode</a>
     </div>
+
+    <!-- the pages inside "My Money" -->
+    <p class="menu-label">My Money</p>
+    <a class="menu-link active" href="overview.html">Overview</a>
+    <a class="menu-link" href="#">Cards</a>
+    <a class="menu-link" href="#">Bills</a>
+    <a class="menu-link" href="#">Goals</a>
+    <a class="menu-link" href="#">Taxes &amp; Mortgage</a>
+
+    <!-- bottom of the menu -->
+    <div class="sidebar-bottom">
+      <button class="menu-link" id="theme-button" onclick="toggleTheme()">Light mode</button>
+      <div class="user-row">
+        <span class="avatar" id="avatar"></span>
+        <span class="user-name" id="profile-name"></span>
+        <button class="logout-button" onclick="logOut()">Log out</button>
+      </div>
+    </div>
   </nav>
 
-  <!-- smaller bar with the pages inside "My Money" -->
-  <nav class="sub-bar">
-    <a href="overview.html" class="active">Overview</a>
-    <a href="#">Cards</a>
-    <a href="#">Bills</a>
-    <a href="#">Goals</a>
-    <a href="#">Taxes &amp; Mortgage</a>
-  </nav>
-
+  <!-- the big panel on the right -->
   <main class="page">
+    <div class="content">
 
-    <!-- only shows in the demo -->
-    <div class="demo-banner" id="demo-banner" hidden>
-      You're trying the demo. <a href="index.html">Sign up</a> to save your progress.
-    </div>
-
-    <h1 id="welcome"></h1>
-
-    <!-- 1. balance and bills due, side by side -->
-    <div class="two-columns">
-
-      <div class="card">
-        <p class="card-label">Total balance</p>
-        <p class="huge-text" id="balance"></p>
-        <p class="small-text" id="balance-text"></p>
+      <!-- only shows in the demo -->
+      <div class="demo-banner" id="demo-banner" hidden>
+        You're trying the demo. <a href="index.html">Sign up</a> to save your progress.
       </div>
 
-      <div class="card">
-        <p class="card-label">Bills due in the next 7 days</p>
-        <p class="huge-text" id="bills-due"></p>
-        <p class="small-text" id="bills-due-text"></p>
+      <!-- 1. greeting and buttons on the left, number boxes on the right -->
+      <div class="greeting-row">
+        <div>
+          <h1 class="greeting"><span id="greeting-time"></span>, <span class="grey" id="greeting-name"></span></h1>
+          <div class="button-row">
+            <button class="pill-button green-pill" id="resume-button" onclick="openLesson(lessonsDone)">Resume lesson</button>
+            <a class="pill-button" href="lessons.html">See all lessons &rsaquo;</a>
+          </div>
+        </div>
+
+        <div>
+          <div class="stat-boxes">
+            <div class="stat-box">
+              <p class="stat-number" id="box-lessons"></p>
+              <p class="stat-label">LESSONS</p>
+            </div>
+            <div class="stat-box">
+              <p class="stat-number" id="box-xp"></p>
+              <p class="stat-label">XP</p>
+            </div>
+            <div class="stat-box">
+              <p class="stat-number" id="box-bills"></p>
+              <p class="stat-label">BILLS</p>
+            </div>
+          </div>
+          <p class="stat-caption">Skill level: <b id="level-name"></b></p>
+        </div>
       </div>
 
-    </div>
+      <!-- 2. Practice Month -->
+      <div class="card row-card">
+        <div>
+          <p class="card-title">Practice Month</p>
+          <p class="card-text">Can you make it through a month on a $2,000 paycheck? Practice with no real money at risk.</p>
+        </div>
+        <a class="pill-button green-pill" href="practice.html">Play now</a>
+      </div>
 
-    <!-- 2. skill level, with the next lesson under it -->
-    <div class="card">
-      <p class="card-label">Skill level</p>
-      <p class="big-text" id="level-name"></p>
-      <div class="bar"><div class="bar-fill" id="xp-bar"></div></div>
-      <p class="small-text" id="xp-text"></p>
-
-      <div class="next-lesson">
+      <!-- 3. the next lesson, in a light green box -->
+      <div class="card lesson-banner">
         <p class="card-label">Your next lesson</p>
-        <p class="big-text" id="next-lesson"></p>
-        <button class="small-button" onclick="openLesson(lessonsDone)">Resume</button>
+        <p class="banner-title" id="next-lesson"></p>
+        <!-- overview.js adds a check mark line for each part of the lesson -->
+        <div id="next-lesson-points"></div>
+        <button class="pill-button green-pill" id="next-lesson-button" onclick="openLesson(lessonsDone)">Resume</button>
       </div>
-    </div>
 
-    <!-- 3. tip of the day -->
-    <div class="card">
-      <p class="card-label">Tip of the day</p>
-      <p class="tip-text" id="tip"></p>
-    </div>
+      <!-- 4. bills on the left, money numbers on the right -->
+      <div class="two-columns">
 
+        <div>
+          <div class="section-header">
+            <p class="section-title">Upcoming bills</p>
+            <a class="pill-button small-pill" href="#">View all</a>
+          </div>
+          <!-- overview.js adds a row for each bill -->
+          <div class="card list-card" id="bill-list"></div>
+        </div>
+
+        <div>
+          <div class="section-header">
+            <p class="section-title">My money</p>
+            <a class="pill-button small-pill" href="#">View cards</a>
+          </div>
+          <div class="split-card">
+            <div>
+              <p class="split-number" id="balance"></p>
+              <p class="split-label" id="balance-text"></p>
+            </div>
+            <div>
+              <p class="split-number" id="bills-total"></p>
+              <p class="split-label">Due in the next 7 days</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 5. skill level and tip of the day -->
+      <div class="two-columns">
+
+        <div>
+          <div class="section-header">
+            <p class="section-title">Skill level</p>
+          </div>
+          <div class="card">
+            <p class="big-text" id="level-name-big"></p>
+            <div class="bar"><div class="bar-fill" id="xp-bar"></div></div>
+            <p class="small-text" id="xp-text"></p>
+          </div>
+        </div>
+
+        <div>
+          <div class="section-header">
+            <p class="section-title">Tip of the day</p>
+          </div>
+          <div class="card">
+            <p class="tip-text" id="tip"></p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
   </main>
 
   <script src="common.js"></script>

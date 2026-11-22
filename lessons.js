@@ -3,12 +3,7 @@
 // Shows the lesson you're on, and a card for every lesson.
 
 
-// how many lessons are finished
-// a new account has finished 0, the demo uses the number in demo-data.js
-let lessonsDone = 0;
-if (mode === "demo") {
-  lessonsDone = demoLessonsDone;
-}
+// lessonsDone (how many lessons are finished) comes from common.js
 
 
 // ---------- 1. The "You're on" card ----------

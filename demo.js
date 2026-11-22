@@ -14,6 +14,9 @@ function startDemo(event) {
   localStorage.setItem("name", name);
   localStorage.setItem("mode", "demo");
 
+  // the demo starts 2 lessons in, so you can see what progress looks like
+  localStorage.setItem("lessonsDone", 2);
+
   // go to the home page
   window.location.href = "overview.html";
 }

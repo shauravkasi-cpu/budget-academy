@@ -24,7 +24,3 @@ const demoGoals = [
 
 // skill points earned so far
 const demoXP = 60;
-
-// how many lessons the demo person has finished
-// (so the demo shows what it looks like partway through the course)
-const demoLessonsDone = 2;

@@ -1,3 +1,8 @@
+/* ==========================================================
+   style.css - how every page looks
+   ========================================================== */
+
+
 /* ---------- Font ---------- */
 /* the font file is saved in our project, so it works without internet */
 @font-face {
@@ -6,32 +11,165 @@
   font-weight: 400 800;
 }
 
-/* ---------- Colors ---------- */
-/* dark mode is our main theme */
+
+/* ---------- Colors: dark mode (the normal look) ---------- */
+/* every color on the site comes from these variables */
 :root {
-  --background: #1E1E1E;
-  --card: #2A2A2A;
+  --sidebar: #141414;              /* menu on the left */
+  --sidebar-title: #F2F2F2;        /* "Budget Academy" in the menu */
+  --sidebar-text: #B8B8B8;         /* menu links */
+  --sidebar-hover: #222222;        /* menu link when your mouse is on it */
+  --sidebar-active: #2A2A2A;       /* the page you're on */
+  --sidebar-active-text: #F2F2F2;
+  --logo-tile: transparent;        /* no tile behind the logo in dark mode */
+
+  --panel: #1E1E1E;                /* the big area on the right */
+  --card: #2A2A2A;                 /* boxes */
+  --card-inside: #1E1E1E;          /* things inside boxes, like text inputs */
+  --tint: #23302A;                 /* light green box (next lesson) */
+
   --text: #F2F2F2;
   --text-grey: #A0A0A0;
   --border: #3A3A3A;
+
   --green: #22C55E;
   --dark-green: #16A34A;
+  --button-text: #1E1E1E;          /* text on green buttons */
+  --button-edge: 0 4px 0 #16A34A;  /* darker strip under green buttons */
+
+  --banner: #3A2F14;               /* demo banner */
+  --banner-text: #FCD34D;
+
   --yellow: #F59E0B;
+  --yellow-tint: #3A2F14;
+  --red: #DC2626;
 }
+
+
+/* ---------- Colors: light mode ---------- */
+/* theme.js adds the class "light" to the page, then these colors are used instead */
+.light {
+  --sidebar: #14532D;
+  --sidebar-title: #FFFFFF;
+  --sidebar-text: #D9F0E1;
+  --sidebar-hover: #1B6B3B;
+  --sidebar-active: #FFFFFF;
+  --sidebar-active-text: #14532D;
+  --logo-tile: #FFFFFF;            /* white tile behind the logo in light mode */
+
+  --panel: #FFFFFF;
+  --card: #FFFFFF;
+  --card-inside: #F7F7F8;
+  --tint: #F0FDF4;
+
+  --text: #1A1A1A;
+  --text-grey: #6B6B6B;
+  --border: #E5E5E5;
+
+  --green: #16A34A;
+  --dark-green: #15803D;
+  --button-text: #FFFFFF;
+  --button-edge: none;             /* flat buttons in light mode */
+
+  --banner: #FEF3C7;
+  --banner-text: #92400E;
+
+  --yellow: #D97706;
+  --yellow-tint: #FEF3C7;
+  --red: #DC2626;
+}
+
 
 /* ---------- Whole page ---------- */
 body {
   margin: 0;
-  background-color: var(--background);
+  background-color: var(--panel);
   color: var(--text);
   font-family: "Nunito", sans-serif;
   /* every digit is the same width, so money lines up */
   font-variant-numeric: tabular-nums;
 }
 
+/* pages after logging in: the menu color shows around the big panel */
+body.app {
+  background-color: var(--sidebar);
+}
+
+a {
+  color: var(--green);
+  font-weight: 700;
+}
+
+
+/* ---------- Buttons ---------- */
+/* green button (the normal button) */
+button {
+  width: 100%;
+  padding: 12px;
+  background-color: var(--green);
+  color: var(--button-text);
+  border: none;
+  border-radius: 12px;
+  box-shadow: var(--button-edge);
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+/* when you press a button it moves down a little */
+button:active {
+  transform: translateY(2px);
+}
+
+/* round "pill" button with a thin border (used for links that look like buttons) */
+.pill-button {
+  display: inline-block;
+  width: auto;
+  padding: 10px 22px;
+  background-color: var(--card);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  box-shadow: none;
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+/* a pill button that is green */
+.green-pill {
+  background-color: var(--green);
+  color: var(--button-text);
+  border-color: var(--green);
+  box-shadow: var(--button-edge);
+}
+
+/* smaller pill button */
+.small-pill {
+  padding: 6px 14px;
+  font-size: 14px;
+}
+
+/* small green button that isn't full width */
+.small-button {
+  width: auto;
+  padding: 10px 20px;
+  font-size: 16px;
+}
+
+/* grey button for less important things (like the demo button) */
+.demo-button {
+  background-color: var(--card);
+  color: var(--text);
+  border: 1px solid var(--border);
+  box-shadow: none;
+}
+
+
 /* ---------- Log In page ---------- */
 .login-page {
-  max-width: 360px;
+  max-width: 380px;
   margin: 80px auto;
   padding: 0 16px;
   text-align: center;
@@ -41,7 +179,7 @@ body {
   width: 100px;
 }
 
-h1 {
+.login-page h1 {
   margin: 8px 0 4px 0;
   font-size: 32px;
 }
@@ -54,10 +192,10 @@ h1 {
 
 /* the box around the form */
 .login-box {
+  padding: 28px;
   background-color: var(--card);
   border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 24px;
+  border-radius: 20px;
   text-align: left;
 }
 
@@ -72,10 +210,10 @@ input {
   box-sizing: border-box;
   margin-bottom: 16px;
   padding: 12px;
-  background-color: var(--background);
+  background-color: var(--card-inside);
   color: var(--text);
   border: 1px solid var(--border);
-  border-radius: 8px;
+  border-radius: 10px;
   font-family: inherit;
   font-size: 16px;
 }
@@ -84,27 +222,6 @@ input {
 input:focus {
   outline: none;
   border-color: var(--green);
-}
-
-/* green button with a darker bottom edge so it looks pressable */
-button {
-  width: 100%;
-  padding: 12px;
-  background-color: var(--green);
-  color: var(--background);
-  border: none;
-  border-radius: 8px;
-  box-shadow: 0 4px 0 var(--dark-green);
-  font-family: inherit;
-  font-size: 16px;
-  font-weight: 800;
-  cursor: pointer;
-}
-
-/* when you press the button it moves down a little */
-button:active {
-  box-shadow: none;
-  transform: translateY(4px);
 }
 
 /* the small "or" between the two buttons */
@@ -119,119 +236,246 @@ button:active {
   color: var(--text-grey);
 }
 
-a {
-  color: var(--green);
-  font-weight: 700;
-}
 
-
-/* ---------- Big top bar ---------- */
-/* everything in the top bar is centered */
-.top-bar {
-  position: relative;
-  padding: 28px 32px 0 32px;
-  text-align: center;
-  background-color: var(--card);
-  border-bottom: 1px solid var(--border);
+/* ---------- Menu on the left (sidebar) ---------- */
+.sidebar {
+  position: fixed;       /* stays in place when you scroll */
+  top: 0;
+  left: 0;
+  width: 240px;
+  height: 100vh;         /* as tall as the screen */
+  padding: 20px 16px;
+  box-sizing: border-box;
+  background-color: var(--sidebar);
 }
 
 /* logo and name */
 .brand {
   display: flex;
-  justify-content: center;
   align-items: center;
-  gap: 12px;
-  font-size: 26px;
+  gap: 10px;
+  margin-bottom: 20px;
+  color: var(--sidebar-title);
+  font-size: 19px;
   font-weight: 800;
+  white-space: nowrap;   /* keeps "Budget Academy" on one line */
 }
 
+/* the logo sits on a small tile so it shows up on the green menu */
 .brand img {
-  width: 48px;
+  width: 30px;
+  padding: 3px;
+  background-color: var(--logo-tile);
+  border-radius: 8px;
 }
 
-/* the 2 main sections: My Money and Learn Mode */
-.main-links {
-  margin-top: 20px;
+/* the 2 main sections, side by side like tabs */
+.section-switch {
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+  background-color: var(--sidebar-hover);
+  border-radius: 12px;
 }
 
-.main-links a {
-  display: inline-block;
-  margin: 0 40px;
-  padding-bottom: 16px;
-  color: var(--text-grey);
-  font-size: 40px;
+.section-switch a {
+  flex: 1;               /* both tabs are the same width */
+  padding: 8px 0;
+  color: var(--sidebar-text);
+  border-radius: 9px;
+  font-size: 15px;
   font-weight: 800;
+  text-align: center;
   text-decoration: none;
-  border-bottom: 5px solid transparent;
 }
 
-/* the section you're in is green with a green line under it */
-.main-links a.active {
-  color: var(--green);
-  border-bottom: 5px solid var(--green);
+.section-switch a.active {
+  background-color: var(--sidebar-active);
+  color: var(--sidebar-active-text);
 }
 
-/* name and log out, stuck to the top right corner */
-.profile {
+/* small title above a group of links, like "MY MONEY" */
+.menu-label {
+  margin: 24px 12px 8px 12px;
+  color: var(--sidebar-text);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+/* one link in the menu */
+.menu-link {
+  display: block;
+  width: 100%;
+  margin-bottom: 4px;
+  padding: 9px 12px;
+  box-sizing: border-box;
+  background-color: transparent;
+  color: var(--sidebar-text);
+  border: none;
+  border-radius: 10px;
+  box-shadow: none;
+  font-size: 16px;
+  font-weight: 700;
+  text-align: left;
+  text-decoration: none;
+}
+
+.menu-link:hover {
+  background-color: var(--sidebar-hover);
+}
+
+/* the page you're on */
+.menu-link.active {
+  background-color: var(--sidebar-active);
+  color: var(--sidebar-active-text);
+}
+
+/* the stuff at the very bottom of the menu */
+.sidebar-bottom {
   position: absolute;
-  top: 28px;
-  right: 32px;
+  left: 16px;
+  right: 16px;
+  bottom: 16px;
+}
+
+/* your name with a circle that has your first letter */
+.user-row {
   display: flex;
   align-items: center;
-  gap: 12px;
-  font-weight: 700;
+  gap: 10px;
+  padding: 8px 12px;
 }
 
-
-/* ---------- Smaller bar under the top bar ---------- */
-.sub-bar {
-  padding: 20px 32px;
+.avatar {
+  width: 34px;
+  height: 34px;
+  line-height: 34px;
+  border-radius: 50%;
+  background-color: var(--green);
+  color: var(--button-text);
+  font-weight: 800;
   text-align: center;
-  border-bottom: 1px solid var(--border);
 }
 
-.sub-bar a {
-  margin: 0 20px;
-  padding-bottom: 6px;
-  color: var(--text-grey);
-  font-size: 20px;
-  text-decoration: none;
+.user-name {
+  flex: 1;
+  color: var(--sidebar-title);
+  font-weight: 800;
 }
 
-/* the page you're on is green and underlined */
-.sub-bar a.active {
-  color: var(--green);
-  border-bottom: 3px solid var(--green);
+.logout-button {
+  width: auto;
+  padding: 0;
+  background-color: transparent;
+  color: var(--sidebar-text);
+  box-shadow: none;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: underline;
 }
 
 
-/* ---------- Main page area ---------- */
+/* ---------- The big panel on the right ---------- */
+/* it starts after the 240px menu, with a little space around it */
 .page {
-  max-width: 1200px;
+  min-height: calc(100vh - 24px);
+  margin: 12px 12px 12px 252px;
+  padding: 48px 32px;
+  box-sizing: border-box;
+  background-color: var(--panel);
+  border-radius: 20px;
+}
+
+/* keeps everything in the middle and not too wide */
+.content {
+  max-width: 960px;
   margin: 0 auto;
-  padding: 40px 32px;
 }
 
 .page h1 {
-  font-size: 36px;
+  margin: 0 0 24px 0;
+  font-size: 34px;
 }
 
+/* yellow strip at the top in the demo */
 .demo-banner {
-  margin-bottom: 24px;
-  padding: 16px 20px;
-  border: 1px solid var(--border);
-  border-left: 4px solid var(--green);
-  border-radius: 8px;
-  background-color: var(--card);
-  font-size: 18px;
+  margin-bottom: 32px;
+  padding: 12px 16px;
+  background-color: var(--banner);
+  color: var(--banner-text);
+  border-radius: 12px;
+  font-weight: 700;
+  text-align: center;
 }
 
-/* 2 cards side by side */
+.demo-banner a {
+  color: var(--banner-text);
+}
+
+
+/* ---------- Cards (boxes) ---------- */
+.card {
+  margin-bottom: 24px;
+  padding: 28px;
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+}
+
+/* small grey title at the top of a card */
+.card-label {
+  margin: 0 0 8px 0;
+  color: var(--text-grey);
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.card-title {
+  margin: 0 0 6px 0;
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.card-text {
+  margin: 0;
+  color: var(--text-grey);
+  font-size: 17px;
+}
+
+/* very big text */
+.huge-text {
+  margin: 0;
+  font-size: 44px;
+  font-weight: 800;
+}
+
+/* big text */
+.big-text {
+  margin: 0 0 12px 0;
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.small-text {
+  margin: 12px 0 0 0;
+  color: var(--text-grey);
+  font-size: 16px;
+}
+
+.tip-text {
+  margin: 0;
+  font-size: 19px;
+}
+
+/* 2 things side by side */
 .two-columns {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 32px;
-  margin-bottom: 32px;
+  gap: 24px;
+  margin-bottom: 24px;
 }
 
 /* the grid already adds space between cards, so cards inside it don't need their own */
@@ -239,53 +483,184 @@ a {
   margin-bottom: 0;
 }
 
-/* a box with a border (used everywhere) */
-.card {
-  margin-bottom: 32px;
-  padding: 36px;
-  background-color: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 16px;
+/* title on the left, button on the right (like "Upcoming bills ... View all") */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 40px 0 14px 0;
 }
 
-/* small grey title at the top of a card */
-.card-label {
-  margin: 0 0 8px 0;
+.section-title {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 800;
+}
+
+
+/* ---------- Home page (Overview) ---------- */
+/* "Good afternoon, Alex" on the left, number boxes on the right */
+.greeting-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 32px;
+}
+
+.greeting {
+  margin: 0 0 20px 0;
+  font-size: 34px;
+  font-weight: 800;
+}
+
+/* the name is grey */
+.grey {
   color: var(--text-grey);
+}
+
+/* buttons next to each other */
+.button-row {
+  display: flex;
+  gap: 12px;
+}
+
+/* the small number boxes */
+.stat-boxes {
+  display: flex;
+  gap: 8px;
+}
+
+.stat-box {
+  width: 76px;
+  padding: 10px 0;
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  text-align: center;
+}
+
+.stat-number {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.stat-label {
+  margin: 0;
+  color: var(--text-grey);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.stat-caption {
+  margin: 12px 0 0 0;
+  color: var(--text-grey);
+  text-align: right;
+}
+
+/* a card with words on the left and a button on the right */
+.row-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* the light green "next lesson" card */
+.lesson-banner {
+  background-color: var(--tint);
+}
+
+.banner-title {
+  margin: 0 0 18px 0;
+  font-size: 28px;
+  font-weight: 800;
+}
+
+/* lines with a green check mark in front */
+.check-item {
+  margin: 0 0 10px 0;
   font-size: 18px;
+}
+
+.check {
+  margin-right: 8px;
+  color: var(--green);
+  font-weight: 800;
+}
+
+.lesson-banner .green-pill {
+  margin-top: 12px;
+}
+
+/* the list of bills */
+.list-card {
+  padding: 8px 24px;
+}
+
+.bill-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 18px;
+}
+
+/* no line under the last bill */
+.bill-row:last-child {
+  border-bottom: none;
+}
+
+.bill-name {
+  flex: 1;               /* takes up the extra space, pushing the rest right */
   font-weight: 700;
 }
 
-/* very big numbers (balance and bills due) */
-.huge-text {
-  margin: 0;
-  font-size: 64px;
-  font-weight: 800;
-}
-
-/* big text (skill level, next lesson) */
-.big-text {
-  margin: 0 0 16px 0;
-  font-size: 32px;
-  font-weight: 800;
-}
-
-.small-text {
-  margin: 12px 0 0 0;
+/* small rounded label like "Due in 2 days" */
+.chip {
+  padding: 4px 12px;
+  background-color: var(--card-inside);
   color: var(--text-grey);
-  font-size: 18px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 700;
 }
 
-/* the next lesson part, with a line above it */
-.next-lesson {
-  margin-top: 32px;
-  padding-top: 32px;
-  border-top: 1px solid var(--border);
+/* bills due soon get a yellow label */
+.chip-soon {
+  background-color: var(--yellow-tint);
+  color: var(--yellow);
 }
 
-.tip-text {
+/* one box split into 2 halves, each with a big number */
+.split-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+}
+
+.split-card div {
+  padding: 24px;
+}
+
+/* line between the 2 halves */
+.split-card div + div {
+  border-left: 1px solid var(--border);
+}
+
+.split-number {
+  margin: 0 0 6px 0;
+  font-size: 30px;
+  font-weight: 800;
+}
+
+.split-label {
   margin: 0;
-  font-size: 22px;
+  color: var(--text-grey);
+  font-size: 16px;
 }
 
 
@@ -293,23 +668,24 @@ a {
 .lesson-description {
   margin: 16px 0 24px 0;
   color: var(--text-grey);
-  font-size: 20px;
+  font-size: 18px;
 }
 
 /* the big Resume button */
 .resume-button {
   width: auto;
   margin-top: 24px;
-  padding: 14px 48px;
-  font-size: 20px;
+  padding: 14px 40px;
+  border-radius: 999px;
+  font-size: 18px;
 }
 
 /* the lesson cards that show up under "See all courses" */
 .all-lessons {
-  margin-top: 32px;
+  margin-top: 24px;
 }
 
-/* the [hidden] part makes sure the cards really hide (the grid would show them otherwise) */
+/* makes sure the cards really hide (the grid would show them otherwise) */
 .all-lessons[hidden] {
   display: none;
 }
@@ -328,11 +704,12 @@ a {
 .lesson-status {
   margin: 0;
   color: var(--text-grey);
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 800;
 }
 
-.lesson-done .lesson-status {
+.lesson-done .lesson-status,
+.lesson-current .lesson-status {
   color: var(--green);
 }
 
@@ -341,43 +718,93 @@ a {
   border: 2px solid var(--green);
 }
 
-.lesson-current .lesson-status {
+
+/* ---------- One lesson page ---------- */
+/* the lesson's main text */
+.lesson-text {
+  margin: 0;
+  font-size: 19px;
+  line-height: 1.6;
+}
+
+.quiz-title {
+  margin: 48px 0 24px 0;
+  font-size: 32px;
+}
+
+/* an answer button in the quiz (grey, text on the left) */
+.choice {
+  display: block;
+  margin-bottom: 12px;
+  padding: 16px 20px;
+  background-color: var(--card-inside);
+  color: var(--text);
+  border: 2px solid var(--border);
+  box-shadow: none;
+  font-size: 17px;
+  font-weight: 700;
+  text-align: left;
+}
+
+/* green border when your mouse is over a choice */
+.choice:hover {
+  border-color: var(--green);
+}
+
+/* after you answer, the buttons are locked */
+.choice:disabled {
+  cursor: default;
+  border-color: var(--border);
+}
+
+/* the right answer turns green */
+.choice-right,
+.choice-right:disabled {
+  background-color: var(--green);
+  border-color: var(--green);
+  color: var(--button-text);
+}
+
+/* a wrong answer you picked turns red */
+.choice-wrong,
+.choice-wrong:disabled {
+  background-color: var(--red);
+  border-color: var(--red);
+  color: #FFFFFF;
+}
+
+/* the message under a question after you answer */
+.feedback {
+  margin: 16px 0 0 0;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.feedback-right {
   color: var(--green);
+}
+
+.feedback-wrong {
+  color: var(--red);
+}
+
+/* the score card at the end has a green border */
+.quiz-result {
+  border: 2px solid var(--green);
 }
 
 
 /* ---------- Progress bars ---------- */
 /* the grey background of the bar */
 .bar {
-  height: 16px;
-  background-color: var(--background);
-  border-radius: 8px;
+  height: 12px;
+  background-color: var(--card-inside);
+  border-radius: 6px;
 }
 
 /* the green part (JavaScript sets how wide it is) */
 .bar-fill {
-  height: 16px;
+  height: 12px;
   background-color: var(--green);
-  border-radius: 8px;
-}
-
-
-/* ---------- Small buttons ---------- */
-/* same as the big button, just smaller and not full width */
-.small-button {
-  width: auto;
-  padding: 10px 20px;
-  font-size: 16px;
-  box-shadow: 0 3px 0 var(--dark-green);
-}
-
-
-/* ---------- Grey buttons ---------- */
-/* used for less important buttons (demo, log out) so green ones stand out */
-/* this is at the bottom so it wins over the green button styles above */
-.demo-button {
-  background-color: var(--card);
-  color: var(--text);
-  border: 2px solid var(--border);
-  box-shadow: 0 4px 0 var(--border);
+  border-radius: 6px;
 }

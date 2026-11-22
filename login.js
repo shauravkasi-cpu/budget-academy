@@ -10,6 +10,11 @@ function logIn(event) {
   // get the username they typed
   let username = document.getElementById("username").value;
 
+  // if the demo was used before, clear the demo's lesson progress
+  if (localStorage.getItem("mode") === "demo") {
+    localStorage.removeItem("lessonsDone");
+  }
+
   // remember who is using the app
   // (for now any username works, real accounts come later with Sign up)
   localStorage.setItem("name", username);

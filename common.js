@@ -12,10 +12,15 @@ if (userName === null) {
   window.location.href = "index.html";
 }
 
+// how many lessons are finished (saved when you finish a lesson's quiz)
+// Number() turns the saved text into a number. If nothing is saved yet, it's 0
+let lessonsDone = Number(localStorage.getItem("lessonsDone"));
 
-// shows the user's name in the top right corner
+
+// shows the user's name and first letter at the bottom of the menu
 function showProfile() {
   document.getElementById("profile-name").textContent = userName;
+  document.getElementById("avatar").textContent = userName.charAt(0).toUpperCase();
 }
 
 
@@ -32,8 +37,10 @@ function openLesson(lessonNumber) {
 function logOut() {
   localStorage.removeItem("name");
   localStorage.removeItem("mode");
+  localStorage.removeItem("lessonsDone");
   window.location.href = "index.html";
 }
 
 
 showProfile();
+showThemeButton();   // this function is in theme.js

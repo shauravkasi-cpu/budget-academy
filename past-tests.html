@@ -6,47 +6,53 @@
   <title>Budget Academy - Past Tests</title>
   <link rel="icon" href="logo.png">
   <link rel="stylesheet" href="style.css">
+  <script src="theme.js"></script>
 </head>
-<body>
+<body class="app">
 
-  <!-- big top bar with the 2 main sections -->
-  <nav class="top-bar">
-
-    <!-- name and log out in the top right corner -->
-    <div class="profile">
-      <span id="profile-name"></span>
-      <button class="small-button demo-button" onclick="logOut()">Log out</button>
-    </div>
-
+  <!-- menu on the left -->
+  <nav class="sidebar">
     <div class="brand">
       <img src="logo.png" alt="">
       <span>Budget Academy</span>
     </div>
 
-    <div class="main-links">
+    <!-- the 2 main sections -->
+    <div class="section-switch">
       <a href="overview.html">My Money</a>
       <a href="lessons.html" class="active">Learn Mode</a>
     </div>
-  </nav>
 
-  <!-- smaller bar with the pages inside "Learn Mode" -->
-  <nav class="sub-bar">
-    <a href="lessons.html">Lessons</a>
-    <a href="practice.html">Practice Month</a>
-    <a href="spending-test.html">Spending Test</a>
-    <a href="past-tests.html" class="active">Past Tests</a>
+    <!-- the pages inside "Learn Mode" -->
+    <p class="menu-label">Learn Mode</p>
+    <a class="menu-link" href="lessons.html">Lessons</a>
+    <a class="menu-link" href="practice.html">Practice Month</a>
+    <a class="menu-link" href="spending-test.html">Spending Test</a>
+    <a class="menu-link active" href="past-tests.html">Past Tests</a>
+
+    <!-- bottom of the menu -->
+    <div class="sidebar-bottom">
+      <button class="menu-link" id="theme-button" onclick="toggleTheme()">Light mode</button>
+      <div class="user-row">
+        <span class="avatar" id="avatar"></span>
+        <span class="user-name" id="profile-name"></span>
+        <button class="logout-button" onclick="logOut()">Log out</button>
+      </div>
+    </div>
   </nav>
 
   <main class="page">
+    <div class="content">
 
-    <h1>Past Tests</h1>
+      <h1>Past Tests</h1>
 
-    <!-- this page isn't built yet -->
-    <div class="card">
-      <p class="card-label">Coming soon</p>
-      <p class="tip-text">See all your old Spending Test scores so you can watch yourself improve over time.</p>
+      <!-- this page isn't built yet -->
+      <div class="card">
+        <p class="card-label">Coming soon</p>
+        <p class="tip-text">See all your old Spending Test scores so you can watch yourself improve over time.</p>
+      </div>
+
     </div>
-
   </main>
 
   <script src="common.js"></script>
