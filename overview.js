@@ -184,33 +184,52 @@ function showMoney() {
 }
 
 
-// skill level, and how far you are through your current unit
+// skill level, and what you need to do to reach the next one
 // (getSkillLevel and lessonsThroughUnit are in common.js)
+// you level up by PASSING unit exams, and the final exam makes you a Money Master
 function showSkillLevel() {
   let level = getSkillLevel();
   document.getElementById("level-name").textContent = level;
   document.getElementById("level-name-big").textContent = level;
 
-  // if every lesson is done
-  if (lessonsDone === lessons.length) {
-    document.getElementById("xp-bar").style.width = "100%";
-    document.getElementById("xp-text").textContent = "You finished every unit! " + xp + " XP";
+  let bar = document.getElementById("xp-bar");
+  let text = document.getElementById("xp-text");
+
+  // passed everything
+  if (finalPassed) {
+    bar.style.width = "100%";
+    text.textContent = "You passed the final exam! " + xp + " XP";
     return;
   }
 
-  // the unit you're working on now
-  let unitNumber = lessons[lessonsDone].unit;
+  // passed every unit exam, only the final is left
+  if (unitsPassed === units.length) {
+    bar.style.width = "100%";
+    text.textContent = "Pass the final exam in Learn Mode to become a Money Master!";
+    return;
+  }
+
+  // the next unit to pass (units[0] is Unit 1)
+  let unitNumber = unitsPassed + 1;
   let unit = units[unitNumber - 1];
 
   // how many lessons are in this unit, and how many you've done in it
   let lessonsInUnit = lessonsThroughUnit(unitNumber) - lessonsThroughUnit(unitNumber - 1);
   let doneInUnit = lessonsDone - lessonsThroughUnit(unitNumber - 1);
+  if (doneInUnit > lessonsInUnit) {
+    doneInUnit = lessonsInUnit;   // you may have done lessons in later units already
+  }
 
   let percent = (doneInUnit / lessonsInUnit) * 100;
-  document.getElementById("xp-bar").style.width = percent + "%";
-  document.getElementById("xp-text").textContent =
-    doneInUnit + " of " + lessonsInUnit + " lessons done in Unit " + unitNumber + ": " + unit.title +
-    ". Finish it to become a " + unit.level + "!";
+  bar.style.width = percent + "%";
+
+  if (doneInUnit < lessonsInUnit) {
+    text.textContent = doneInUnit + " of " + lessonsInUnit + " lessons done in Unit " + unitNumber + ": " + unit.title +
+      ". Finish them and pass the unit exam to become a " + unit.level + "!";
+  } else {
+    text.textContent = "All Unit " + unitNumber + " lessons done! Pass the Unit " + unitNumber +
+      " exam in Learn Mode to become a " + unit.level + "!";
+  }
 }
 
 

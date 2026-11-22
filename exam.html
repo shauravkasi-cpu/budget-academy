@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Budget Academy - Exam</title>
+  <link rel="icon" href="logo.png">
+  <link rel="stylesheet" href="style.css">
+  <script src="theme.js"></script>
+</head>
+<body class="app">
+
+  <!-- menu on the left -->
+  <nav class="sidebar">
+    <div class="brand">
+      <img src="logo.png" alt="">
+      <span>Budget Academy</span>
+    </div>
+
+    <!-- the 2 main sections -->
+    <div class="section-switch">
+      <a href="overview.html">My Money</a>
+      <a href="lessons.html" class="active">Learn Mode</a>
+    </div>
+
+    <!-- the pages inside "Learn Mode" -->
+    <p class="menu-label">Learn Mode</p>
+    <a class="menu-link active" href="lessons.html">Lessons</a>
+    <a class="menu-link" href="practice.html">Practice Month</a>
+    <a class="menu-link" href="spending-test.html">Spending Test</a>
+    <a class="menu-link" href="past-tests.html">Past Tests</a>
+    <a class="menu-link" href="calculators.html">Calculators</a>
+
+    <!-- bottom of the menu -->
+    <div class="sidebar-bottom">
+      <button class="menu-link" id="theme-button" onclick="toggleTheme()">Light mode</button>
+      <div class="user-row">
+        <span class="avatar" id="avatar"></span>
+        <span class="user-name" id="profile-name"></span>
+        <button class="logout-button" onclick="logOut()">Log out</button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="page">
+    <div class="content">
+
+      <!-- top of the exam: name and progress bar -->
+      <p><a href="lessons.html">&larr; All lessons</a></p>
+      <p class="card-label" id="exam-label"></p>
+      <p class="lesson-name" id="exam-title"></p>
+      <div class="bar"><div class="bar-fill" id="exam-bar"></div></div>
+      <p class="small-text" id="exam-count"></p>
+
+      <!-- the start screen, a question, or your score (exam.js puts it here) -->
+      <div class="card stage" id="stage"></div>
+
+      <!-- the Next button while you take the exam -->
+      <div class="step-nav" id="exam-nav" hidden>
+        <span class="step-hint" id="exam-hint"></span>
+        <button class="pill-button green-pill" id="exam-next" onclick="nextQuestion()">Next &rarr;</button>
+      </div>
+
+      <!-- after the exam: every question with the right answer -->
+      <div id="review"></div>
+
+    </div>
+  </main>
+
+  <script src="common.js"></script>
+  <script src="lessons-data.js"></script>
+  <script src="exams-data.js"></script>
+  <script src="exam.js"></script>
+</body>
+</html>

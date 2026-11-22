@@ -12,11 +12,17 @@ if (userName === null) {
   window.location.href = "index.html";
 }
 
-// how many lessons are finished (saved when you finish a lesson)
+// how many lessons are finished (a lesson is finished when you pass its quiz)
 // Number() turns the saved text into a number. If nothing is saved yet, it's 0
 let lessonsDone = Number(localStorage.getItem("lessonsDone"));
 
-// skill points (XP), you get 20 for each lesson you finish
+// how many unit exams you've passed (Unit 1 first, then Unit 2, ...)
+let unitsPassed = Number(localStorage.getItem("unitsPassed"));
+
+// did you pass the final exam? (true or false)
+let finalPassed = localStorage.getItem("finalPassed") === "yes";
+
+// skill points (XP): 20 per lesson quiz, 50 per unit exam, 100 for the final exam
 let xp = Number(localStorage.getItem("xp"));
 
 
@@ -36,6 +42,27 @@ function openLesson(lessonNumber) {
 }
 
 
+// opens an exam, the same way openLesson does
+//   examType is "lesson", "unit", or "final"
+//   number is the lesson or unit number (1, 2, 3, ...), and 0 for the final exam
+function openExam(examType, number) {
+  localStorage.setItem("examType", examType);
+  localStorage.setItem("examNumber", number);
+  window.location.href = "exam.html";
+}
+
+
+// your best score on an exam, as a percent (-1 if you haven't taken it yet)
+// examples: bestScore("lesson", 3), bestScore("unit", 1), bestScore("final", 0)
+function bestScore(examType, number) {
+  let saved = localStorage.getItem("best-" + examType + "-" + number);
+  if (saved === null) {
+    return -1;
+  }
+  return Number(saved);
+}
+
+
 // ---------- Units and skill levels ----------
 // (these use "lessons" and "units" from lessons-data.js,
 //  so only call them on pages that load lessons-data.js)
@@ -52,25 +79,28 @@ function lessonsThroughUnit(unitNumber) {
   return count;
 }
 
-// your skill level goes up every time you finish a whole unit
+// your skill level goes up every time you pass a unit exam,
+// and passing the final exam makes you a Money Master
 function getSkillLevel() {
-  let level = "Beginner";
-  for (let i = 0; i < units.length; i++) {
-    // units[0] is Unit 1, so the unit number is i + 1
-    if (lessonsDone >= lessonsThroughUnit(i + 1)) {
-      level = units[i].level;
-    }
+  if (finalPassed) {
+    return "Money Master";
   }
-  return level;
+  if (unitsPassed === 0) {
+    return "Beginner";
+  }
+  // units[0] is Unit 1, so the last unit you passed is units[unitsPassed - 1]
+  return units[unitsPassed - 1].level;
 }
 
 
 // log out and go back to the Log In page
+// this clears everything saved, except light or dark mode
 function logOut() {
-  localStorage.removeItem("name");
-  localStorage.removeItem("mode");
-  localStorage.removeItem("lessonsDone");
-  localStorage.removeItem("xp");
+  let theme = localStorage.getItem("theme");
+  localStorage.clear();
+  if (theme !== null) {
+    localStorage.setItem("theme", theme);
+  }
   window.location.href = "index.html";
 }
 

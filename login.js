@@ -10,10 +10,14 @@ function logIn(event) {
   // get the username they typed
   let username = document.getElementById("username").value;
 
-  // start fresh: Lesson 1 and 0 XP
+  // start fresh: clear all saved progress (lessons, exams, XP),
+  // but keep light or dark mode
   // (once real accounts are built, each account will keep its own progress)
-  localStorage.setItem("lessonsDone", 0);
-  localStorage.setItem("xp", 0);
+  let theme = localStorage.getItem("theme");
+  localStorage.clear();
+  if (theme !== null) {
+    localStorage.setItem("theme", theme);
+  }
 
   // remember who is using the app
   // (for now any username works, real accounts come later with Sign up)

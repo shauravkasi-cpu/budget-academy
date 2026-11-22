@@ -416,63 +416,35 @@ function countQuestions() {
   return total;
 }
 
-// the "Lesson complete!" screen
+// the end of the lesson: now take the 5-question quiz
+// (passing the quiz is what completes the lesson, see exam.js)
 function showFinish() {
   document.getElementById("step-bar").style.width = "100%";
   document.getElementById("step-count").textContent = "Done!";
   document.getElementById("step-nav").hidden = true;
 
-  // you only get XP the first time you finish a lesson
-  let xpText = "+20";
-  if (lessonNumber < lessonsDone) {
-    xpText = "+0";
-  }
-
-  // if this is the last lesson in its unit, you also get the unit badge
-  let unitReward = "";
-  if (isLastInUnit()) {
-    unitReward =
-      '<div class="reward unit-reward">' +
-        '<p class="split-number">' + units[lesson.unit - 1].badge + '</p>' +
-        '<p class="split-label">Unit ' + lesson.unit + ' complete!</p>' +
-      '</div>';
+  // if you already passed this lesson's quiz, say so
+  let quizText = "Pass the 5-question quiz (4 right) to complete the lesson and earn the \"" + lesson.badge + "\" badge.";
+  let best = bestScore("lesson", lessonNumber + 1);
+  if (best >= 0) {
+    quizText = quizText + " Your best score so far: " + best + "%.";
   }
 
   document.getElementById("stage").innerHTML =
     '<div class="step-box finish">' +
       '<div class="finish-check">&#10003;</div>' +
-      '<p class="huge-text">Lesson complete!</p>' +
-      '<p class="lesson-description">You got ' + countRight() + ' of ' + countQuestions() + ' quick checks right.</p>' +
-      '<div class="reward-row">' +
-        '<div class="reward"><p class="split-number">' + xpText + '</p><p class="split-label">XP</p></div>' +
-        '<div class="reward"><p class="split-number">' + lesson.badge + '</p><p class="split-label">Badge earned</p></div>' +
-        unitReward +
-      '</div>' +
+      '<p class="huge-text">Nice work!</p>' +
+      '<p class="lesson-description">You got ' + countRight() + ' of ' + countQuestions() + ' quick checks right. ' + quizText + '</p>' +
       '<div class="button-row finish-buttons">' +
-        '<button class="pill-button green-pill" onclick="finishLesson()">Finish lesson</button>' +
+        '<button class="pill-button green-pill" onclick="takeQuiz()">Take the quiz &rarr;</button>' +
         '<button class="pill-button" onclick="reviewLesson()">Review lesson</button>' +
       '</div>' +
     '</div>';
 }
 
-// is this the last lesson of its unit?
-// (yes if it's the very last lesson, or if the next lesson is in a different unit)
-function isLastInUnit() {
-  if (lessonNumber === lessons.length - 1) {
-    return true;
-  }
-  return lessons[lessonNumber + 1].unit !== lesson.unit;
-}
-
-// saves your progress and goes back to Learn Mode
-function finishLesson() {
-  // only if this was the lesson you were on (finishing an old one again doesn't count)
-  if (lessonNumber === lessonsDone) {
-    localStorage.setItem("lessonsDone", lessonsDone + 1);
-    localStorage.setItem("xp", xp + 20);
-  }
-
-  window.location.href = "lessons.html";
+// opens this lesson's quiz (lessonNumber starts at 0, but quizzes start at Lesson 1)
+function takeQuiz() {
+  openExam("lesson", lessonNumber + 1);
 }
 
 // start the lesson over from step 1

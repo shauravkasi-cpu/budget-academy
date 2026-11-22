@@ -1063,6 +1063,68 @@ input:focus {
 }
 
 
+/* ---------- Exams ---------- */
+/* (these come after the .choice styles so the highlight wins) */
+/* the answer you picked (before the exam is graded) */
+.choice-picked {
+  background-color: var(--tint);
+  border-color: var(--green);
+}
+
+/* the red X when you don't pass */
+.finish-fail {
+  background-color: var(--red);
+  color: #FFFFFF;
+}
+
+/* one exam in the Exams card: name on the left, button on the right */
+.exam-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.exam-row:last-child {
+  border-bottom: none;
+}
+
+.exam-name {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.exam-row .small-text {
+  margin-top: 4px;
+}
+
+/* the review after an exam */
+.review-title {
+  margin: 48px 0 24px 0;
+  font-size: 30px;
+}
+
+.review-card .big-text {
+  font-size: 20px;
+}
+
+.review-line {
+  margin: 0 0 6px 0;
+  font-size: 17px;
+}
+
+.review-right {
+  color: var(--green);
+}
+
+.review-wrong {
+  color: var(--red);
+}
+
+
 /* ---------- Progress bars ---------- */
 /* the grey background of the bar */
 .bar {

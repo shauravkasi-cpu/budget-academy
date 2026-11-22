@@ -63,10 +63,17 @@
         <div class="badge-list" id="badge-list"></div>
       </div>
 
-      <!-- 3. button that shows or hides all the lessons -->
+      <!-- 3. the unit exams and the final exam (lessons.js fills this in) -->
+      <div class="card">
+        <p class="card-title">Exams</p>
+        <p class="card-text">Pass each unit exam with 80% or more to earn the unit badge and level up. Pass all 5 to unlock the final exam.</p>
+        <div id="exam-list"></div>
+      </div>
+
+      <!-- 4. button that shows or hides all the lessons -->
       <button class="pill-button" id="all-button" onclick="toggleAllLessons()">See all courses</button>
 
-      <!-- 4. every lesson grouped by unit, hidden until you click the button -->
+      <!-- 5. every lesson grouped by unit, hidden until you click the button -->
       <!-- lessons.js adds them here -->
       <div class="all-lessons" id="all-lessons" hidden></div>
 

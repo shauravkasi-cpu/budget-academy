@@ -4,8 +4,9 @@
 // ---------- Units ----------
 // Each unit is a group of lessons.
 //   title  - the name of the unit
-//   badge  - the badge you get for finishing the whole unit
-//   level  - your new skill level after you finish the unit
+//   badge  - the badge you get for passing the unit exam
+//   level  - your new skill level after you pass the unit exam
+//            (passing the final exam makes you a "Money Master")
 //
 // ---------- Lessons ----------
 // Each lesson has:
@@ -36,7 +37,7 @@ const units = [
   { title: "Banking and Saving", badge: "Super Saver", level: "Smart Saver" },
   { title: "Credit and Debt", badge: "Credit Champ", level: "Credit Smart" },
   { title: "Bills, Taxes, and Growing Up", badge: "Real World Ready", level: "Money Pro" },
-  { title: "Investing and Building Wealth", badge: "Future Investor", level: "Money Master" }
+  { title: "Investing and Building Wealth", badge: "Future Investor", level: "Wealth Builder" }
 ];
 
 

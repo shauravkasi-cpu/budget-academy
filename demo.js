@@ -14,9 +14,14 @@ function startDemo(event) {
   localStorage.setItem("name", name);
   localStorage.setItem("mode", "demo");
 
-  // start fresh: Lesson 1 and 0 XP
-  localStorage.setItem("lessonsDone", 0);
-  localStorage.setItem("xp", 0);
+  // start fresh: clear all saved progress (lessons, exams, XP),
+  // but keep light or dark mode
+  // (once real accounts are built, each account will keep its own progress)
+  let theme = localStorage.getItem("theme");
+  localStorage.clear();
+  if (theme !== null) {
+    localStorage.setItem("theme", theme);
+  }
 
   // go to the home page
   window.location.href = "overview.html";
