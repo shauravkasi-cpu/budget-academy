@@ -80,16 +80,24 @@ function findCalculator(kind) {
 
 // makes the input boxes, the button, and an empty spot for the answers
 // every id starts with the kind, like "calc-goal-0", so two calculators on one page don't mix up
-function calculatorHTML(kind) {
+// values is optional: a lesson can send its own starting numbers, like ["50", "5", "4"]
+function calculatorHTML(kind, values) {
   let calc = findCalculator(kind);
   let html = '<div class="calc-inputs">';
 
   for (let i = 0; i < calc.inputs.length; i++) {
     let id = "calc-" + kind + "-" + i;
+
+    // use the lesson's number if it gave one, otherwise the normal one
+    let value = calc.inputs[i].value;
+    if (values !== undefined) {
+      value = values[i];
+    }
+
     html = html +
       '<div class="calc-input">' +
         '<label for="' + id + '">' + calc.inputs[i].label + '</label>' +
-        '<input type="text" id="' + id + '" value="' + calc.inputs[i].value + '">' +
+        '<input type="text" id="' + id + '" value="' + value + '">' +
       '</div>';
   }
 

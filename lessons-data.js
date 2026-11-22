@@ -26,8 +26,9 @@
 //                                        answer = spot of the right bucket (0 = first)
 //   choice      what would you do?     { type, heading, text, choices }
 //                                        each choice is { text, result, good }
-//   calculator  try a calculator       { type, heading, text, kind }
+//   calculator  try a calculator       { type, heading, text, kind, values (optional) }
 //                                        kind = which calculator (see calculators.js)
+//                                        values = starting numbers for the boxes, like ["50", "5", "4"]
 
 
 const units = [
@@ -714,10 +715,564 @@ const lessons = [
 
   // ==================== UNIT 2: BANKING AND SAVING ====================
 
-  { unit: 2, title: "Checking vs. Savings Accounts", description: "What each bank account is for, and the fees to watch out for.", badge: "Bank Ready" },
-  { unit: 2, title: "Pay Yourself First", description: "Why saving first works better than saving what's left.", badge: "Self Payer" },
-  { unit: 2, title: "Emergency Funds", description: "How much to save for surprises, and why it comes first.", badge: "Safety Net" },
-  { unit: 2, title: "Saving for Goals", description: "Plan for short-term and long-term goals, and see how long they take.", badge: "Goal Getter" },
+  // ---------- Lesson 6 ----------
+  {
+    unit: 2,
+    title: "Checking vs. Savings Accounts",
+    description: "What each bank account is for, and the fees to watch out for.",
+    badge: "Bank Ready",
+
+    steps: [
+      {
+        type: "story",
+        heading: "Jordan's paycheck problem",
+        text: "Right now I cash my paychecks at a store, and they keep a fee every time. My boss says I should open a bank account instead. But there are so many kinds! What's the difference between checking and savings?"
+      },
+      {
+        type: "text",
+        heading: "Why use a bank?",
+        text: "Cash kept at home can be lost or stolen, and check-cashing stores often keep a few percent of every check. A bank or credit union keeps your money safe and doesn't charge you just to get paid.",
+        points: [
+          "Banks and credit unions both keep your money safe.",
+          "Most U.S. banks are FDIC insured, and credit unions are NCUA insured. That means your money is protected up to $250,000, even if the bank fails.",
+          "Credit unions are owned by their members and often have lower fees."
+        ]
+      },
+      {
+        type: "text",
+        heading: "Checking accounts are for spending",
+        text: "A checking account holds the money you use every day. It comes with a debit card, so you can pay at stores, pay bills online, and get cash from an ATM.",
+        points: [
+          "Good for: getting your paycheck, paying bills, everyday shopping",
+          "Usually earns little or no interest"
+        ]
+      },
+      {
+        type: "text",
+        heading: "Savings accounts are for keeping",
+        text: "A savings account holds money you don't want to spend right now. It earns interest, which is money the bank pays you for keeping your money there.",
+        points: [
+          "Good for: your emergency fund and saving for goals",
+          "A high-yield savings account (often at an online bank) pays a lot more interest than a regular one",
+          "It's a little harder to spend on a whim, which is a good thing!"
+        ]
+      },
+      {
+        type: "sort",
+        heading: "Checking or savings?",
+        text: "Which account should Jordan use for each one?",
+        buckets: ["Checking", "Savings"],
+        items: [
+          { name: "Paying the phone bill", answer: 0 },
+          { name: "Emergency fund", answer: 1 },
+          { name: "Buying groceries with a debit card", answer: 0 },
+          { name: "Saving up for a car", answer: 1 },
+          { name: "Getting paid by direct deposit", answer: 0 },
+          { name: "Money for a trip next summer", answer: 1 }
+        ]
+      },
+      {
+        type: "question",
+        question: "Which kind of account usually earns more interest?",
+        choices: [
+          "Checking",
+          "Savings",
+          "They always earn the same",
+          "Neither one ever earns interest"
+        ],
+        answer: 1,
+        explain: "Savings accounts are made for keeping money, so they pay more interest."
+      },
+      {
+        type: "text",
+        heading: "Watch out for fees",
+        text: "Some accounts charge fees that slowly eat your money. Read the rules before you open one, and pick an account with no fees or very low fees.",
+        points: [
+          "Monthly fee: some accounts charge $5 to $15 a month unless you keep a minimum amount in them",
+          "Overdraft fee: spend more than you have and pay a fee, often $25 to $35",
+          "ATM fee: using another bank's ATM can cost $2 to $5 each time"
+        ]
+      },
+      {
+        type: "question",
+        question: "Jordan has $20 in checking and buys a $25 shirt with a debit card. What could happen?",
+        choices: [
+          "Nothing, the bank covers it for free",
+          "Jordan could be charged an overdraft fee",
+          "The shirt becomes free",
+          "The bank gives Jordan free money"
+        ],
+        answer: 1,
+        explain: "Spending more than you have can cost an overdraft fee. Many banks let you turn overdraft off, so the card just gets declined instead."
+      },
+      {
+        type: "choice",
+        heading: "Picking a bank",
+        text: "Bank A charges $12 a month unless you keep $1,500 in the account. Bank B is a credit union with no monthly fee. Jordan usually has about $300 in the account. Which should Jordan choose?",
+        choices: [
+          {
+            text: "Bank A, because it has a cool app",
+            result: "With only $300, Jordan pays $12 every month. That's $144 a year for nothing!",
+            good: false
+          },
+          {
+            text: "Bank B, because it has no monthly fee",
+            result: "Jordan keeps every dollar. No-fee accounts are easy to find, especially at credit unions and online banks.",
+            good: true
+          },
+          {
+            text: "Neither, just keep cash under the bed",
+            result: "Cash can be lost or stolen, and it earns nothing. A free account is safer.",
+            good: false
+          }
+        ]
+      },
+      {
+        type: "text",
+        heading: "The best setup: use both",
+        text: "Most people use checking for spending and savings for keeping. Here's how it works:",
+        points: [
+          "1. Your paycheck goes into checking.",
+          "2. A set amount moves to savings right away.",
+          "3. You spend from checking and leave savings alone."
+        ]
+      },
+      {
+        type: "question",
+        question: "What does FDIC insurance do?",
+        choices: [
+          "It's a fee banks charge every month",
+          "It protects your money if the bank fails",
+          "It's insurance for your car",
+          "It's a kind of credit card"
+        ],
+        answer: 1,
+        explain: "FDIC insurance protects money in a bank, up to $250,000, even if the bank goes out of business."
+      },
+      {
+        type: "story",
+        heading: "Jordan opens accounts",
+        text: "I opened a free checking account and a savings account at a credit union. No more check-cashing fees, and my paycheck shows up on its own. I even turned off overdraft so I can't get surprise fees."
+      }
+    ]
+  },
+
+  // ---------- Lesson 7 ----------
+  {
+    unit: 2,
+    title: "Pay Yourself First",
+    description: "Why saving first works better than saving what's left.",
+    badge: "Self Payer",
+
+    steps: [
+      {
+        type: "story",
+        heading: "Nothing left to save",
+        text: "Every month I promise myself I'll save whatever is left over. But at the end of the month, there's never anything left! What am I doing wrong?"
+      },
+      {
+        type: "text",
+        heading: "Saving last doesn't work",
+        text: "When you save last, spending always wins. There's always something else to buy, so there's never anything left. \"Pay yourself first\" flips it around: you save FIRST, then spend what's left."
+      },
+      {
+        type: "text",
+        heading: "How it works",
+        text: "Here's what payday looks like when Jordan pays themself first:",
+        points: [
+          "1. Payday: $1,000 lands in checking.",
+          "2. Right away, $100 moves to savings.",
+          "3. Jordan budgets and spends the other $900.",
+          "The saving is done before Jordan even has a chance to spend it."
+        ]
+      },
+      {
+        type: "question",
+        question: "What does \"pay yourself first\" mean?",
+        choices: [
+          "Buy yourself something nice on payday",
+          "Put money into savings before you spend anything",
+          "Pay all your bills last",
+          "Ask your boss for a raise"
+        ],
+        answer: 1,
+        explain: "Paying yourself first means savings comes out before any spending."
+      },
+      {
+        type: "text",
+        heading: "Make it automatic",
+        text: "The easiest way is to set it up once and then forget about it. Most banks let you set up an automatic transfer from checking to savings on payday. Some jobs can even split your paycheck between two accounts.",
+        points: [
+          "You don't have to remember to do it.",
+          "You never see the money, so you don't miss it.",
+          "It still happens on busy or stressful weeks."
+        ]
+      },
+      {
+        type: "sort",
+        heading: "Pay first or save last?",
+        text: "Which habits pay yourself first?",
+        buckets: ["Pay first", "Save last"],
+        items: [
+          { name: "Auto-transfer $50 every payday", answer: 0 },
+          { name: "Save whatever is left at the end of the month", answer: 1 },
+          { name: "Send 10% of each paycheck straight to savings", answer: 0 },
+          { name: "Save money only when you remember", answer: 1 },
+          { name: "Move money to savings the day you get paid", answer: 0 },
+          { name: "Plan to save after you go shopping", answer: 1 }
+        ]
+      },
+      {
+        type: "text",
+        heading: "Start small",
+        text: "You don't need to save a lot to start. Even $10 or $20 from each paycheck builds the habit. Once it feels normal, raise it a little. A great long-term goal is saving 10% to 20% of your income."
+      },
+      {
+        type: "calculator",
+        kind: "compound",
+        values: ["50", "5", "4"],
+        heading: "Watch it add up",
+        text: "Jordan saves $50 a month in a high-yield savings account that earns about 4% a year. Press Calculate to see what Jordan has after 5 years, then try your own numbers."
+      },
+      {
+        type: "question",
+        question: "Jordan saves $25 every week. About how much is that in one year?",
+        choices: [
+          "$100",
+          "$300",
+          "$1,300",
+          "$2,500"
+        ],
+        answer: 2,
+        explain: "$25 x 52 weeks = $1,300 in a year."
+      },
+      {
+        type: "choice",
+        heading: "Jordan gets a raise",
+        text: "Jordan's pay goes up from $1,000 to $1,100 a month. What should Jordan do with the extra $100?",
+        choices: [
+          {
+            text: "Spend all of it, Jordan earned it",
+            result: "Jordan's spending grows with the raise, and savings stays the same. This is called lifestyle creep.",
+            good: false
+          },
+          {
+            text: "Save half of it and enjoy the other half",
+            result: "Jordan saves $50 more a month and still gets a little treat. That's a great balance!",
+            good: true
+          },
+          {
+            text: "Stop saving for a month to celebrate",
+            result: "Stopping savings to celebrate undoes the habit Jordan worked hard to build.",
+            good: false
+          }
+        ]
+      },
+      {
+        type: "text",
+        heading: "Watch out for lifestyle creep",
+        text: "When people start making more money, they often start spending more on nicer things, until the raise is all gone. Saving part of every raise keeps your savings growing along with your paycheck."
+      },
+      {
+        type: "question",
+        question: "What is lifestyle creep?",
+        choices: [
+          "When your bank adds new fees",
+          "Spending more every time you earn more",
+          "Saving part of every raise",
+          "Moving to a new city"
+        ],
+        answer: 1,
+        explain: "Lifestyle creep is when spending rises with income, so you never get ahead."
+      },
+      {
+        type: "story",
+        heading: "Jordan pays themself first",
+        text: "I set up a $50 transfer every payday. Honestly, I don't even notice it's gone, and I already have $300 saved. Saving last never worked for me. Saving first does!"
+      }
+    ]
+  },
+
+  // ---------- Lesson 8 ----------
+  {
+    unit: 2,
+    title: "Emergency Funds",
+    description: "How much to save for surprises, and why it comes first.",
+    badge: "Safety Net",
+
+    steps: [
+      {
+        type: "story",
+        heading: "The surprise",
+        text: "My bike chain broke, and I need my bike to get to work. The repair costs $120, and I don't have $120 extra right now! What do people do when this happens?"
+      },
+      {
+        type: "text",
+        heading: "Surprises happen to everyone",
+        text: "Car repairs, doctor visits, a broken phone, losing a job. Surprises like these happen to everyone sooner or later. An emergency fund is money saved ONLY for these moments, so a surprise doesn't turn into debt."
+      },
+      {
+        type: "text",
+        heading: "What counts as an emergency?",
+        text: "Ask three questions: Is it unexpected? Is it necessary? Is it urgent? If the answer to all three is yes, it's an emergency.",
+        points: [
+          "Yes: a car or bike repair you need for work, a medical bill, losing your job",
+          "No: a concert, a big sale, a new phone when your old one still works"
+        ]
+      },
+      {
+        type: "sort",
+        heading: "Emergency or not?",
+        text: "Should Jordan use the emergency fund for each one?",
+        buckets: ["Emergency", "Not"],
+        items: [
+          { name: "Car repair to get to work", answer: 0 },
+          { name: "Concert tickets", answer: 1 },
+          { name: "Urgent dentist visit", answer: 0 },
+          { name: "Big sale at the mall", answer: 1 },
+          { name: "Losing your job", answer: 0 },
+          { name: "Holiday gifts", answer: 1 }
+        ]
+      },
+      {
+        type: "question",
+        question: "Why are holiday gifts NOT an emergency?",
+        choices: [
+          "Gifts are always a need",
+          "You know they're coming every year, so you can plan for them",
+          "Emergencies have to cost over $1,000",
+          "Because stores are closed on holidays"
+        ],
+        answer: 1,
+        explain: "Emergencies are surprises. Things you know are coming belong in your budget or a savings goal."
+      },
+      {
+        type: "text",
+        heading: "How much do you need?",
+        text: "Build your emergency fund in steps:",
+        points: [
+          "Step 1: Save a starter fund of $500 to $1,000.",
+          "Step 2: Build it up to 3 months of expenses.",
+          "Step 3: Keep going until you have 6 months of expenses."
+        ]
+      },
+      {
+        type: "calculator",
+        kind: "emergency",
+        values: ["650"],
+        heading: "Jordan's emergency fund goals",
+        text: "Jordan's needs cost $650 a month. Press Calculate to see Jordan's goals, then try your own monthly expenses."
+      },
+      {
+        type: "question",
+        question: "Jordan's needs cost $650 a month. How much is 3 months of expenses?",
+        choices: [
+          "$650",
+          "$1,300",
+          "$1,950",
+          "$3,900"
+        ],
+        answer: 2,
+        explain: "$650 x 3 = $1,950."
+      },
+      {
+        type: "text",
+        heading: "Where to keep it",
+        text: "Keep your emergency fund in a savings account, separate from checking. You should be able to get to it in a day or two, but not so easily that you spend it by accident. A high-yield savings account even lets it earn a little interest while it waits."
+      },
+      {
+        type: "choice",
+        heading: "Fund or credit card?",
+        text: "Jordan's bike repair costs $120, and Jordan has $300 in an emergency fund. What should Jordan do?",
+        choices: [
+          {
+            text: "Put it on a credit card to keep the fund safe",
+            result: "Now Jordan pays interest on a repair they had the cash for. This is exactly what the fund is for!",
+            good: false
+          },
+          {
+            text: "Use the emergency fund, then refill it",
+            result: "Jordan fixes the bike with no debt, then adds a little each payday until the fund is back to $300.",
+            good: true
+          },
+          {
+            text: "Skip work until payday",
+            result: "Missing work means less pay. A $120 problem just became a much bigger one.",
+            good: false
+          }
+        ]
+      },
+      {
+        type: "text",
+        heading: "Refill it",
+        text: "After you use your emergency fund, refill it before you save for anything else. Cut back on wants for a little while and send that money back to the fund."
+      },
+      {
+        type: "question",
+        question: "What should you do after you use your emergency fund?",
+        choices: [
+          "Close the account",
+          "Refill it",
+          "Spend the rest on a vacation",
+          "Nothing, its job is done forever"
+        ],
+        answer: 1,
+        explain: "Refill it right away so you're ready for the next surprise."
+      },
+      {
+        type: "story",
+        heading: "Jordan's safety net",
+        text: "I used my emergency fund for the bike and refilled it in a month. Knowing that money is there makes me way less stressed. Now a surprise is just a speed bump, not a disaster."
+      }
+    ]
+  },
+
+  // ---------- Lesson 9 ----------
+  {
+    unit: 2,
+    title: "Saving for Goals",
+    description: "Plan for short-term and long-term goals, and see how long they take.",
+    badge: "Goal Getter",
+
+    steps: [
+      {
+        type: "story",
+        heading: "Jordan's big plans",
+        text: "Now that I have an emergency fund, I want to save for fun things! A new laptop, a trip with my friends, and someday a car. But how do I save for all of them at once?"
+      },
+      {
+        type: "text",
+        heading: "Short-term and long-term goals",
+        text: "Goals come in different sizes, depending on how long they take:",
+        points: [
+          "Short-term (less than 1 year): a phone, concert tickets, gifts",
+          "Medium-term (1 to 5 years): a car, a big trip, moving out",
+          "Long-term (more than 5 years): college, a house, retirement"
+        ]
+      },
+      {
+        type: "sort",
+        heading: "Short-term or long-term?",
+        text: "Sort each of these goals.",
+        buckets: ["Short-term", "Long-term"],
+        items: [
+          { name: "New headphones next month", answer: 0 },
+          { name: "Buying a house", answer: 1 },
+          { name: "A concert in 3 months", answer: 0 },
+          { name: "Retirement", answer: 1 },
+          { name: "Holiday gifts this December", answer: 0 },
+          { name: "Paying for college in 6 years", answer: 1 }
+        ]
+      },
+      {
+        type: "text",
+        heading: "Make your goals SMART",
+        text: "\"Save money\" is hard to stick to. \"Save $600 for a laptop by June\" is much easier. A SMART goal is:",
+        points: [
+          "Specific: what exactly do you want?",
+          "Measurable: how much money is it?",
+          "Achievable: can you really save that much?",
+          "Relevant: does it actually matter to you?",
+          "Time-bound: by when?"
+        ]
+      },
+      {
+        type: "question",
+        question: "Which of these is the most SMART goal?",
+        choices: [
+          "Save some money someday",
+          "Get rich",
+          "Save $600 for a laptop by June",
+          "Spend less"
+        ],
+        answer: 2,
+        explain: "It says what, how much, and by when."
+      },
+      {
+        type: "text",
+        heading: "Do the math",
+        text: "Divide the price by the number of weeks you have. That's how much to save each week.",
+        points: [
+          "$600 laptop / 30 weeks = $20 a week",
+          "$1,200 trip / 40 weeks = $30 a week"
+        ]
+      },
+      {
+        type: "calculator",
+        kind: "goal",
+        values: ["1200", "30"],
+        heading: "Plan Jordan's trip",
+        text: "Jordan wants to go on a $1,200 trip with friends and can save $30 a week. Press Calculate to see when Jordan can go, then try a goal of your own."
+      },
+      {
+        type: "question",
+        question: "Jordan wants $300 headphones in 10 weeks. How much should Jordan save each week?",
+        choices: [
+          "$10",
+          "$30",
+          "$50",
+          "$300"
+        ],
+        answer: 1,
+        explain: "$300 / 10 weeks = $30 a week."
+      },
+      {
+        type: "text",
+        heading: "One bucket for each goal",
+        text: "Many banks let you open more than one savings account, or split one into \"buckets,\" for free. Give each one a name, like \"Laptop\" or \"Trip.\" It's easier to stay motivated when you can watch each goal grow."
+      },
+      {
+        type: "choice",
+        heading: "Two goals, one paycheck",
+        text: "Jordan can save $60 a week. Jordan wants a $600 laptop and a $1,200 trip. What's the smartest plan?",
+        choices: [
+          {
+            text: "Put all $60 into the trip and forget the laptop",
+            result: "The trip happens, but the laptop never does. Jordan can make room for both.",
+            good: false
+          },
+          {
+            text: "Split it: $20 to the laptop and $40 to the trip",
+            result: "The laptop takes 30 weeks and the trip takes 30 weeks too. Both goals finish at the same time!",
+            good: true
+          },
+          {
+            text: "Spend it this week and start saving next month",
+            result: "Putting it off is how goals turn into \"someday.\" Starting now, even small, is what works.",
+            good: false
+          }
+        ]
+      },
+      {
+        type: "text",
+        heading: "Save in the right order",
+        text: "Not all goals are equal. A smart order is:",
+        points: [
+          "1. A starter emergency fund",
+          "2. Costs you know are coming, like a car repair or a gift",
+          "3. Goals you're excited about, like a trip",
+          "4. Long-term goals like retirement (you'll learn about those in Unit 5)"
+        ]
+      },
+      {
+        type: "question",
+        question: "Which should Jordan save for FIRST?",
+        choices: [
+          "A vacation",
+          "A starter emergency fund",
+          "A new phone",
+          "Concert tickets"
+        ],
+        answer: 1,
+        explain: "An emergency fund comes first, so surprises don't wreck your other goals."
+      },
+      {
+        type: "story",
+        heading: "Jordan hits a goal",
+        text: "Thirty weeks later, I bought my laptop with cash, and my trip fund was full too! I never thought I could save $1,800. Setting real goals made it feel possible."
+      }
+    ]
+  },
 
 
   // ==================== UNIT 3: CREDIT AND DEBT ====================

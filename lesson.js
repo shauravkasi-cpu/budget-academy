@@ -203,7 +203,7 @@ function calculatorStepHTML(s) {
   return '<p class="step-tag">Try it</p>' +
     '<p class="step-heading">' + s.heading + '</p>' +
     '<p class="lesson-text">' + s.text + '</p>' +
-    calculatorHTML(s.kind);
+    calculatorHTML(s.kind, s.values);
 }
 
 
