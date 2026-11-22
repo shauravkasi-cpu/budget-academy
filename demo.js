@@ -10,18 +10,18 @@ function startDemo(event) {
   // get the name they typed
   let name = document.getElementById("demo-name").value;
 
-  // remember the name and that this is the demo
-  localStorage.setItem("name", name);
-  localStorage.setItem("mode", "demo");
-
   // start fresh: clear all saved progress (lessons, exams, XP),
   // but keep light or dark mode
-  // (once real accounts are built, each account will keep its own progress)
+  // (this has to happen BEFORE we save the name, or the name gets cleared too)
   let theme = localStorage.getItem("theme");
   localStorage.clear();
   if (theme !== null) {
     localStorage.setItem("theme", theme);
   }
+
+  // remember the name and that this is the demo
+  localStorage.setItem("name", name);
+  localStorage.setItem("mode", "demo");
 
   // go to the home page
   window.location.href = "overview.html";
