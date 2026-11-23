@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Budget Academy - Cards</title>
+  <link rel="icon" href="logo.png">
+  <link rel="stylesheet" href="style.css">
+  <script src="theme.js"></script>
+</head>
+<body class="app">
+
+  <!-- menu on the left -->
+  <nav class="sidebar">
+    <div class="brand">
+      <img src="logo.png" alt="">
+      <span>Budget Academy</span>
+    </div>
+
+    <!-- the 2 main sections -->
+    <div class="section-switch">
+      <a href="overview.html" class="active">My Money</a>
+      <a href="lessons.html">Learn Mode</a>
+    </div>
+
+    <!-- the pages inside "My Money" -->
+    <p class="menu-label">My Money</p>
+    <a class="menu-link" href="overview.html">Overview</a>
+    <a class="menu-link active" href="cards.html">Cards</a>
+    <a class="menu-link" href="bills.html">Bills</a>
+    <a class="menu-link" href="budget.html">Budget</a>
+    <a class="menu-link" href="goals.html">Goals</a>
+    <a class="menu-link" href="taxes.html">Taxes &amp; Mortgage</a>
+
+    <!-- bottom of the menu -->
+    <div class="sidebar-bottom">
+      <button class="menu-link" id="theme-button" onclick="toggleTheme()">Light mode</button>
+      <div class="user-row">
+        <span class="avatar" id="avatar"></span>
+        <span class="user-name" id="profile-name"></span>
+        <button class="logout-button" onclick="logOut()">Log out</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- the big panel on the right -->
+  <main class="page">
+    <div class="content">
+
+      <h1>Cards</h1>
+      <p class="lesson-description">Your bank accounts, credit cards, and cash. Just give each one a nickname. Never type a real card number.</p>
+
+      <!-- the totals at the top -->
+      <div class="split-card">
+        <div>
+          <p class="split-number" id="total"></p>
+          <p class="split-label">Total money (what you have, minus what you owe on credit cards)</p>
+        </div>
+        <div>
+          <p class="split-number" id="card-count"></p>
+          <p class="split-label">Accounts</p>
+        </div>
+      </div>
+
+      <div class="section-header">
+        <p class="section-title">Your accounts</p>
+        <button class="pill-button green-pill small-pill" onclick="showForm()">+ Add a card</button>
+      </div>
+
+      <!-- the form to add or edit a card (hidden until you click Add or Edit) -->
+      <div class="card form-card" id="card-form" hidden>
+        <p class="card-title" id="form-title">Add a card</p>
+        <div class="calc-inputs">
+          <div class="calc-input">
+            <label for="nickname">Nickname</label>
+            <input type="text" id="nickname" placeholder="Everyday Checking">
+          </div>
+          <div class="calc-input">
+            <label for="type">Type</label>
+            <select id="type" onchange="showLimitBox()">
+              <option value="checking">Checking</option>
+              <option value="savings">Savings</option>
+              <option value="credit">Credit card</option>
+              <option value="cash">Cash</option>
+            </select>
+          </div>
+          <div class="calc-input">
+            <label for="balance" id="balance-label">Balance ($)</label>
+            <input type="text" id="balance" placeholder="500">
+          </div>
+          <div class="calc-input" id="limit-box" hidden>
+            <label for="limit">Credit limit ($)</label>
+            <input type="text" id="limit" placeholder="1000">
+          </div>
+        </div>
+        <p class="feedback feedback-wrong" id="form-error"></p>
+        <div class="button-row">
+          <button class="pill-button green-pill" onclick="saveCard()">Save</button>
+          <button class="pill-button" onclick="hideForm()">Cancel</button>
+        </div>
+      </div>
+
+      <!-- cards.js adds a box for each card here -->
+      <div id="card-list"></div>
+
+    </div>
+  </main>
+
+  <script src="common.js"></script>
+  <script src="money.js"></script>
+  <script src="money-data.js"></script>
+  <script src="cards.js"></script>
+</body>
+</html>

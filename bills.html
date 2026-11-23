@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Budget Academy - Bills</title>
+  <link rel="icon" href="logo.png">
+  <link rel="stylesheet" href="style.css">
+  <script src="theme.js"></script>
+</head>
+<body class="app">
+
+  <!-- menu on the left -->
+  <nav class="sidebar">
+    <div class="brand">
+      <img src="logo.png" alt="">
+      <span>Budget Academy</span>
+    </div>
+
+    <!-- the 2 main sections -->
+    <div class="section-switch">
+      <a href="overview.html" class="active">My Money</a>
+      <a href="lessons.html">Learn Mode</a>
+    </div>
+
+    <!-- the pages inside "My Money" -->
+    <p class="menu-label">My Money</p>
+    <a class="menu-link" href="overview.html">Overview</a>
+    <a class="menu-link" href="cards.html">Cards</a>
+    <a class="menu-link active" href="bills.html">Bills</a>
+    <a class="menu-link" href="budget.html">Budget</a>
+    <a class="menu-link" href="goals.html">Goals</a>
+    <a class="menu-link" href="taxes.html">Taxes &amp; Mortgage</a>
+
+    <!-- bottom of the menu -->
+    <div class="sidebar-bottom">
+      <button class="menu-link" id="theme-button" onclick="toggleTheme()">Light mode</button>
+      <div class="user-row">
+        <span class="avatar" id="avatar"></span>
+        <span class="user-name" id="profile-name"></span>
+        <button class="logout-button" onclick="logOut()">Log out</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- the big panel on the right -->
+  <main class="page">
+    <div class="content">
+
+      <h1>Bills</h1>
+      <p class="lesson-description">Every bill you pay, sorted by which one is due first. When you pay one, pick the card that paid it.</p>
+
+      <!-- the totals at the top -->
+      <div class="split-card">
+        <div>
+          <p class="split-number" id="week-total"></p>
+          <p class="split-label">Due in the next 7 days (including overdue)</p>
+        </div>
+        <div>
+          <p class="split-number" id="unpaid-count"></p>
+          <p class="split-label">Unpaid bills</p>
+        </div>
+      </div>
+
+      <div class="section-header">
+        <p class="section-title">Upcoming bills</p>
+        <button class="pill-button green-pill small-pill" onclick="showForm()">+ Add a bill</button>
+      </div>
+
+      <!-- the form to add or edit a bill (hidden until you click Add or Edit) -->
+      <div class="card form-card" id="bill-form" hidden>
+        <p class="card-title" id="form-title">Add a bill</p>
+        <div class="calc-inputs">
+          <div class="calc-input">
+            <label for="bill-name">Name</label>
+            <input type="text" id="bill-name" placeholder="Phone">
+          </div>
+          <div class="calc-input">
+            <label for="bill-amount">Amount ($)</label>
+            <input type="text" id="bill-amount" placeholder="40">
+          </div>
+          <div class="calc-input">
+            <label for="bill-date">Due date</label>
+            <input type="date" id="bill-date">
+          </div>
+          <div class="calc-input">
+            <label for="bill-repeat">Repeats</label>
+            <select id="bill-repeat">
+              <option value="monthly">Every month</option>
+              <option value="weekly">Every week</option>
+              <option value="once">Just once</option>
+            </select>
+          </div>
+          <div class="calc-input">
+            <label for="bill-category">Category</label>
+            <select id="bill-category"></select>
+          </div>
+        </div>
+        <p class="feedback feedback-wrong" id="form-error"></p>
+        <div class="button-row">
+          <button class="pill-button green-pill" onclick="saveBill()">Save</button>
+          <button class="pill-button" onclick="hideForm()">Cancel</button>
+        </div>
+      </div>
+
+      <!-- bills.js adds a box for each bill here -->
+      <div id="bill-list"></div>
+
+      <!-- one-time bills you already paid -->
+      <div id="paid-list"></div>
+
+    </div>
+  </main>
+
+  <script src="common.js"></script>
+  <script src="money.js"></script>
+  <script src="money-data.js"></script>
+  <script src="bills.js"></script>
+</body>
+</html>

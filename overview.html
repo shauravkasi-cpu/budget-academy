@@ -26,10 +26,11 @@
     <!-- the pages inside "My Money" -->
     <p class="menu-label">My Money</p>
     <a class="menu-link active" href="overview.html">Overview</a>
-    <a class="menu-link" href="#">Cards</a>
-    <a class="menu-link" href="#">Bills</a>
-    <a class="menu-link" href="#">Goals</a>
-    <a class="menu-link" href="#">Taxes &amp; Mortgage</a>
+    <a class="menu-link" href="cards.html">Cards</a>
+    <a class="menu-link" href="bills.html">Bills</a>
+    <a class="menu-link" href="budget.html">Budget</a>
+    <a class="menu-link" href="goals.html">Goals</a>
+    <a class="menu-link" href="taxes.html">Taxes &amp; Mortgage</a>
 
     <!-- bottom of the menu -->
     <div class="sidebar-bottom">
@@ -104,7 +105,7 @@
         <div>
           <div class="section-header">
             <p class="section-title">Upcoming bills</p>
-            <a class="pill-button small-pill" href="#">View all</a>
+            <a class="pill-button small-pill" href="bills.html">View all</a>
           </div>
           <!-- overview.js adds a row for each bill -->
           <div class="card list-card" id="bill-list"></div>
@@ -113,7 +114,7 @@
         <div>
           <div class="section-header">
             <p class="section-title">My money</p>
-            <a class="pill-button small-pill" href="#">View cards</a>
+            <a class="pill-button small-pill" href="cards.html">View cards</a>
           </div>
           <div class="split-card">
             <div>
@@ -129,7 +130,30 @@
 
       </div>
 
-      <!-- 5. skill level and tip of the day -->
+      <!-- 5. your top goal and this month's budget -->
+      <div class="two-columns">
+
+        <div>
+          <div class="section-header">
+            <p class="section-title">Top goal</p>
+            <a class="pill-button small-pill" href="goals.html">View goals</a>
+          </div>
+          <!-- overview.js fills this in -->
+          <div class="card" id="top-goal"></div>
+        </div>
+
+        <div>
+          <div class="section-header">
+            <p class="section-title">This month's budget</p>
+            <a class="pill-button small-pill" href="budget.html">View budget</a>
+          </div>
+          <!-- overview.js fills this in -->
+          <div class="card" id="month-budget"></div>
+        </div>
+
+      </div>
+
+      <!-- 6. skill level and tip of the day -->
       <div class="two-columns">
 
         <div>
@@ -159,6 +183,7 @@
 
   <script src="common.js"></script>
   <script src="money.js"></script>
+  <script src="money-data.js"></script>
   <script src="lessons-data.js"></script>
   <script src="overview.js"></script>
 </body>

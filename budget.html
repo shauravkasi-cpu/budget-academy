@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Budget Academy - Budget</title>
+  <link rel="icon" href="logo.png">
+  <link rel="stylesheet" href="style.css">
+  <script src="theme.js"></script>
+</head>
+<body class="app">
+
+  <!-- menu on the left -->
+  <nav class="sidebar">
+    <div class="brand">
+      <img src="logo.png" alt="">
+      <span>Budget Academy</span>
+    </div>
+
+    <!-- the 2 main sections -->
+    <div class="section-switch">
+      <a href="overview.html" class="active">My Money</a>
+      <a href="lessons.html">Learn Mode</a>
+    </div>
+
+    <!-- the pages inside "My Money" -->
+    <p class="menu-label">My Money</p>
+    <a class="menu-link" href="overview.html">Overview</a>
+    <a class="menu-link" href="cards.html">Cards</a>
+    <a class="menu-link" href="bills.html">Bills</a>
+    <a class="menu-link active" href="budget.html">Budget</a>
+    <a class="menu-link" href="goals.html">Goals</a>
+    <a class="menu-link" href="taxes.html">Taxes &amp; Mortgage</a>
+
+    <!-- bottom of the menu -->
+    <div class="sidebar-bottom">
+      <button class="menu-link" id="theme-button" onclick="toggleTheme()">Light mode</button>
+      <div class="user-row">
+        <span class="avatar" id="avatar"></span>
+        <span class="user-name" id="profile-name"></span>
+        <button class="logout-button" onclick="logOut()">Log out</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- the big panel on the right -->
+  <main class="page">
+    <div class="content">
+
+      <h1>Budget</h1>
+      <p class="lesson-description">Set your monthly income and a spending limit for each category. Then log what you buy to see how you're doing this month.</p>
+
+      <!-- the totals at the top -->
+      <div class="split-card">
+        <div>
+          <p class="split-number" id="spent-total"></p>
+          <p class="split-label" id="spent-text"></p>
+        </div>
+        <div>
+          <p class="split-number" id="left-total"></p>
+          <p class="split-label">Left this month</p>
+        </div>
+      </div>
+      <div class="split-card">
+        <div>
+          <p class="split-number" id="needs-total"></p>
+          <p class="split-label">Spent on needs this month</p>
+        </div>
+        <div>
+          <p class="split-number" id="wants-total"></p>
+          <p class="split-label">Spent on wants this month</p>
+        </div>
+      </div>
+
+      <!-- 1. monthly income -->
+      <div class="section-header">
+        <p class="section-title">Monthly income</p>
+      </div>
+      <div class="card">
+        <div class="calc-inputs">
+          <div class="calc-input">
+            <label for="income">Monthly take-home pay ($)</label>
+            <input type="text" id="income" placeholder="2000">
+          </div>
+        </div>
+        <p class="feedback feedback-wrong" id="income-error"></p>
+        <div class="button-row">
+          <button class="pill-button green-pill" onclick="saveIncome()">Save income</button>
+          <button class="pill-button" onclick="fillWithRule()">Fill my limits with the 50/30/20 rule</button>
+        </div>
+        <p class="small-text" id="rule-text"></p>
+      </div>
+
+      <!-- 2. spending by category -->
+      <div class="section-header">
+        <p class="section-title">This month by category</p>
+        <button class="pill-button small-pill" onclick="showLimitsForm()">Edit limits</button>
+      </div>
+
+      <!-- the form to change the limits (hidden until you click Edit limits) -->
+      <div class="card form-card" id="limits-form" hidden>
+        <p class="card-title">Spending limits for each month</p>
+        <!-- budget.js adds a box for each category here -->
+        <div class="calc-inputs" id="limit-inputs"></div>
+        <p class="feedback feedback-wrong" id="limits-error"></p>
+        <div class="button-row">
+          <button class="pill-button green-pill" onclick="saveLimits()">Save limits</button>
+          <button class="pill-button" onclick="hideLimitsForm()">Cancel</button>
+        </div>
+      </div>
+
+      <!-- budget.js adds a row for each category here -->
+      <div id="category-list"></div>
+
+      <!-- 3. purchases -->
+      <div class="section-header">
+        <p class="section-title">Purchases this month</p>
+        <button class="pill-button green-pill small-pill" onclick="showPurchaseForm()">+ Log a purchase</button>
+      </div>
+
+      <!-- the form to log a purchase (hidden until you click Log a purchase) -->
+      <div class="card form-card" id="purchase-form" hidden>
+        <p class="card-title">Log a purchase</p>
+        <div class="calc-inputs">
+          <div class="calc-input">
+            <label for="p-amount">Amount ($)</label>
+            <input type="text" id="p-amount" placeholder="25">
+          </div>
+          <div class="calc-input">
+            <label for="p-category">Category</label>
+            <select id="p-category" onchange="matchKind()"></select>
+          </div>
+          <div class="calc-input">
+            <label for="p-card">Paid with</label>
+            <select id="p-card"></select>
+          </div>
+          <div class="calc-input">
+            <label for="p-date">Date</label>
+            <input type="date" id="p-date">
+          </div>
+          <div class="calc-input">
+            <label for="p-kind">Need or want?</label>
+            <select id="p-kind">
+              <option value="need">Need</option>
+              <option value="want">Want</option>
+            </select>
+          </div>
+        </div>
+        <p class="feedback feedback-wrong" id="purchase-error"></p>
+        <div class="button-row">
+          <button class="pill-button green-pill" onclick="savePurchase()">Save purchase</button>
+          <button class="pill-button" onclick="hidePurchaseForm()">Cancel</button>
+        </div>
+      </div>
+
+      <!-- budget.js adds a row for each purchase here -->
+      <div id="purchase-list"></div>
+
+    </div>
+  </main>
+
+  <script src="common.js"></script>
+  <script src="money.js"></script>
+  <script src="money-data.js"></script>
+  <script src="budget.js"></script>
+</body>
+</html>

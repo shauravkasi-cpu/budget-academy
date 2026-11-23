@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Budget Academy - Goals</title>
+  <link rel="icon" href="logo.png">
+  <link rel="stylesheet" href="style.css">
+  <script src="theme.js"></script>
+</head>
+<body class="app">
+
+  <!-- menu on the left -->
+  <nav class="sidebar">
+    <div class="brand">
+      <img src="logo.png" alt="">
+      <span>Budget Academy</span>
+    </div>
+
+    <!-- the 2 main sections -->
+    <div class="section-switch">
+      <a href="overview.html" class="active">My Money</a>
+      <a href="lessons.html">Learn Mode</a>
+    </div>
+
+    <!-- the pages inside "My Money" -->
+    <p class="menu-label">My Money</p>
+    <a class="menu-link" href="overview.html">Overview</a>
+    <a class="menu-link" href="cards.html">Cards</a>
+    <a class="menu-link" href="bills.html">Bills</a>
+    <a class="menu-link" href="budget.html">Budget</a>
+    <a class="menu-link active" href="goals.html">Goals</a>
+    <a class="menu-link" href="taxes.html">Taxes &amp; Mortgage</a>
+
+    <!-- bottom of the menu -->
+    <div class="sidebar-bottom">
+      <button class="menu-link" id="theme-button" onclick="toggleTheme()">Light mode</button>
+      <div class="user-row">
+        <span class="avatar" id="avatar"></span>
+        <span class="user-name" id="profile-name"></span>
+        <button class="logout-button" onclick="logOut()">Log out</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- the big panel on the right -->
+  <main class="page">
+    <div class="content">
+
+      <h1>Goals</h1>
+      <p class="lesson-description">Save up for the things that matter to you. Each goal tells you how much to save every week to get there on time.</p>
+
+      <!-- a suggestion if you don't have an emergency fund goal yet -->
+      <div class="card lesson-banner" id="suggestion" hidden>
+        <p class="card-label">Suggestion</p>
+        <p class="card-title">Start an Emergency Fund</p>
+        <p class="card-text">Most money experts say to save for surprises first, like a car repair or a doctor visit. A good first goal is $1,000.</p>
+        <div class="button-row suggestion-button">
+          <button class="pill-button green-pill" onclick="addEmergencyFund()">Add an Emergency Fund goal</button>
+        </div>
+      </div>
+
+      <div class="section-header">
+        <p class="section-title">Your goals</p>
+        <button class="pill-button green-pill small-pill" onclick="showForm()">+ Add a goal</button>
+      </div>
+
+      <!-- the form to add or edit a goal (hidden until you click Add or Edit) -->
+      <div class="card form-card" id="goal-form" hidden>
+        <p class="card-title" id="form-title">Add a goal</p>
+        <div class="calc-inputs">
+          <div class="calc-input">
+            <label for="goal-name">Goal name</label>
+            <input type="text" id="goal-name" placeholder="New laptop">
+          </div>
+          <div class="calc-input">
+            <label for="goal-target">Goal amount ($)</label>
+            <input type="text" id="goal-target" placeholder="900">
+          </div>
+          <div class="calc-input">
+            <label for="goal-saved">Saved so far ($)</label>
+            <input type="text" id="goal-saved" placeholder="0">
+          </div>
+          <div class="calc-input">
+            <label for="goal-date">Target date</label>
+            <input type="date" id="goal-date">
+          </div>
+        </div>
+        <p class="feedback feedback-wrong" id="form-error"></p>
+        <div class="button-row">
+          <button class="pill-button green-pill" onclick="saveGoal()">Save</button>
+          <button class="pill-button" onclick="hideForm()">Cancel</button>
+        </div>
+      </div>
+
+      <!-- goals.js adds a box for each goal here -->
+      <div id="goal-list"></div>
+
+    </div>
+  </main>
+
+  <script src="common.js"></script>
+  <script src="money.js"></script>
+  <script src="money-data.js"></script>
+  <script src="calculators.js"></script>
+  <script src="goals.js"></script>
+</body>
+</html>

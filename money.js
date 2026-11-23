@@ -12,6 +12,13 @@ function formatMoney(cents) {
 }
 
 
+// turns cents into plain text for a text box, with no $ or commas
+// example: 142050 -> "1420.50"
+function centsToText(cents) {
+  return (cents / 100).toFixed(2);
+}
+
+
 // turns what someone typed into cents
 // example: "12.34" -> 1234
 // returns -1 if it isn't a real money amount (empty, letters, or below zero)

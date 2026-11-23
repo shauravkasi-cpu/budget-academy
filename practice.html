@@ -46,16 +46,21 @@
     <div class="content">
 
       <h1>Practice Month</h1>
+      <p class="lesson-description">Can you make it through a month on a $2,000 paycheck? Practice budgeting with no real money at risk.</p>
 
-      <!-- this page isn't built yet -->
-      <div class="card">
-        <p class="card-label">Coming soon</p>
-        <p class="tip-text">Get a pretend $2,000 paycheck and make it through a month. Each week something happens, like a surprise car repair, and you decide what to do. At the end you get a score and tips on what to learn next.</p>
-      </div>
+      <!-- progress through the month -->
+      <div class="bar"><div class="bar-fill" id="practice-bar"></div></div>
+      <p class="small-text" id="practice-count"></p>
+
+      <!-- the start screen, a week, or your score (practice.js puts it here) -->
+      <div class="card stage" id="stage"></div>
 
     </div>
   </main>
 
   <script src="common.js"></script>
+  <script src="money.js"></script>
+  <script src="lessons-data.js"></script>
+  <script src="practice.js"></script>
 </body>
 </html>

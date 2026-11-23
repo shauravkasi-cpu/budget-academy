@@ -63,6 +63,17 @@ const calculators = [
     inputs: [
       { label: "Pay before taxes ($)", value: "1000" }
     ]
+  },
+  {
+    kind: "mortgage",
+    title: "Mortgage",
+    text: "See the monthly payment and total interest on a home loan.",
+    inputs: [
+      { label: "Home price ($)", value: "250000" },
+      { label: "Down payment ($)", value: "25000" },
+      { label: "Interest rate (%)", value: "6.5" },
+      { label: "Years", value: "30" }
+    ]
   }
 ];
 
@@ -161,6 +172,8 @@ function calculate(kind) {
     html = creditResults();
   } else if (kind === "paycheck") {
     html = paycheckResults();
+  } else if (kind === "mortgage") {
+    html = mortgageResults();
   }
 
   // if something was typed wrong, html is "" and the answers stay empty
@@ -190,6 +203,19 @@ function budgetResults() {
 }
 
 
+// ---- savings goal math (the Goals page uses these too) ----
+
+// how many weeks it takes to save up, saving the same amount every week
+// Math.ceil rounds UP, because you need a full extra week to finish
+function weeksToSave(price, weekly) {
+  return Math.ceil(price / weekly);
+}
+
+// how much to save each week to reach a goal in a certain number of weeks
+function savePerWeek(amountLeft, weeks) {
+  return Math.ceil(amountLeft / weeks);
+}
+
 // savings goal: how many weeks until you can afford it
 function goalResults() {
   let price = readMoney("goal", 0);
@@ -200,8 +226,7 @@ function goalResults() {
     return "";
   }
 
-  // Math.ceil rounds UP, because you need a full extra week to finish
-  let weeks = Math.ceil(price / weekly);
+  let weeks = weeksToSave(price, weekly);
 
   // the date you'll reach your goal: today + (weeks x 7 days)
   let date = new Date();
@@ -321,4 +346,49 @@ function paycheckResults() {
   return resultBox(formatMoney(takeHome), "take-home pay (about)") +
     resultBox(formatMoney(taxes), "taxes taken out") +
     resultBox(percentKept + "%", "of your pay you keep");
+}
+
+
+// mortgage: the monthly payment on a home loan, and the total interest
+function mortgageResults() {
+  let price = readMoney("mortgage", 0);
+  let down = readMoney("mortgage", 1);
+  let rate = readNumber("mortgage", 2);
+  let years = readNumber("mortgage", 3);
+
+  if (price <= 0 || down < 0 || down >= price) {
+    showCalcError("mortgage", "Type a home price, and a down payment that's smaller than the price.");
+    return "";
+  }
+  if (rate < 0 || rate > 20 || years < 1 || years > 40) {
+    showCalcError("mortgage", "Use an interest rate from 0 to 20%, and 1 to 40 years.");
+    return "";
+  }
+
+  let loan = price - down;   // you borrow the price minus your down payment
+  let payment = mortgagePayment(loan, rate, years);
+  let months = Math.round(years * 12);
+  let totalInterest = payment * months - loan;
+
+  return resultBox(formatMoney(payment), "monthly payment") +
+    resultBox(formatMoney(totalInterest), "total interest") +
+    resultBox(formatMoney(loan), "amount you borrow");
+}
+
+
+// the monthly payment for a loan (in cents)
+// This is the standard loan formula:
+//   payment = loan x r / (1 - (1 + r) to the power of -months)
+//   where r is the interest rate for ONE month
+// Math.pow(a, b) means "a to the power of b"
+function mortgagePayment(loan, rate, years) {
+  let months = Math.round(years * 12);
+  let r = rate / 100 / 12;
+
+  // with 0% interest, you just split the loan evenly
+  if (r === 0) {
+    return Math.round(loan / months);
+  }
+
+  return Math.round(loan * r / (1 - Math.pow(1 + r, -months)));
 }

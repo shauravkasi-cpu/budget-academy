@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Budget Academy - Taxes and Mortgage</title>
+  <link rel="icon" href="logo.png">
+  <link rel="stylesheet" href="style.css">
+  <script src="theme.js"></script>
+</head>
+<body class="app">
+
+  <!-- menu on the left -->
+  <nav class="sidebar">
+    <div class="brand">
+      <img src="logo.png" alt="">
+      <span>Budget Academy</span>
+    </div>
+
+    <!-- the 2 main sections -->
+    <div class="section-switch">
+      <a href="overview.html" class="active">My Money</a>
+      <a href="lessons.html">Learn Mode</a>
+    </div>
+
+    <!-- the pages inside "My Money" -->
+    <p class="menu-label">My Money</p>
+    <a class="menu-link" href="overview.html">Overview</a>
+    <a class="menu-link" href="cards.html">Cards</a>
+    <a class="menu-link" href="bills.html">Bills</a>
+    <a class="menu-link" href="budget.html">Budget</a>
+    <a class="menu-link" href="goals.html">Goals</a>
+    <a class="menu-link active" href="taxes.html">Taxes &amp; Mortgage</a>
+
+    <!-- bottom of the menu -->
+    <div class="sidebar-bottom">
+      <button class="menu-link" id="theme-button" onclick="toggleTheme()">Light mode</button>
+      <div class="user-row">
+        <span class="avatar" id="avatar"></span>
+        <span class="user-name" id="profile-name"></span>
+        <button class="logout-button" onclick="logOut()">Log out</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- the big panel on the right -->
+  <main class="page">
+    <div class="content">
+
+      <h1>Taxes &amp; Mortgage</h1>
+      <p class="lesson-description">See how much of your paycheck you keep, and what a home would cost each month.</p>
+
+      <!-- a note that these are estimates -->
+      <div class="demo-banner">
+        These numbers are estimates to help you learn and plan. Real taxes and loans depend on where you live, your income, and your credit.
+      </div>
+
+      <!-- 1. paycheck after taxes (the calculator from calculators.js) -->
+      <div class="card">
+        <p class="card-title">Paycheck After Taxes</p>
+        <p class="card-text">A rough guess of how much of your paycheck you actually take home.</p>
+        <div id="paycheck-calculator"></div>
+      </div>
+
+      <!-- 2. mortgage -->
+      <div class="card">
+        <p class="card-title">Mortgage</p>
+        <p class="card-text">A mortgage is a loan to buy a home. Type the home's price, your down payment (the money you pay up front), the interest rate, and how many years the loan lasts.</p>
+        <div id="mortgage-calculator"></div>
+      </div>
+
+      <!-- 3. can I afford it? -->
+      <div class="card">
+        <p class="card-title">Can I afford it?</p>
+        <p class="card-text">A common rule says your monthly home payment should be no more than 28% of your monthly income. This uses the mortgage numbers above and the income from your <a href="budget.html">Budget page</a>.</p>
+        <div class="button-row suggestion-button">
+          <button class="pill-button green-pill" onclick="checkAfford()">Check it</button>
+        </div>
+        <!-- taxes.js puts the answer here -->
+        <div id="afford-result"></div>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="common.js"></script>
+  <script src="money.js"></script>
+  <script src="money-data.js"></script>
+  <script src="calculators.js"></script>
+  <script src="taxes.js"></script>
+</body>
+</html>

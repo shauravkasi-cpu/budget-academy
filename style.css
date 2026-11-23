@@ -1244,3 +1244,174 @@ input:focus {
   border-radius: 6px;
   transition: width 0.3s;   /* the bar slides when it changes */
 }
+
+
+/* ==========================================================
+   My Money pages (Cards, Bills, Budget, Goals, Taxes)
+   ========================================================== */
+
+/* dropdowns look like the text boxes */
+select {
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 16px;
+  padding: 12px;
+  background-color: var(--card-inside);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 16px;
+}
+
+.calc-input select {
+  margin: 0;
+}
+
+/* the add / edit forms have a green border */
+.form-card {
+  border: 2px solid var(--green);
+}
+
+/* one item in a list (a card, a bill, a goal, ...) */
+.item-card {
+  padding: 20px 24px;
+  margin-bottom: 12px;
+}
+
+/* name on the left, amount and buttons on the right */
+.item-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.item-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.item-name {
+  margin: 0;
+  font-size: 19px;
+  font-weight: 800;
+}
+
+.item-amount {
+  margin: 0 8px 0 0;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.item-card .small-text {
+  margin-top: 4px;
+}
+
+.item-card .bar {
+  margin-top: 14px;
+}
+
+/* small Edit / Delete buttons that look like links */
+.text-button {
+  width: auto;
+  padding: 4px 6px;
+  background-color: transparent;
+  color: var(--text-grey);
+  box-shadow: none;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.text-button:hover {
+  color: var(--text);
+}
+
+/* progress bars that are getting full (yellow) or too full (red) */
+.bar-yellow {
+  background-color: var(--yellow);
+}
+
+.bar-red {
+  background-color: var(--red);
+}
+
+/* red text, for things like "Overdue" */
+.red-text {
+  color: var(--red);
+  font-weight: 800;
+}
+
+/* the message when a list is empty */
+.empty-state {
+  text-align: center;
+}
+
+.empty-state .card-text {
+  margin-bottom: 20px;
+}
+
+/* the split card needs space under it on these pages */
+.page .split-card {
+  margin-bottom: 8px;
+}
+
+/* an overdue bill's red label */
+.chip-overdue {
+  background-color: var(--red);
+  color: #FFFFFF;
+}
+
+/* the "pay with which card?" box under a bill */
+.pay-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+
+.pay-box label {
+  margin: 0;
+  white-space: nowrap;
+}
+
+.pay-box select {
+  width: 260px;
+  margin: 0;
+}
+
+/* the "save $X a week" sentence under a goal */
+.goal-plan {
+  margin: 12px 0 0 0;
+  font-weight: 700;
+}
+
+/* a short text box that sits in a row (like the add money box) */
+.small-input {
+  width: 120px;
+  margin: 0;
+}
+
+.suggestion-button {
+  margin-top: 16px;
+}
+
+/* ---------- Practice Month ---------- */
+.practice-hint {
+  margin: 16px 0;
+}
+
+.practice-debt {
+  margin: 12px 0 24px 0;
+  color: var(--text-grey);
+  font-weight: 700;
+}
+
+.practice-tip {
+  margin: 24px 0;
+  text-align: left;
+}

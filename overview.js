@@ -1,6 +1,6 @@
 // overview.js
 // Runs on the home page (overview.html).
-// The demo and a real account use the SAME code, and both start empty.
+// The money numbers come from the Cards, Bills, Budget, and Goals pages (money-data.js).
 
 
 // userName, mode, lessonsDone, and xp come from common.js
@@ -8,10 +8,9 @@
 
 // ---------- 1. Pick the data ----------
 
-// everyone starts with no cards and no bills
-// (these lists will fill up once the Cards and Bills pages are built)
-let cards = [];
-let bills = [];
+// your cards, and the bills you still have to pay (soonest first)
+let cards = loadList("cards");
+let bills = unpaidBillsSorted();
 
 // tips for "Tip of the day"
 let tips = [
@@ -57,11 +56,11 @@ function showStatBoxes() {
 }
 
 
-// how many bills are due in the next 7 days
+// how many bills are due in the next 7 days (overdue ones count too)
 function countBillsDue() {
   let count = 0;
   for (let i = 0; i < bills.length; i++) {
-    if (bills[i].dueInDays <= 7) {
+    if (daysUntil(bills[i].dueDate) <= 7) {
       count = count + 1;
     }
   }
@@ -114,22 +113,25 @@ function showNextLesson() {
 }
 
 
-// the list of upcoming bills
+// the next 5 bills to pay
 function showBillList() {
   let list = document.getElementById("bill-list");
 
   if (bills.length === 0) {
-    list.innerHTML = '<div class="bill-row"><span class="bill-name grey">No bills yet</span></div>';
+    list.innerHTML = '<div class="bill-row"><span class="bill-name grey">No bills yet. <a href="bills.html">Add one</a></span></div>';
     return;
   }
 
   list.innerHTML = "";
-  for (let i = 0; i < bills.length; i++) {
+  for (let i = 0; i < bills.length && i < 5; i++) {
     let bill = bills[i];
+    let days = daysUntil(bill.dueDate);   // money-data.js
 
-    // bills due in 3 days or less get a yellow label
+    // yellow if due in 3 days or less, red if overdue
     let chipClass = "chip";
-    if (bill.dueInDays <= 3) {
+    if (days < 0) {
+      chipClass = "chip chip-overdue";
+    } else if (days <= 3) {
       chipClass = "chip chip-soon";
     }
 
@@ -137,34 +139,16 @@ function showBillList() {
       '<div class="bill-row">' +
         '<span class="bill-name">' + bill.name + '</span>' +
         '<span>' + formatMoney(bill.amount) + '</span>' +
-        '<span class="' + chipClass + '">' + dueText(bill.dueInDays) + '</span>' +
+        '<span class="' + chipClass + '">' + dueText(days) + '</span>' +
       '</div>';
   }
 }
 
 
-// turns a number of days into words
-// example: 2 -> "Due in 2 days"
-function dueText(days) {
-  if (days === 0) {
-    return "Due today";
-  }
-  if (days === 1) {
-    return "Due tomorrow";
-  }
-  return "Due in " + days + " days";
-}
-
-
 // total balance, and how much is due this week
 function showMoney() {
-  // add up all the card balances
-  let total = 0;
-  for (let i = 0; i < cards.length; i++) {
-    total = total + cards[i].balance;
-  }
-
-  document.getElementById("balance").textContent = formatMoney(total);
+  // what you have, minus what you owe on credit cards (money-data.js)
+  document.getElementById("balance").textContent = formatMoney(totalMoney(cards));
 
   if (cards.length === 0) {
     document.getElementById("balance-text").textContent = "Add a card to see your balance";
@@ -175,12 +159,77 @@ function showMoney() {
   // add up the bills due in the next 7 days
   let billsTotal = 0;
   for (let i = 0; i < bills.length; i++) {
-    if (bills[i].dueInDays <= 7) {
+    if (daysUntil(bills[i].dueDate) <= 7) {
       billsTotal = billsTotal + bills[i].amount;
     }
   }
 
   document.getElementById("bills-total").textContent = formatMoney(billsTotal);
+}
+
+
+// the goal you're closest to finishing
+function showTopGoal() {
+  let goals = loadList("goals");
+  let box = document.getElementById("top-goal");
+
+  if (goals.length === 0) {
+    box.innerHTML = '<p class="card-text">No goals yet. <a href="goals.html">Add your first goal</a></p>';
+    return;
+  }
+
+  // find the goal with the highest percent saved (that isn't finished yet)
+  let top = goals[0];
+  for (let i = 0; i < goals.length; i++) {
+    let percent = goals[i].saved / goals[i].target;
+    let topPercent = top.saved / top.target;
+    if (percent < 1 && (percent > topPercent || topPercent >= 1)) {
+      top = goals[i];
+    }
+  }
+
+  let percent = Math.round((top.saved / top.target) * 100);
+  if (percent > 100) {
+    percent = 100;
+  }
+
+  box.innerHTML =
+    '<p class="big-text">' + top.name + '</p>' +
+    '<div class="bar"><div class="bar-fill" style="width: ' + percent + '%"></div></div>' +
+    '<p class="small-text">' + formatMoney(top.saved) + ' of ' + formatMoney(top.target) + ' saved  \u00B7  ' + percent + '%</p>';
+}
+
+
+// this month's spending compared to your income
+function showMonthBudget() {
+  let budget = loadBudget();          // money-data.js
+  let spent = spentThisMonth();       // money-data.js
+  let box = document.getElementById("month-budget");
+
+  if (budget.income === 0) {
+    box.innerHTML = '<p class="card-text">No budget yet. <a href="budget.html">Set your monthly income</a></p>';
+    return;
+  }
+
+  let percent = Math.round((spent / budget.income) * 100);
+  let barWidth = percent;
+  if (barWidth > 100) {
+    barWidth = 100;
+  }
+
+  // yellow when you've spent 80% of your income, red when you go over
+  let barClass = "bar-fill";
+  if (percent > 100) {
+    barClass = "bar-fill bar-red";
+  } else if (percent >= 80) {
+    barClass = "bar-fill bar-yellow";
+  }
+
+  box.innerHTML =
+    '<p class="big-text">' + formatMoney(spent) + ' spent</p>' +
+    '<div class="bar"><div class="' + barClass + '" style="width: ' + barWidth + '%"></div></div>' +
+    '<p class="small-text">' + percent + '% of your ' + formatMoney(budget.income) + ' income  \u00B7  ' +
+      formatMoney(budget.income - spent) + ' left</p>';
 }
 
 
@@ -248,5 +297,7 @@ showStatBoxes();
 showNextLesson();
 showBillList();
 showMoney();
+showTopGoal();
+showMonthBudget();
 showSkillLevel();
 showTip();
