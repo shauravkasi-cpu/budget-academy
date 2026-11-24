@@ -26,7 +26,10 @@
       <label for="password">Password</label>
       <input type="password" id="password" required>
 
-      <button type="submit">Log In</button>
+      <button type="submit" id="login-button">Log In</button>
+
+      <!-- login.js shows a message here if the password is wrong -->
+      <p class="feedback feedback-wrong" id="login-error" hidden></p>
 
       <p class="or-text">or</p>
 
@@ -34,10 +37,13 @@
       <button type="button" class="demo-button" onclick="window.location.href = 'demo.html'">Continue without account</button>
     </form>
 
-    <p class="signup-text">Don't have an account? <a href="#">Sign up</a></p>
+    <p class="signup-text">Don't have an account? <a href="signup.html">Sign up</a></p>
 
   </main>
 
+  <!-- the Supabase library, then our code that uses it -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.118.0/dist/umd/supabase.js"></script>
+  <script src="cloud.js"></script>
   <script src="login.js"></script>
 </body>
 </html>

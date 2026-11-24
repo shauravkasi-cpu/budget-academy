@@ -120,15 +120,21 @@ function getSkillLevel() {
 
 // log out and go back to the Log In page
 // this clears everything saved, except light or dark mode
-function logOut() {
-  let theme = localStorage.getItem("theme");
-  localStorage.clear();
-  if (theme !== null) {
-    localStorage.setItem("theme", theme);
-  }
+// "async" so it can wait for the last save to finish before clearing everything
+async function logOut() {
+  await saveToCloud();   // cloud.js (does nothing in the demo)
+  await db.auth.signOut();
+  startFresh();          // cloud.js
   window.location.href = "index.html";
 }
 
 
 showProfile();
 showThemeButton();   // this function is in theme.js
+
+// real accounts: send a copy of your progress to the database now,
+// and then every 5 seconds (it only sends when something changed)
+if (mode === "account") {
+  saveToCloud();
+  setInterval(saveToCloud, 5000);
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Budget Academy - Sign Up</title>
+  <link rel="icon" href="logo.png">
+  <link rel="stylesheet" href="style.css">
+  <script src="theme.js"></script>
+</head>
+<body>
+
+  <!-- Sign Up page (looks like the Log In page) -->
+  <main class="login-page">
+
+    <img class="logo" src="logo.png" alt="Budget Academy logo">
+    <h1>Make an account</h1>
+    <p class="slogan">Your progress is saved, so you can log in from any computer.</p>
+
+    <form class="login-box" id="signup-form">
+      <label for="new-username">Username</label>
+      <input type="text" id="new-username" placeholder="3 to 20 letters or numbers" required>
+
+      <label for="new-password">Password</label>
+      <input type="password" id="new-password" placeholder="At least 6 characters" required>
+
+      <label for="new-password2">Type your password again</label>
+      <input type="password" id="new-password2" required>
+
+      <button type="submit" id="signup-button">Sign Up</button>
+
+      <!-- signup.js shows a message here if something is wrong -->
+      <p class="feedback feedback-wrong" id="signup-error" hidden></p>
+    </form>
+
+    <p class="signup-text">Already have an account? <a href="index.html">Log in</a></p>
+
+  </main>
+
+  <!-- the Supabase library, then our code that uses it -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.118.0/dist/umd/supabase.js"></script>
+  <script src="cloud.js"></script>
+  <script src="signup.js"></script>
+</body>
+</html>
