@@ -2,9 +2,9 @@
 // Runs on the Past Tests page (past-tests.html).
 // Shows every Spending Test you've taken, so you can watch your score go up.
 // The tests are saved by spending-test.js in the list "spendingTests".
-// Each test looks like { date, income, needs, wants, savings, score } (money in cents)
+// Each test looks like { date, scenario, right, total, score }
 //
-// loadList, saveList, prettyDate are in money-data.js. formatMoney is in money.js
+// loadList, saveList, prettyDate are in money-data.js
 
 
 // green for a good score, yellow for okay, red for needs work
@@ -103,15 +103,23 @@ function showList(tests) {
   for (let i = tests.length - 1; i >= 0; i--) {
     let test = tests[i];
 
+    // the line under the date: the situation and how many you got right
+    // (older tests from the first version of the Spending Test saved needs and wants instead)
+    let details = "";
+    if (test.scenario !== undefined) {
+      details = test.scenario + '  ·  ' + test.right + ' of ' + test.total + ' right';
+    } else {
+      details = 'Needs ' + percentOf(test.needs, test.income) +
+        '  ·  Wants ' + percentOf(test.wants, test.income) +
+        '  ·  Savings ' + percentOf(test.savings, test.income);
+    }
+
     html = html +
       '<div class="card item-card">' +
         '<div class="item-row">' +
           '<div>' +
             '<p class="item-name">' + prettyDate(test.date) + '</p>' +
-            '<p class="small-text">Needs ' + percentOf(test.needs, test.income) +
-              '  ·  Wants ' + percentOf(test.wants, test.income) +
-              '  ·  Savings ' + percentOf(test.savings, test.income) +
-              '  ·  Income ' + formatMoney(test.income) + '</p>' +
+            '<p class="small-text">' + details + '</p>' +
           '</div>' +
           '<div class="item-right">' +
             '<span class="item-amount">' + test.score + ' / 100</span>' +

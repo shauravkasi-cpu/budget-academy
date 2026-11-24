@@ -524,9 +524,10 @@ input:focus {
   color: var(--text-grey);
 }
 
-/* buttons next to each other */
+/* buttons next to each other (they go to a new line if there isn't room) */
 .button-row {
   display: flex;
+  flex-wrap: wrap;
   gap: 12px;
 }
 
@@ -1426,6 +1427,12 @@ select {
 /* space above each part of the test and each row of the score */
 .test-row {
   margin-top: 24px;
+}
+
+/* the situation box: smaller rows so the questions aren't pushed too far down */
+.situation .bill-row {
+  padding: 8px 0;
+  font-size: 16px;
 }
 
 

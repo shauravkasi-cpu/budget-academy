@@ -47,42 +47,21 @@
 
       <h1>Spending Test</h1>
 
-      <!-- 1. what you make -->
-      <div class="card">
-        <p class="card-title">How much do you make?</p>
-        <div class="calc-inputs">
-          <div class="calc-input">
-            <label for="test-income">Monthly take-home pay ($)</label>
-            <input type="text" id="test-income" placeholder="2000">
-          </div>
-          <!-- take-home pay is your pay AFTER taxes, so this helps you figure it out -->
-          <a class="pill-button next-to-input" href="taxes.html#paycheck-card">Tax calculator</a>
-        </div>
-        <button class="pill-button" onclick="useMyBudget()">Use my numbers from the Budget page</button>
+      <!-- the money situation for this test (the same for every question) -->
+      <div class="card situation" id="situation"></div>
+
+      <!-- progress bar and "Question 3 of 8" -->
+      <div class="bar"><div class="bar-fill" id="test-bar"></div></div>
+      <p class="small-text" id="test-count"></p>
+
+      <!-- a question, or your score at the end (spending-test.js puts it here) -->
+      <div class="card stage" id="stage"></div>
+
+      <!-- the Next button -->
+      <div class="step-nav" id="test-nav">
+        <span class="step-hint" id="test-hint"></span>
+        <button class="pill-button green-pill" id="test-next" onclick="nextQuestion()">Next &rarr;</button>
       </div>
-
-      <!-- 2. what you spend (spending-test.js adds a box for each category) -->
-      <div class="card">
-        <p class="card-title">Needs</p>
-        <div class="calc-inputs" id="need-boxes"></div>
-
-        <p class="card-title test-row">Wants</p>
-        <div class="calc-inputs" id="want-boxes"></div>
-
-        <p class="card-title test-row">Savings</p>
-        <div class="calc-inputs">
-          <div class="calc-input">
-            <label for="test-savings">Put into savings ($)</label>
-            <input type="text" id="test-savings" placeholder="0">
-          </div>
-        </div>
-
-        <p class="feedback feedback-wrong" id="test-error"></p>
-        <button class="pill-button green-pill" onclick="gradeTest()">Get my score</button>
-      </div>
-
-      <!-- 3. your score (spending-test.js fills this in) -->
-      <div class="card" id="test-results" hidden></div>
 
     </div>
   </main>
@@ -93,6 +72,7 @@
   <script src="money.js"></script>
   <script src="money-data.js"></script>
   <script src="lessons-data.js"></script>
+  <script src="spending-test-data.js"></script>
   <script src="spending-test.js"></script>
 </body>
 </html>
