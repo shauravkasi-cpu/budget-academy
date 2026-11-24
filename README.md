@@ -6,43 +6,6 @@ Made by Shaurav Kasinaboyina, Jaskaran Kalsi, and Vardhan Devata for the TSA Sof
 
 ## Timeline
 
-```mermaid
-gantt
-    title How we built Budget Academy (Nov 1 - Nov 24)
-    dateFormat YYYY-MM-DD
-    axisFormat %b %d
-
-    section Shaurav
-    Rules, theme, and brainstorming      :2026-11-01, 3d
-    Research and feature plan            :2026-11-04, 2d
-    GitHub setup and project name        :2026-11-07, 1d
-    Learning HTML, CSS, JS and layout    :2026-11-09, 4d
-    Log In and Overview pages            :2026-11-14, 1d
-    Lesson page and Lesson 1             :2026-11-15, 3d
-    Unit 1, badges, levels, calculators  :2026-11-18, 3d
-    Quizzes, unit exams, final exam      :2026-11-22, 1d
-    Cards, Bills, Budget, Goals pages    :2026-11-23, 1d
-    Accounts, sign up, settings          :2026-11-24, 1d
-    Test mode, testing, bug fixes        :2026-11-24, 1d
-
-    section Jaskaran
-    Rules, theme, and brainstorming      :2026-11-01, 3d
-    Colors, font, logo, dark mode plan   :2026-11-08, 3d
-    Lesson page and Lesson 1             :2026-11-15, 3d
-    Units 4 and 5 lesson writing         :2026-11-20, 2d
-    Practice Month game                  :2026-11-23, 1d
-    Phone layout and light mode colors   :2026-11-24, 1d
-
-    section Vardhan
-    Rules, theme, and brainstorming      :2026-11-01, 3d
-    Money topics teens struggle with     :2026-11-05, 2d
-    Plan for 5 units and 25 lessons      :2026-11-11, 3d
-    Units 2 and 3 lesson writing         :2026-11-17, 3d
-    Exam questions                       :2026-11-21, 2d
-    Tax and mortgage calculators         :2026-11-23, 1d
-    Spending Test and Past Tests         :2026-11-24, 1d
-```
-
 | Date | Who | What we did |
 |---|---|---|
 | Nov 1 - 3 | Shaurav, Jaskaran, Vardhan | Read the TSA rules and this year's theme, brainstormed ideas, and picked a budgeting app. |
