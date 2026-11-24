@@ -33,6 +33,23 @@ function usernameToEmail(username) {
 }
 
 
+// checks that a username only has letters, numbers, and _ , and is 3 to 20 long
+// (it becomes part of the pretend email, so it can't have spaces or symbols)
+function isGoodUsername(username) {
+  if (username.length < 3 || username.length > 20) {
+    return false;
+  }
+
+  let allowed = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_";
+  for (let i = 0; i < username.length; i++) {
+    if (!allowed.includes(username[i])) {
+      return false;
+    }
+  }
+  return true;
+}
+
+
 // clears all saved progress, but keeps light or dark mode
 // (used when you log in, sign up, start the demo, or log out)
 function startFresh() {

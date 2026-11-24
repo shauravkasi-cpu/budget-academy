@@ -1,6 +1,6 @@
 // signup.js
 // Runs on the Sign Up page (signup.html).
-// The Supabase code (db, startFresh, saveToCloud, usernameToEmail) is in cloud.js
+// The Supabase code (db, startFresh, saveToCloud, usernameToEmail, isGoodUsername) is in cloud.js
 
 
 // shows a red message under the form
@@ -8,23 +8,6 @@ function showSignupError(message) {
   let box = document.getElementById("signup-error");
   box.textContent = message;
   box.hidden = false;
-}
-
-
-// checks that a username only has letters, numbers, and _ , and is 3 to 20 long
-// (it becomes part of the pretend email, so it can't have spaces or symbols)
-function isGoodUsername(username) {
-  if (username.length < 3 || username.length > 20) {
-    return false;
-  }
-
-  let allowed = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_";
-  for (let i = 0; i < username.length; i++) {
-    if (!allowed.includes(username[i])) {
-      return false;
-    }
-  }
-  return true;
 }
 
 
