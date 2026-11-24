@@ -1422,6 +1422,55 @@ select {
 }
 
 
+/* ---------- Spending Test ---------- */
+/* space above each part of the test and each row of the score */
+.test-row {
+  margin-top: 24px;
+}
+
+
+/* ---------- Past Tests ---------- */
+/* the chart: bars stand next to each other and line up at the bottom */
+.score-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+/* one score: the number, the bar, and the date under it */
+.score-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-weight: 800;
+}
+
+.score-bar {
+  width: 100%;
+  max-width: 48px;
+  margin-top: 6px;
+  background-color: var(--green);
+  border-radius: 8px 8px 0 0;
+}
+
+/* these come after .score-bar so the yellow and red win over the green */
+.score-bar.bar-yellow {
+  background-color: var(--yellow);
+}
+
+.score-bar.bar-red {
+  background-color: var(--red);
+}
+
+.score-date {
+  margin-top: 8px;
+  color: var(--text-grey);
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+
 /* ==========================================================
    PHONES
    Everything below only happens when the screen is
