@@ -49,12 +49,12 @@
 /* ---------- Colors: light mode ---------- */
 /* theme.js adds the class "light" to the page, then these colors are used instead */
 .light {
-  --sidebar: #14532D;
+  --sidebar: #15803D;              /* green menu */
   --sidebar-title: #FFFFFF;
-  --sidebar-text: #D9F0E1;
-  --sidebar-hover: #1B6B3B;
+  --sidebar-text: #E3F5E9;
+  --sidebar-hover: #198F45;        /* a little lighter green */
   --sidebar-active: #FFFFFF;
-  --sidebar-active-text: #14532D;
+  --sidebar-active-text: #15803D;
   --logo-tile: #FFFFFF;            /* white tile behind the logo in light mode */
 
   --panel: #FFFFFF;
