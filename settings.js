@@ -110,10 +110,27 @@ async function changePassword() {
 
 
 // ---------- start over ----------
+// the sentence you have to type to reset your account
+let resetSentence = "I want to completely reset my account";
+
+// shows the popup with an empty box
+function openResetPopup() {
+  document.getElementById("reset-text").value = "";
+  document.getElementById("reset-error").textContent = "";
+  document.getElementById("reset-popup").hidden = false;
+}
+
+function closeResetPopup() {
+  document.getElementById("reset-popup").hidden = true;
+}
+
 // clears your progress but keeps you logged in
-async function startOver() {
-  // confirm() shows a pop up with OK and Cancel. It gives true if they click OK
-  if (!confirm("This clears all your lessons, XP, cards, bills, budget, and goals. Are you sure?")) {
+// (only if you typed the sentence exactly)
+async function resetAccount() {
+  let typed = document.getElementById("reset-text").value.trim();
+
+  if (typed !== resetSentence) {
+    document.getElementById("reset-error").textContent = "Type the sentence exactly as it's shown.";
     return;
   }
 

@@ -102,7 +102,7 @@
           <p class="card-title">Start over</p>
           <p class="card-text">Clears your lessons, XP, cards, bills, budget, and goals. Your username and password stay the same.</p>
           <div class="button-row">
-            <button class="pill-button" onclick="startOver()">Start over</button>
+            <button class="pill-button" onclick="openResetPopup()">Start over</button>
           </div>
         </div>
 
@@ -110,6 +110,21 @@
 
     </div>
   </main>
+
+  <!-- the popup that asks you to type a sentence before your account is reset (hidden until then) -->
+  <div class="popup-backdrop" id="reset-popup" hidden>
+    <div class="popup">
+      <button class="popup-close" onclick="closeResetPopup()">&times;</button>
+      <p class="popup-title">Are you sure?</p>
+      <p class="card-text">This can't be undone. To reset your account, type: <b>I want to completely reset my account</b></p>
+      <input type="text" id="reset-text">
+      <p class="feedback feedback-wrong" id="reset-error"></p>
+      <div class="button-row">
+        <button class="pill-button green-pill" onclick="resetAccount()">Reset my account</button>
+        <button class="pill-button" onclick="closeResetPopup()">Cancel</button>
+      </div>
+    </div>
+  </div>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.118.0/dist/umd/supabase.js"></script>
   <script src="cloud.js"></script>
