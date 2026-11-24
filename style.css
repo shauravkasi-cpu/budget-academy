@@ -1415,3 +1415,118 @@ select {
   margin: 24px 0;
   text-align: left;
 }
+
+
+/* ==========================================================
+   PHONES
+   Everything below only happens when the screen is
+   narrower than 800px. Desktop is not changed at all.
+   ========================================================== */
+@media (max-width: 800px) {
+
+  /* the menu sits at the top of the page instead of on the left */
+  .sidebar {
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 16px;
+  }
+
+  /* the menu links sit next to each other and wrap onto new lines */
+  .menu-label {
+    display: none;
+  }
+
+  .menu-link {
+    display: inline-block;
+    width: auto;
+    margin: 12px 4px 0 0;
+    padding: 8px 12px;
+    font-size: 15px;
+  }
+
+  /* theme button and log out go under the links instead of at the bottom of the screen */
+  .sidebar-bottom {
+    position: static;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 12px;
+  }
+
+  .sidebar-bottom .menu-link {
+    margin: 0;
+  }
+
+  /* the big panel uses the whole width */
+  .page {
+    min-height: 100vh;
+    margin: 0;
+    padding: 24px 16px;
+    border-radius: 20px 20px 0 0;
+  }
+
+  /* a little less space inside the boxes, so there's more room for words */
+  .card {
+    padding: 20px;
+  }
+
+  .page h1,
+  .greeting {
+    font-size: 28px;
+  }
+
+  .huge-text {
+    font-size: 32px;
+  }
+
+  /* things that were side by side go on top of each other
+     (minmax(0, 1fr) lets the column shrink to fit the screen) */
+  .two-columns,
+  .calc-results {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .greeting-row,
+  .row-card,
+  .reward-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+  }
+
+  .stat-caption {
+    text-align: left;
+  }
+
+  /* rows that might not fit can wrap onto a second line */
+  .button-row,
+  .item-row,
+  .item-right,
+  .exam-row,
+  .pay-box,
+  .step-nav {
+    flex-wrap: wrap;
+  }
+
+  .bill-row {
+    font-size: 16px;
+  }
+
+  /* boxes that had a set width fill the screen instead */
+  .calc-input,
+  .pay-box select,
+  .popup {
+    width: 100%;
+  }
+
+  .popup {
+    margin: 0 16px;
+    padding: 24px;
+    box-sizing: border-box;
+  }
+
+  .reward {
+    min-width: 0;
+  }
+}
