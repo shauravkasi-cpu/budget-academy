@@ -18,7 +18,7 @@ function showGoals() {
   document.getElementById("suggestion").hidden = hasEmergencyFund(goals);
 
   if (goals.length === 0) {
-    list.innerHTML = emptyStateHTML("No goals yet. What are you saving for? A car, a trip, a new phone?",
+    list.innerHTML = emptyStateHTML("No goals yet.",
       "Add your first goal", "showForm()");
     return;
   }

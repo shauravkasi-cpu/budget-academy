@@ -1,13 +1,6 @@
 // taxes.js
-// Runs on the Taxes & Mortgage page (taxes.html).
-// The calculators themselves are in calculators.js. This file adds the "Can I afford it?" check.
-
-
-// put the two calculators on the page
-function showCalculators() {
-  document.getElementById("paycheck-calculator").innerHTML = calculatorHTML("paycheck");
-  document.getElementById("mortgage-calculator").innerHTML = calculatorHTML("mortgage");
-}
+// Runs on the My Money Calculators page (taxes.html).
+// The calculators are in calculators.js and calculators-page.js. This file adds the "Can I afford it?" check.
 
 
 // does the mortgage payment fit within 28% of your monthly income?
@@ -49,5 +42,3 @@ function checkAfford() {
   box.innerHTML = html;
 }
 
-
-showCalculators();

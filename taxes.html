@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Budget Academy - Taxes and Mortgage</title>
+  <title>Budget Academy - Calculators</title>
   <link rel="icon" href="logo.png">
   <link rel="stylesheet" href="style.css">
   <script src="theme.js"></script>
@@ -30,7 +30,7 @@
     <a class="menu-link" href="bills.html">Bills</a>
     <a class="menu-link" href="budget.html">Budget</a>
     <a class="menu-link" href="goals.html">Goals</a>
-    <a class="menu-link active" href="taxes.html">Taxes &amp; Mortgage</a>
+    <a class="menu-link active" href="taxes.html">Calculators</a>
 
     <!-- bottom of the menu -->
     <div class="sidebar-bottom">
@@ -47,32 +47,20 @@
   <main class="page">
     <div class="content">
 
-      <h1>Taxes &amp; Mortgage</h1>
-      <p class="lesson-description">See how much of your paycheck you keep, and what a home would cost each month.</p>
+      <h1>Calculators</h1>
 
       <!-- a note that these are estimates -->
       <div class="demo-banner">
-        These numbers are estimates to help you learn and plan. Real taxes and loans depend on where you live, your income, and your credit.
+        These numbers are estimates. Real taxes and loans depend on where you live and your credit.
       </div>
 
-      <!-- 1. paycheck after taxes (the calculator from calculators.js) -->
-      <div class="card">
-        <p class="card-title">Paycheck After Taxes</p>
-        <p class="card-text">A rough guess of how much of your paycheck you actually take home.</p>
-        <div id="paycheck-calculator"></div>
-      </div>
+      <!-- calculators-page.js adds a card for each calculator here -->
+      <div id="calculator-list"></div>
 
-      <!-- 2. mortgage -->
-      <div class="card">
-        <p class="card-title">Mortgage</p>
-        <p class="card-text">A mortgage is a loan to buy a home. Type the home's price, your down payment (the money you pay up front), the interest rate, and how many years the loan lasts.</p>
-        <div id="mortgage-calculator"></div>
-      </div>
-
-      <!-- 3. can I afford it? -->
+      <!-- can I afford the mortgage? -->
       <div class="card">
         <p class="card-title">Can I afford it?</p>
-        <p class="card-text">A common rule says your monthly home payment should be no more than 28% of your monthly income. This uses the mortgage numbers above and the income from your <a href="budget.html">Budget page</a>.</p>
+        <p class="card-text">A home payment should be no more than 28% of your monthly income. This uses the Mortgage numbers above and your income from the <a href="budget.html">Budget page</a>.</p>
         <div class="button-row suggestion-button">
           <button class="pill-button green-pill" onclick="checkAfford()">Check it</button>
         </div>
@@ -89,6 +77,7 @@
   <script src="money.js"></script>
   <script src="money-data.js"></script>
   <script src="calculators.js"></script>
+  <script src="calculators-page.js"></script>
   <script src="taxes.js"></script>
 </body>
 </html>

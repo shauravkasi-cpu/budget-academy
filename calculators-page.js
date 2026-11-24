@@ -1,5 +1,5 @@
 // calculators-page.js
-// Runs on the Calculators page (calculators.html).
+// Runs on both Calculators pages (calculators.html in Learn Mode, taxes.html in My Money).
 // Makes a card for every calculator in calculators.js
 
 
@@ -10,10 +10,10 @@ function showCalculators() {
   for (let i = 0; i < calculators.length; i++) {
     let calc = calculators[i];
 
+    // the id lets other pages link straight to one calculator, like taxes.html#paycheck-card
     box.innerHTML = box.innerHTML +
-      '<div class="card">' +
+      '<div class="card" id="' + calc.kind + '-card">' +
         '<p class="card-title">' + calc.title + '</p>' +
-        '<p class="card-text">' + calc.text + '</p>' +
         calculatorHTML(calc.kind) +
       '</div>';
   }

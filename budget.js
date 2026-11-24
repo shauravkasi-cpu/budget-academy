@@ -11,7 +11,6 @@ function showTotals() {
   let spent = spentThisMonth();   // no category name = everything
 
   document.getElementById("spent-total").textContent = formatMoney(spent);
-  document.getElementById("spent-text").textContent = "Spent this month, out of " + formatMoney(budget.income) + " income";
   document.getElementById("left-total").textContent = formatMoney(budget.income - spent);
 
   // add up needs and wants separately

@@ -7,14 +7,27 @@
 // ---------- 1. The list of calculators ----------
 // kind   - a short name we use in the code
 // title  - the name people see
-// text   - what it does
 // inputs - the boxes you type in (label, and the number already in the box)
 
 const calculators = [
   {
+    kind: "paycheck",
+    title: "Paycheck After Taxes",
+    inputs: [
+      { label: "Pay before taxes ($)", value: "1000" }
+    ]
+  },
+  {
+    kind: "hourly",
+    title: "Hourly Pay",
+    inputs: [
+      { label: "Pay per hour ($)", value: "15" },
+      { label: "Hours each week", value: "20" }
+    ]
+  },
+  {
     kind: "budget",
     title: "50/30/20 Budget",
-    text: "Split your monthly income into needs, wants, and savings.",
     inputs: [
       { label: "Monthly income ($)", value: "1000" }
     ]
@@ -22,7 +35,6 @@ const calculators = [
   {
     kind: "goal",
     title: "Savings Goal",
-    text: "Find out how long it takes to save up for something.",
     inputs: [
       { label: "Price of your goal ($)", value: "600" },
       { label: "Saved each week ($)", value: "20" }
@@ -31,25 +43,13 @@ const calculators = [
   {
     kind: "emergency",
     title: "Emergency Fund",
-    text: "See how much money to keep saved for surprises.",
     inputs: [
       { label: "Your monthly expenses ($)", value: "800" }
     ]
   },
   {
-    kind: "compound",
-    title: "Compound Interest",
-    text: "See how your money can grow when you invest a little every month.",
-    inputs: [
-      { label: "Added each month ($)", value: "100" },
-      { label: "Years", value: "40" },
-      { label: "Yearly growth (%)", value: "7" }
-    ]
-  },
-  {
     kind: "credit",
     title: "Credit Card Payoff",
-    text: "See how long it takes to pay off a credit card, and how much the interest costs.",
     inputs: [
       { label: "Card balance ($)", value: "1000" },
       { label: "Interest rate, APR (%)", value: "24" },
@@ -57,17 +57,27 @@ const calculators = [
     ]
   },
   {
-    kind: "paycheck",
-    title: "Paycheck After Taxes",
-    text: "A rough guess of how much of your paycheck you actually take home.",
+    kind: "compound",
+    title: "Compound Interest",
     inputs: [
-      { label: "Pay before taxes ($)", value: "1000" }
+      { label: "Added each month ($)", value: "100" },
+      { label: "Years", value: "40" },
+      { label: "Yearly growth (%)", value: "7" }
+    ]
+  },
+  {
+    kind: "car",
+    title: "Car Loan",
+    inputs: [
+      { label: "Car price ($)", value: "20000" },
+      { label: "Down payment ($)", value: "2000" },
+      { label: "Interest rate (%)", value: "7" },
+      { label: "Years", value: "5" }
     ]
   },
   {
     kind: "mortgage",
     title: "Mortgage",
-    text: "See the monthly payment and total interest on a home loan.",
     inputs: [
       { label: "Home price ($)", value: "250000" },
       { label: "Down payment ($)", value: "25000" },
@@ -75,6 +85,7 @@ const calculators = [
       { label: "Years", value: "30" }
     ]
   }
+
 ];
 
 
@@ -174,6 +185,10 @@ function calculate(kind) {
     html = paycheckResults();
   } else if (kind === "mortgage") {
     html = mortgageResults();
+  } else if (kind === "hourly") {
+    html = hourlyResults();
+  } else if (kind === "car") {
+    html = carResults();
   }
 
   // if something was typed wrong, html is "" and the answers stay empty
@@ -369,6 +384,56 @@ function mortgageResults() {
   let payment = mortgagePayment(loan, rate, years);
   let months = Math.round(years * 12);
   let totalInterest = payment * months - loan;
+
+  return resultBox(formatMoney(payment), "monthly payment") +
+    resultBox(formatMoney(totalInterest), "total interest") +
+    resultBox(formatMoney(loan), "amount you borrow");
+}
+
+
+// hourly pay: how much you make each week, month, and year (before taxes)
+function hourlyResults() {
+  let hourly = readMoney("hourly", 0);
+  let hours = readNumber("hourly", 1);
+
+  if (hourly <= 0) {
+    showCalcError("hourly", "Type your pay per hour, like 15 or 12.50");
+    return "";
+  }
+  if (hours <= 0 || hours > 80) {
+    showCalcError("hourly", "Type the hours you work each week, from 1 to 80.");
+    return "";
+  }
+
+  let weekly = Math.round(hourly * hours);
+  let yearly = weekly * 52;                // 52 weeks in a year
+  let monthly = Math.round(yearly / 12);
+
+  return resultBox(formatMoney(weekly), "each week") +
+    resultBox(formatMoney(monthly), "each month") +
+    resultBox(formatMoney(yearly), "each year (before taxes)");
+}
+
+
+// car loan: works just like a mortgage, only smaller and shorter
+function carResults() {
+  let price = readMoney("car", 0);
+  let down = readMoney("car", 1);
+  let rate = readNumber("car", 2);
+  let years = readNumber("car", 3);
+
+  if (price <= 0 || down < 0 || down >= price) {
+    showCalcError("car", "Type a car price, and a down payment that's smaller than the price.");
+    return "";
+  }
+  if (rate < 0 || rate > 30 || years < 1 || years > 8) {
+    showCalcError("car", "Use an interest rate from 0 to 30%, and 1 to 8 years.");
+    return "";
+  }
+
+  let loan = price - down;
+  let payment = mortgagePayment(loan, rate, years);   // the same loan math as a mortgage
+  let totalInterest = payment * Math.round(years * 12) - loan;
 
   return resultBox(formatMoney(payment), "monthly payment") +
     resultBox(formatMoney(totalInterest), "total interest") +

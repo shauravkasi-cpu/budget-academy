@@ -68,16 +68,14 @@ function countBillsDue() {
 }
 
 
-// the next lesson, with a check mark line for each part of it
+// the name of the next lesson
 // lessons come from lessons-data.js
 function showNextLesson() {
   let title = document.getElementById("next-lesson");
-  let points = document.getElementById("next-lesson-points");
 
   // if every lesson is done
   if (lessonsDone === lessons.length) {
     title.textContent = "You finished every lesson!";
-    points.innerHTML = "";
     document.getElementById("next-lesson-button").hidden = true;
     document.getElementById("resume-button").hidden = true;
     return;
@@ -92,23 +90,6 @@ function showNextLesson() {
   if (lessonsDone === 0) {
     document.getElementById("resume-button").textContent = "Start first lesson";
     document.getElementById("next-lesson-button").textContent = "Start";
-  }
-
-  // if the lesson isn't written yet, just show its description
-  if (next.steps === undefined) {
-    points.innerHTML = '<p class="check-item">' + next.description + '</p>';
-    return;
-  }
-
-  // show the headings of the first 3 "text" steps with check marks
-  points.innerHTML = "";
-  let shown = 0;
-  for (let i = 0; i < next.steps.length; i++) {
-    if (next.steps[i].type === "text" && shown < 3) {
-      points.innerHTML = points.innerHTML +
-        '<p class="check-item"><span class="check">&#10003;</span>' + next.steps[i].heading + '</p>';
-      shown = shown + 1;
-    }
   }
 }
 
@@ -247,20 +228,19 @@ function showSkillLevel() {
   // passed everything
   if (finalPassed) {
     bar.style.width = "100%";
-    text.textContent = "You passed the final exam! " + xp + " XP";
+    text.textContent = "Final exam passed";
     return;
   }
 
   // passed every unit exam, only the final is left
   if (unitsPassed === units.length) {
     bar.style.width = "100%";
-    text.textContent = "Pass the final exam in Learn Mode to become a Money Master!";
+    text.textContent = "Final exam is ready";
     return;
   }
 
-  // the next unit to pass (units[0] is Unit 1)
+  // the next unit to pass
   let unitNumber = unitsPassed + 1;
-  let unit = units[unitNumber - 1];
 
   // how many lessons are in this unit, and how many you've done in it
   let lessonsInUnit = lessonsThroughUnit(unitNumber) - lessonsThroughUnit(unitNumber - 1);
@@ -273,11 +253,9 @@ function showSkillLevel() {
   bar.style.width = percent + "%";
 
   if (doneInUnit < lessonsInUnit) {
-    text.textContent = doneInUnit + " of " + lessonsInUnit + " lessons done in Unit " + unitNumber + ": " + unit.title +
-      ". Finish them and pass the unit exam to become a " + unit.level + "!";
+    text.textContent = doneInUnit + " of " + lessonsInUnit + " lessons done in Unit " + unitNumber;
   } else {
-    text.textContent = "All Unit " + unitNumber + " lessons done! Pass the Unit " + unitNumber +
-      " exam in Learn Mode to become a " + unit.level + "!";
+    text.textContent = "Unit " + unitNumber + " exam is ready";
   }
 }
 

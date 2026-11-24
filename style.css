@@ -874,6 +874,11 @@ input:focus {
   font-size: 18px;
 }
 
+/* a button in a row of input boxes lines up with the boxes, not the labels */
+.next-to-input {
+  align-self: flex-end;
+}
+
 /* the 3 answer boxes side by side */
 .calc-results {
   display: grid;
