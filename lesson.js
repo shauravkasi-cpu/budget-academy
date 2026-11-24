@@ -378,16 +378,15 @@ function updateButtons() {
   }
 }
 
+// we don't jump back to the top, so on a phone you stay where the Next button is
 function nextStep() {
   step = step + 1;
   showStep();
-  window.scrollTo(0, 0);
 }
 
 function previousStep() {
   step = step - 1;
   showStep();
-  window.scrollTo(0, 0);
 }
 
 

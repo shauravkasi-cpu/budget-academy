@@ -57,14 +57,14 @@
   --sidebar-active-text: #15803D;
   --logo-tile: #FFFFFF;            /* white tile behind the logo in light mode */
 
-  --panel: #FFFFFF;
-  --card: #FFFFFF;
-  --card-inside: #F7F7F8;
-  --tint: #F0FDF4;
+  --panel: #DDE5EE;                /* light grey-blue, easier on the eyes than pure white */
+  --card: #E9EFF6;                 /* boxes are a little lighter, so they stand out */
+  --card-inside: #D4DDE8;
+  --tint: #D8ECDE;
 
   --text: #1A1A1A;
   --text-grey: #6B6B6B;
-  --border: #E5E5E5;
+  --border: #C4CFDC;
 
   --green: #16A34A;
   --dark-green: #15803D;

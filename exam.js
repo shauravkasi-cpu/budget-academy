@@ -201,12 +201,14 @@ function pick(c) {
 function nextQuestion() {
   current = current + 1;
 
+  // stay where you are for the next question (so on a phone you don't have to scroll back down),
+  // but start the score page at the top
   if (current === questions.length) {
     showResults();
+    window.scrollTo(0, 0);
   } else {
     showQuestion();
   }
-  window.scrollTo(0, 0);
 }
 
 
