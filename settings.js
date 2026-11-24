@@ -15,9 +15,9 @@ function showMessage(id, message, good) {
 }
 
 
-// the demo can only change light/dark mode
+// test mode (and the old demo) can only change light/dark mode
 function showSettings() {
-  if (mode === "demo") {
+  if (mode !== "account") {
     document.getElementById("demo-note").hidden = false;
   } else {
     document.getElementById("account-settings").hidden = false;

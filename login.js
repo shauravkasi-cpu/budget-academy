@@ -56,5 +56,16 @@ async function logIn(event) {
 }
 
 
+// test mode: go into the site without logging in
+// it's a brand new, empty account named "Test", and nothing is saved to the database
+// (cloud.js only saves when mode is "account")
+function enterTestMode() {
+  startFresh();
+  localStorage.setItem("name", "Test");
+  localStorage.setItem("mode", "test");
+  window.location.href = "overview.html";
+}
+
+
 // when the form is submitted, run logIn
 document.getElementById("login-form").addEventListener("submit", logIn);

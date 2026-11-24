@@ -41,9 +41,14 @@ function showGreeting() {
   document.getElementById("greeting-time").textContent = greeting;
   document.getElementById("greeting-name").textContent = userName;
 
-  // the yellow banner only shows in the demo
+  // the yellow banner only shows in the demo and in test mode
   if (mode === "demo") {
     document.getElementById("demo-banner").hidden = false;
+  }
+  if (mode === "test") {
+    let banner = document.getElementById("demo-banner");
+    banner.innerHTML = 'You\'re in test mode, so nothing is saved. <a href="signup.html">Sign up</a> to keep your progress.';
+    banner.hidden = false;
   }
 }
 
